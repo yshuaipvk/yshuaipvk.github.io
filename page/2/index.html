@@ -149,6 +149,211 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">智能 Agent</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-10 21:32:13" itemprop="dateCreated datePublished" datetime="2020-03-10T21:32:13+08:00">2020-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-15 15:49:02" itemprop="dateModified" datetime="2020-03-15T15:49:02+08:00">2020-03-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">人工智能：一种现代方法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-Agent和环境"><a href="#1-Agent和环境" class="headerlink" title="1.Agent和环境"></a>1.Agent和环境</h1><p>&emsp;&emsp;Agent通过传感器感知环境并通过执行器对所处环境产生影响。人类Agent有眼睛、耳朵和其他器官等传感器，也有手、腿、声道等作为执行器。机器人Agent则可能用摄像头、红外测距仪作为传感器，各种马达作为执行器。软件Agent接受键盘敲击、文件内容和网络数据包作为传感器输入，并以屏幕显示、写文件和发送网络数据包为执行器来用于环境。<br>&emsp;&emsp;真空吸尘器agent：世界上只有两个地点：方格A和方格B。吸尘器agent可以感应到当前处于哪个方格，该方格是否有灰尘。它可以向左移动，向右移动，吸尘，或者什么也不做。该Agent函数列表下入所示：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Percept sequence</th>
+<th style="text-align:center">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">{A,Clean}</td>
+<td style="text-align:center">Right</td>
+</tr>
+<tr>
+<td style="text-align:center">{A,Dirty}</td>
+<td style="text-align:center">Suck</td>
+</tr>
+<tr>
+<td style="text-align:center">{B,Clean}</td>
+<td style="text-align:center">Left</td>
+</tr>
+<tr>
+<td style="text-align:center">{B,Dirty}</td>
+<td style="text-align:center">Suck</td>
+</tr>
+<tr>
+<td style="text-align:center">{A,Clean}{A,Clean}</td>
+<td style="text-align:center">Right</td>
+</tr>
+<tr>
+<td style="text-align:center">{A,Clean}{A,Dirty}</td>
+<td style="text-align:center">Suck</td>
+</tr>
+<tr>
+<td style="text-align:center">···</td>
+<td style="text-align:center">···</td>
+</tr>
+<tr>
+<td style="text-align:center">{A,Clean}{A,Clean}{A,Clean}</td>
+<td style="text-align:center">Right</td>
+</tr>
+<tr>
+<td style="text-align:center">{A,Clean}{A,Clean}{A,Dirty}</td>
+<td style="text-align:center">Suck</td>
+</tr>
+<tr>
+<td style="text-align:center">···</td>
+<td style="text-align:center">···</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="2-好的行为：理性的概念"><a href="#2-好的行为：理性的概念" class="headerlink" title="2.好的行为：理性的概念"></a>2.好的行为：理性的概念</h1><p>理性Agent是做事正确的Agent，从概念上交，Agent函数表格的每一项都填写正确。</p>
+<h2 id="2-1理性"><a href="#2-1理性" class="headerlink" title="2.1理性"></a>2.1理性</h2><ul>
+<li>定义成功标准的性能度量。</li>
+<li>Agent对环境的先验知识。</li>
+<li>Agent可以完成的行动。</li>
+<li>Agent截止到此时的感知序列。</li>
+</ul>
+<p>对每一个可能的感知序列，根据已知的感知序列提供的证据和Agent具有的先验知识，理性Agent应该选择能使其性能度量最大化的行动。</p>
+<h2 id="2-2全知者、学习和自主性"><a href="#2-2全知者、学习和自主性" class="headerlink" title="2.2全知者、学习和自主性"></a>2.2全知者、学习和自主性</h2><ul>
+<li>理性不等于完美</li>
+<li>理性不要求全知</li>
+</ul>
+<h1 id="3-环境的性质"><a href="#3-环境的性质" class="headerlink" title="3.环境的性质"></a>3.环境的性质</h1><h2 id="3-1任务环境规范描述"><a href="#3-1任务环境规范描述" class="headerlink" title="3.1任务环境规范描述"></a>3.1任务环境规范描述</h2><p>&emsp;&emsp;对于吸尘器Agent，性能度量、环境、以及Agen的执行器和传感器都属于任务环境。<br>PEAS:性能（Performance）、环境（Environment）、执行器（Actuators）、传感器（Sensors）<br>对于自动驾驶出租车Agent：</p>
+<table>
+    <tr>
+        <th>Agent Type</th>
+        <th>Performance Measure</th>
+        <th>Environment</th>
+        <th>Actuators</th>
+        <th>Sensors</th>
+    </tr>
+    <tr>
+        <td>Taxi driver</td>
+        <td>
+            safe,fast,legal,
+            confortable trip
+            maximinze profits
+        </td>
+        <td>
+            Roads,other traffic,
+            pedestrians,
+            custonners 
+        </td>
+        <td>
+            Steering,
+            accelentor,
+            brake,signal,
+            horm,display
+        </td>
+        <td>
+            Cameras,sonar,
+            speedometer,
+            GPS,odometer,
+            accelerometer,
+            engine sensors,
+            ketboard
+        </td>
+    </tr>
+
+</table>
+
+<h2 id="3-2任务环境的性质"><a href="#3-2任务环境的性质" class="headerlink" title="3.2任务环境的性质"></a>3.2任务环境的性质</h2><p>&emsp;&emsp;<strong>完全可观察的与部分可观察的</strong>：如果Agent的传感器在每个时间点都能获取环境的完成状态，即完全可观察的。噪音、不精确的传感器，或者传感器丢失部分状态数据，可能导致环境称为部分观察可观察的。<br>&emsp;&emsp;<strong>单Agent与多Agent</strong>：独自玩字谜游戏的Agent处于单Agent环境；下国际象棋的Agent处于双Agent环境。<br>&emsp;&emsp;<strong>确定的和随机的</strong>：如果环境的下一个状态完全区取决于当前状态和Agent执行的动作，那么该环境是确定的；否则是随机的。<br>&emsp;&emsp;<strong>片段式和延续式</strong>：在片段式的任务环境中，Agent的经历被分为一个个原子片段。在每个片段中Agent感知信息并完成单个行动，下一个片段不依赖与以前的片段中采取的行动。在延续式的环境中，当前决策会影响到所有未来的决策。<br>&emsp;&emsp;<strong>静态的和动态的</strong>：环境在Agent计算的时候会变化，那么该Agent的环境是动态的；否者环境是静态的。<br>&emsp;&emsp;<strong>离散的与连续的</strong><br>&emsp;&emsp;<strong>已知的与未知的</strong></p>
+<h1 id="4-Agent的结构"><a href="#4-Agent的结构" class="headerlink" title="4.Agent的结构"></a>4.Agent的结构</h1><p>&emsp;&emsp;AI的任务是设计Agent程序，它实现的是把感知信息映射到行的Agent函数。假设该程序要在某个具备物理传感器和执行器的计算装置上运行，即成为体系结构。Agent=体系结构+程序</p>
+<h2 id="4-1Agent程序"><a href="#4-1Agent程序" class="headerlink" title="4.1Agent程序"></a>4.1Agent程序</h2><p>&emsp;&emsp;Agent程序都具有同样的框架：输入为传感器得到的当前感知信息，返回的是执行器的行动抉择。Agent程序以当前感知为输入，Agent函数是以整个感知历史作为输入。Agent程序只把当前感知作为输入是因为从环境无法得到更多的信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Table-Driven-Agent(precept) returns an action</span><br><span class="line">    persistent: perccepts,a sequence,initally empty</span><br><span class="line">                table,a table of actions,indexed by percept sequences,initially full specified</span><br><span class="line">    append percept to the edn of percepts</span><br><span class="line">    action LookUp(percepts,table)</span><br><span class="line">    <span class="built_in">return</span> action</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>四种基本的Agent程序：</p>
+<ul>
+<li>简单反射Agent</li>
+<li>基于模型的反射Agent</li>
+<li>基于目标的Agent</li>
+<li>基于效用的Agent</li>
+</ul>
+<h2 id="4-2-简单反射Agent"><a href="#4-2-简单反射Agent" class="headerlink" title="4.2 简单反射Agent"></a>4.2 简单反射Agent</h2><p>&emsp;&emsp;简单反射Agent基于当前的感知行动选择心动，不关注历史。</p>
+<p>真空吸尘器简单反射Agent伪代码程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> REFLEX-VACUUM-AGENT([location,status]) returns an action</span><br><span class="line">    <span class="keyword">if</span> status = Dirty <span class="keyword">then</span> <span class="built_in">return</span> Suck</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> location = A <span class="keyword">then</span> <span class="built_in">return</span> Right</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> location = B <span class="keyword">then</span> <span class="built_in">return</span> Left</span><br></pre></td></tr></table></figure>
+<p><img src="人工智能：一种现代方法(二)\simple.PNG"></p>
+<p>简单反射Agent：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fuction SIMPLE-REFLEX-AGENT(pecept) <span class="built_in">return</span> an action</span><br><span class="line">    persistent: relu,a <span class="built_in">set</span> of condition-action rules</span><br><span class="line">    state:INTERPRET-INPUT(percept)</span><br><span class="line">    rule:RULE-MATCH(state,rules)</span><br><span class="line">    action:ACTION</span><br><span class="line">    <span class="built_in">return</span> action</span><br></pre></td></tr></table></figure>
+<h2 id="4-3基于模型的反射Agent"><a href="#4-3基于模型的反射Agent" class="headerlink" title="4.3基于模型的反射Agent"></a>4.3基于模型的反射Agent</h2><p>&emsp;&emsp;处理部分可观测的最有效的途径是让Agent跟踪记录现在看不到的那部分世界。即，Agent应该根据感知历史维持内部状态，从而至少反映出当前状态看不到的信息。</p>
+<blockquote>
+<p>当Agent顺时针转动方向盘的时候，汽车会右转，或者在沿着高速公路向北行驶5分 钟后汽车通常应该离5分钟红前北方大约5英里远。这种关于“世界如何运转”的知识———无论是用简单的布尔电路还是用完备的科学理论实现————都被称为世界模型。使用这种模型的AGent被称为基于模型的Agent。</p>
+</blockquote>
+<p><img src = "人工智能：一种现代方法（二）\2.PNG"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> MODEL-BASE-REFLEX-AGENT(percept) returns an action</span><br><span class="line">    persistent:state,the agents current conception of the world state</span><br><span class="line">        model,a description of how the next stste depends on current state and action</span><br><span class="line">        relus,a <span class="built_in">set</span> of condition-action rules</span><br><span class="line">        action,the most recent action,initially none</span><br><span class="line">    state:UPDATE-STATE(state,action,percept,model)</span><br><span class="line">    rule:RULE_MATCH(state,rules)</span><br><span class="line">    action:rule.ACTION</span><br><span class="line">    <span class="built_in">return</span> action</span><br></pre></td></tr></table></figure>
+<h2 id="4-4基于目标的Agent"><a href="#4-4基于目标的Agent" class="headerlink" title="4.4基于目标的Agent"></a>4.4基于目标的Agent</h2><p>&emsp;&emsp;知道当前的环境状态对于决策而言并不够。例如，在路口，出租车可以左转，右转，或者直行。正确的决定要取决于出租车要去哪里，即除了当前状态的描述，Agent还需要目标信息来描述想达到的状态，例如，要达到乘客的目的地。</p>
+<p><img src = "人工智能：一种现代方法（二）\3.PNG"></p>
+<h2 id="4-5基于效用的Agent"><a href="#4-5基于效用的Agent" class="headerlink" title="4.5基于效用的Agent"></a>4.5基于效用的Agent</h2><p>&emsp;&emsp;仅靠目标在很多环境中不足以生成高品质的行为。例如，有很多序列可以让出租车到达目的地，但有些更快、更安全、更可靠，或者更便宜。</p>
+<p><img src="人工智能：一种现代方法（二）\4.PNG"></p>
+<h1 id="5-学习Agent"><a href="#5-学习Agent" class="headerlink" title="5.学习Agent"></a>5.学习Agent</h1><p><img src = "人工智能：一种现代方法（二）\5.PNG"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1078,86 +1283,6 @@ N_{DL}=\frac {C_{0}^{3}}{2q \epsilon A^2C_1}= \frac {|\rho|}{q}=p+\int^{E_V+E_e}
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuan Shuai">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/" class="post-title-link" itemprop="url">手写数字识别(MNIST)</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-14 17:38:10" itemprop="dateCreated datePublished" datetime="2020-02-14T17:38:10+08:00">2020-02-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-18 22:02:05" itemprop="dateModified" datetime="2020-03-18T22:02:05+08:00">2020-03-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="MNIST数据集"><a href="#MNIST数据集" class="headerlink" title="MNIST数据集"></a>MNIST数据集</h1><p>MNIST是机器学习领域最有名的数据集之一，被应用于从简单的实验到发表的论文研究等各种场合。实际上，在阅读图像识别或机器学习的论文时，MNIST数据集经常作为实验用的数据出现。MNIST数据集是由0 到9 的数字图像构成的。训练图像有6 万张，测试图像有1万张，这些图像可以用于学习和推理。MNIST数据集的一般使用方法是，先用训练图像进行学习，再用学习到的模型度量能在多大程度上对测试图像进行正确的分类。</p>
-<p><img height="100" width="200" src="深度学习-手写数字识别\mnist.PNG"></p>
-<p>MNIST的图像数据是28像素×28像素的灰度图像，各个像素取值在0到255之间，每个图像数据都相应的标有”7” “2”等标签。</p>
-<h1 id="MNIST数据预处理处理"><a href="#MNIST数据预处理处理" class="headerlink" title="MNIST数据预处理处理"></a>MNIST数据预处理处理</h1><h2 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h2><p>此处通过keras导入数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from keras.datesets import mnist</span><br><span class="line"></span><br><span class="line">(x_train,t_train),(x_test,t_test)&#x3D;mnist.load_data()</span><br></pre></td></tr></table></figure>
-<p>x_train,&ensp;t_train,&ensp;x_test,&ensp;t_test分别为训练图像、训练标签、测试图像、测试标签。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;x_train.shape</span><br><span class="line">(60000,28,28)</span><br><span class="line">&gt;&gt;&gt;t_train.shape</span><br><span class="line">(60000,)</span><br><span class="line">&gt;&gt;&gt;x_test.shape</span><br><span class="line">(10000,28,28)</span><br><span class="line">&gt;&gt;&gt;t_test.shape</span><br><span class="line">(10000,)</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from keras.datesets import mnist</span><br><span class="line"></span><br><span class="line">(x_train,t_train),(x_test,t_test)&#x3D;mnist.load_data()</span><br><span class="line"></span><br><span class="line">#重构数据 将28x28数据重构为1x784</span><br><span class="line"></span><br><span class="line">x_train&#x3D;x_train.reshape(60000,784)</span><br><span class="line">x_test&#x3D;x_test.reshape(10000,784)</span><br><span class="line"></span><br><span class="line">#为了防止数据溢出，将数据归一化</span><br><span class="line">x_train&#x3D;np.array(x_train,dtype&#x3D;np.float16)&#x2F;255</span><br><span class="line">x_test&#x3D;np.array(x_test,dtype&#x3D;np.float16)&#x2F;255</span><br><span class="line"></span><br><span class="line">#one-hot</span><br><span class="line">t_train&#x3D;to_categorical(t_train)</span><br><span class="line">t_test&#x3D;to_categorical(t_test)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1228,14 +1353,14 @@ N_{DL}=\frac {C_{0}^{3}}{2q \epsilon A^2C_1}= \frac {|\rho|}{q}=p+\int^{E_V+E_e}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
