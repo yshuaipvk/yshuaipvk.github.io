@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1.SMCR基础对于一组二维数据，可表示为浓度与光谱响应的线性组合，如下所示：  D_{m \times n}&#x3D;C_{m \times p}·S_{p \times n}^T +E其中m表示样品数（时间、温度、样品）n表示通道数（波长）p表示成分数 $D_{m \times n}$m个样品的光谱响应 $C_{m \times n}$表示不同样品中不同成分的浓度 $S_{n \times p}$表示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Self Modeling Curve Resolution">
+<meta property="og:url" content="http://example.com/2020/04/09/SMCR/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.SMCR基础对于一组二维数据，可表示为浓度与光谱响应的线性组合，如下所示：  D_{m \times n}&#x3D;C_{m \times p}·S_{p \times n}^T +E其中m表示样品数（时间、温度、样品）n表示通道数（波长）p表示成分数 $D_{m \times n}$m个样品的光谱响应 $C_{m \times n}$表示不同样品中不同成分的浓度 $S_{n \times p}$表示">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-09T06:13:34.000Z">
+<meta property="article:modified_time" content="2021-01-11T07:31:01.690Z">
+<meta property="article:author" content="Yuan Shuai">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/04/09/SMCR/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Self Modeling Curve Resolution | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/04/09/SMCR/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Self Modeling Curve Resolution
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-09 14:13:34" itemprop="dateCreated datePublished" datetime="2020-04-09T14:13:34+08:00">2020-04-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-11 15:31:01" itemprop="dateModified" datetime="2021-01-11T15:31:01+08:00">2021-01-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文献阅读</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1-SMCR基础"><a href="#1-SMCR基础" class="headerlink" title="1.SMCR基础"></a>1.SMCR基础</h1><p>对于一组二维数据，可表示为浓度与光谱响应的线性组合，如下所示：</p>
+<script type="math/tex; mode=display">
+D_{m \times n}=C_{m \times p}·S_{p \times n}^T +E</script><p>其中m表示样品数（时间、温度、样品）<br>n表示通道数（波长）<br>p表示成分数</p>
+<p>$D_{m \times n}$m个样品的光谱响应</p>
+<p>$C_{m \times n}$表示不同样品中不同成分的浓度</p>
+<p>$S_{n \times p}$表示不成分的光谱响应</p>
+<h1 id="2-Singular-value-Decomposition-SVD"><a href="#2-Singular-value-Decomposition-SVD" class="headerlink" title="2.Singular value Decomposition(SVD)"></a>2.Singular value Decomposition(SVD)</h1><p>奇异值分解，一个二维矩阵可以表示为三个j矩阵的乘积；</p>
+<script type="math/tex; mode=display">
+D_{m\times n}=U_{m\times n}\Lambda_{m\times n}\cdot V_{n\times n}^T</script><p>对于p个成分则有：</p>
+<script type="math/tex; mode=display">
+\widehat D_{m\times n}=\widehat U_{m\times n}\cdot \widehat\Lambda_{p\times p}\cdot\widehat V^T_{p\times n}</script><p>U和C在同一个向量空间；V和S在同一个向量空间。</p>
+<h1 id="3-T矩阵"><a href="#3-T矩阵" class="headerlink" title="3.T矩阵"></a>3.T矩阵</h1><p>对于一个光谱$s_i$,则有:</p>
+<script type="math/tex; mode=display">
+s_i=\widehat V\cdot t_i</script><script type="math/tex; mode=display">
+S_{n\times p}=\widehat V_{n\times p}\cdot T_{p\times p}</script><script type="math/tex; mode=display">
+C_{m\times p}=\widehat U_{m\times p}\cdot\widehat\Lambda_{p\times p}\cdot(T^T_{p\times p})^{-1}</script><font size =5>因此，SMCR就是找到合适的T矩阵</font>
+
+<h1 id="4-C矩阵和S矩阵非负"><a href="#4-C矩阵和S矩阵非负" class="headerlink" title="4.C矩阵和S矩阵非负"></a>4.C矩阵和S矩阵非负</h1><p>对于物质浓度和光谱响应，理论上都是非负的，即：</p>
+<script type="math/tex; mode=display">
+\widehat {s}_{ij}​ = max(s_{ij},0)​</script><script type="math/tex; mode=display">
+C = D \widehat {S}(\widehat {S}^T \widehat S)^{-1}</script><script type="math/tex; mode=display">
+\widehat {c}_{ij} = max(c_{ij},0)</script><script type="math/tex; mode=display">
+ \widetilde {D} = \widetilde {C} \widetilde {S}^T</script><h1 id="5-T矩阵的合理性"><a href="#5-T矩阵的合理性" class="headerlink" title="5.T矩阵的合理性"></a>5.T矩阵的合理性</h1><p>在SVD中的残差</p>
+<p>$\sigma<em>1^2 = \frac {\sum</em>{i=1}^{m}\sum<em>{j=1}^{n}(d</em>{ij}-\widehat {d}_{ij})^2}{(m-p)(n-p)}$</p>
+<p>非负近似中的残差</p>
+<p>$\sigma<em>2^2 = \frac {\sum</em>{i=1}^{m}\sum<em>{j=1}^{n}(\widetilde {d}</em>{ij}-\widehat {d}_{ij})^2}{mn}$</p>
+<p>当$\sigma _2^2 &lt; \sigma_1^2$时，T矩阵即合理</p>
+<h1 id="6-程序的实现"><a href="#6-程序的实现" class="headerlink" title="6.程序的实现"></a>6.程序的实现</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#非负运算</span></span><br><span class="line">def nonnegative(matrix):</span><br><span class="line">    mask = (matrix &lt;= 0) </span><br><span class="line">    out = matrix.copy()</span><br><span class="line">    out[mask] = 0</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> out</span><br><span class="line">    </span><br><span class="line">     </span><br><span class="line"> <span class="comment">#残差</span></span><br><span class="line">def residualVariance1(origin_data,svd_data,components):</span><br><span class="line">    sum_1 = sum(sum((origin_data - svd_data)**2))</span><br><span class="line">    num = (origin_data.shpe[0] - component) *(origin_data.shape[1] - component)</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> sum_1/num</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">def residualVariance2(svd_data, nn_data):</span><br><span class="line">        sum_2 = sum(sum((nn_data - svd_data)**2))</span><br><span class="line">        num = nn_data.shape[0] * nn_data.shape[1]</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">return</span> sum_2/num</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="comment">#导入数据</span></span><br><span class="line">data = np.loadtxt(r<span class="string">&quot;rootdir&quot;</span>)</span><br><span class="line"><span class="comment">#波长数据</span></span><br><span class="line">wavelength = data[:,0]</span><br><span class="line"><span class="comment">#光谱响应强度</span></span><br><span class="line">itensity = data[:,1:]</span><br><span class="line"></span><br><span class="line"><span class="comment">#奇异值分解</span></span><br><span class="line">U,S,Vt = np.linalg.svd(itensity)</span><br><span class="line"><span class="comment">#根据S值找到成分数</span></span><br><span class="line">k=3</span><br><span class="line"></span><br><span class="line"><span class="comment">#新的U,S,Vt矩阵</span></span><br><span class="line">U = U[:,:k]</span><br><span class="line">S = np.diag(S) <span class="comment">#由于奇异值分解中S为一维矩阵，需要转化为对角矩阵</span></span><br><span class="line">S = S[:k,:k]</span><br><span class="line">Vt = Vt[:k,:]</span><br><span class="line">V = np.transpose(Vt)</span><br><span class="line">SVD_itensity = U.dot(S).dot(Vt)</span><br><span class="line"></span><br><span class="line"><span class="comment">#随机生成T矩阵</span></span><br><span class="line">T = np.random.rand(k,k)</span><br><span class="line">Tt = np.transpose(T)</span><br><span class="line">Tt_1 = np.linalg.inv(Tt)</span><br><span class="line"></span><br><span class="line"><span class="comment">#光谱矩阵S</span></span><br><span class="line">spectrum = V.dot(T)</span><br><span class="line"><span class="comment">#浓度矩阵 C</span></span><br><span class="line">concentration = U.dot(S).dot(Tt_1)</span><br><span class="line"><span class="comment">#新的强度矩阵</span></span><br><span class="line">D = C.dot(S)</span><br><span class="line"></span><br><span class="line"><span class="comment">#非负运算</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#非负S矩阵</span></span><br><span class="line">nn_spectrum = nonnegative(spectrum)</span><br><span class="line">nn_spectrum_t = np.transpose(nn_spectrum)</span><br><span class="line"></span><br><span class="line">concentration = D.dot(nn_spectrum).dot(np.linalg.inv(nn_spectrum_t.dot(nn_spectrum)))</span><br><span class="line"></span><br><span class="line"><span class="comment">#非负C矩阵</span></span><br><span class="line">nn_concentration = nonnegative(concentration)</span><br><span class="line"><span class="comment">#非负D矩阵</span></span><br><span class="line">nn_D = nn_concentration.dot(nn_spectrum_t)</span><br><span class="line"></span><br><span class="line"><span class="comment">#计算残差</span></span><br><span class="line"></span><br><span class="line">sigema_1 = residualVariance1(itensity,SVD_itensity,k)</span><br><span class="line"></span><br><span class="line">sigama_2 = residualVariance2(SVD_itensity,nn_D)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/21/%E5%8F%82%E6%95%B0%E6%9B%B4%E6%96%B0/" rel="prev" title="参数更新">
+      <i class="fa fa-chevron-left"></i> 参数更新
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/24/%E6%91%86%E7%BA%BF%E6%8E%A8%E5%AF%BC/" rel="next" title="摆线推导">
+      摆线推导 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-SMCR%E5%9F%BA%E7%A1%80"><span class="nav-text">1.SMCR基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Singular-value-Decomposition-SVD"><span class="nav-text">2.Singular value Decomposition(SVD)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-T%E7%9F%A9%E9%98%B5"><span class="nav-text">3.T矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-C%E7%9F%A9%E9%98%B5%E5%92%8CS%E7%9F%A9%E9%98%B5%E9%9D%9E%E8%B4%9F"><span class="nav-text">4.C矩阵和S矩阵非负</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-T%E7%9F%A9%E9%98%B5%E7%9A%84%E5%90%88%E7%90%86%E6%80%A7"><span class="nav-text">5.T矩阵的合理性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-text">6.程序的实现</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuan Shuai</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuan Shuai</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.3.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

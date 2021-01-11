@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1.什么是人工智能像人一样思考合理地思考像人一样行动合理地行动 1.1像人一样行动：图灵测试的途径&amp;emsp;&amp;emsp;如果一位人类询问着在提出以下书面问题以后不能区分书面回答来自人还是来自计算机，那么这台计算机就通过测试。  自然语言处理：成功使用英语交流 知识表示：储存它知道的或听到的信息  自动推理：运用储存的信息来回答问题并推出新结论 机器学习：适应新情况并检测和预测模式 计算机视觉：感">
+<meta property="og:type" content="article">
+<meta property="og:title" content="绪论">
+<meta property="og:url" content="http://example.com/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.什么是人工智能像人一样思考合理地思考像人一样行动合理地行动 1.1像人一样行动：图灵测试的途径&amp;emsp;&amp;emsp;如果一位人类询问着在提出以下书面问题以后不能区分书面回答来自人还是来自计算机，那么这台计算机就通过测试。  自然语言处理：成功使用英语交流 知识表示：储存它知道的或听到的信息  自动推理：运用储存的信息来回答问题并推出新结论 机器学习：适应新情况并检测和预测模式 计算机视觉：感">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-10T12:23:39.000Z">
+<meta property="article:modified_time" content="2020-03-11T11:41:10.160Z">
+<meta property="article:author" content="Yuan Shuai">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>绪论 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          绪论
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-10 20:23:39" itemprop="dateCreated datePublished" datetime="2020-03-10T20:23:39+08:00">2020-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-11 19:41:10" itemprop="dateModified" datetime="2020-03-11T19:41:10+08:00">2020-03-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">人工智能：一种现代方法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1-什么是人工智能"><a href="#1-什么是人工智能" class="headerlink" title="1.什么是人工智能"></a>1.什么是人工智能</h1><p>像人一样思考<br>合理地思考<br>像人一样行动<br>合理地行动</p>
+<h2 id="1-1像人一样行动：图灵测试的途径"><a href="#1-1像人一样行动：图灵测试的途径" class="headerlink" title="1.1像人一样行动：图灵测试的途径"></a>1.1像人一样行动：图灵测试的途径</h2><p>&emsp;&emsp;如果一位人类询问着在提出以下书面问题以后不能区分书面回答来自人还是来自计算机，那么这台计算机就通过测试。</p>
+<ul>
+<li>自然语言处理：成功使用英语交流</li>
+<li>知识表示：储存它知道的或听到的信息 </li>
+<li>自动推理：运用储存的信息来回答问题并推出新结论</li>
+<li>机器学习：适应新情况并检测和预测模式</li>
+<li>计算机视觉：感知物体</li>
+<li>机器人学：操纵和移动对象</li>
+</ul>
+<h2 id="1-2像人一样思考：认知建模的途径"><a href="#1-2像人一样思考：认知建模的途径" class="headerlink" title="1.2像人一样思考：认知建模的途径"></a>1.2像人一样思考：认知建模的途径</h2><ul>
+<li>通过内省——试图捕获我们思维过程</li>
+<li>通过心理实验——观察工作中的一个人</li>
+<li>通过脑成像——观察工作中的头脑</li>
+</ul>
+<h2 id="1-3合理地思考：“思维法则”的途径"><a href="#1-3合理地思考：“思维法则”的途径" class="headerlink" title="1.3合理地思考：“思维法则”的途径"></a>1.3合理地思考：“思维法则”的途径</h2><p>逻辑学</p>
+<h2 id="1-4合理地行动：合理Agent的途径"><a href="#1-4合理地行动：合理Agent的途径" class="headerlink" title="1.4合理地行动：合理Agent的途径"></a>1.4合理地行动：合理Agent的途径</h2><p>&emsp;&emsp;<strong>Agent</strong>就是能够行动的某种东西，所有计算机程序都做某些事情，但是期望计算机Agent做更多的事：自主操作、感知环境、长期持续、适应变化并创建与追求目标。合理地Agent是一个为了试验最佳结果，或者，当存在不确定性时，为了实现最佳期望结果而行动的Agent。</p>
+<h1 id="2-人工智能的基础"><a href="#2-人工智能的基础" class="headerlink" title="2.人工智能的基础"></a>2.人工智能的基础</h1><h2 id="2-1哲学"><a href="#2-1哲学" class="headerlink" title="2.1哲学"></a>2.1哲学</h2><ul>
+<li>形式规则可用于推出有效的结论吗？</li>
+<li>思想如何从物理的大脑中产生的？</li>
+<li>只是来自何方？</li>
+<li>只是如何导致行动？</li>
+</ul>
+<h2 id="2-2数学"><a href="#2-2数学" class="headerlink" title="2.2数学"></a>2.2数学</h2><ul>
+<li>什么事能导出有效结论的形式化规则？</li>
+<li>什么可以被计算？</li>
+<li>我们如何用不确定的信息来推理？</li>
+</ul>
+<h2 id="2-3经济学"><a href="#2-3经济学" class="headerlink" title="2.3经济学"></a>2.3经济学</h2><ul>
+<li>我们应该如何决策以便受益最大？</li>
+<li>当其他人不合作时我们应该如何做到这样？</li>
+<li>当收益遥遥无期时我们应该如何做到那样？</li>
+</ul>
+<h2 id="2-4神经科学"><a href="#2-4神经科学" class="headerlink" title="2.4神经科学"></a>2.4神经科学</h2><ul>
+<li>大脑如何处理信息</li>
+</ul>
+<h2 id="2-5心理学"><a href="#2-5心理学" class="headerlink" title="2.5心理学"></a>2.5心理学</h2><ul>
+<li>人类和动物如何思考与行动</li>
+</ul>
+<h2 id="2-6计算机工程"><a href="#2-6计算机工程" class="headerlink" title="2.6计算机工程"></a>2.6计算机工程</h2><ul>
+<li>我们如何才能建造高效的计算机</li>
+</ul>
+<h2 id="2-7控制论"><a href="#2-7控制论" class="headerlink" title="2.7控制论"></a>2.7控制论</h2><ul>
+<li>人工制品可以如何在其自身的控制下运转？</li>
+</ul>
+<h2 id="2-8语言学"><a href="#2-8语言学" class="headerlink" title="2.8语言学"></a>2.8语言学</h2><ul>
+<li>语言与思维如何关联？</li>
+</ul>
+<h1 id="2-9最新发展水平"><a href="#2-9最新发展水平" class="headerlink" title="2.9最新发展水平"></a>2.9最新发展水平</h1><ul>
+<li>机器人汽车</li>
+<li>语言识别</li>
+<li>自主规划与调度</li>
+<li>博弈</li>
+<li>垃圾信息过滤</li>
+<li>后勤规划</li>
+<li>机器人技术</li>
+<li>机器翻译</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/05/%E4%BB%8E%E5%85%89%E5%AD%90%E5%88%B0%E7%94%B5%E6%B5%81/" rel="prev" title="从光子到电流">
+      <i class="fa fa-chevron-left"></i> 从光子到电流
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="next" title="智能 Agent">
+      智能 Agent <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD"><span class="nav-text">1.什么是人工智能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E5%83%8F%E4%BA%BA%E4%B8%80%E6%A0%B7%E8%A1%8C%E5%8A%A8%EF%BC%9A%E5%9B%BE%E7%81%B5%E6%B5%8B%E8%AF%95%E7%9A%84%E9%80%94%E5%BE%84"><span class="nav-text">1.1像人一样行动：图灵测试的途径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2%E5%83%8F%E4%BA%BA%E4%B8%80%E6%A0%B7%E6%80%9D%E8%80%83%EF%BC%9A%E8%AE%A4%E7%9F%A5%E5%BB%BA%E6%A8%A1%E7%9A%84%E9%80%94%E5%BE%84"><span class="nav-text">1.2像人一样思考：认知建模的途径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3%E5%90%88%E7%90%86%E5%9C%B0%E6%80%9D%E8%80%83%EF%BC%9A%E2%80%9C%E6%80%9D%E7%BB%B4%E6%B3%95%E5%88%99%E2%80%9D%E7%9A%84%E9%80%94%E5%BE%84"><span class="nav-text">1.3合理地思考：“思维法则”的途径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4%E5%90%88%E7%90%86%E5%9C%B0%E8%A1%8C%E5%8A%A8%EF%BC%9A%E5%90%88%E7%90%86Agent%E7%9A%84%E9%80%94%E5%BE%84"><span class="nav-text">1.4合理地行动：合理Agent的途径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E5%9F%BA%E7%A1%80"><span class="nav-text">2.人工智能的基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1%E5%93%B2%E5%AD%A6"><span class="nav-text">2.1哲学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2%E6%95%B0%E5%AD%A6"><span class="nav-text">2.2数学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3%E7%BB%8F%E6%B5%8E%E5%AD%A6"><span class="nav-text">2.3经济学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6"><span class="nav-text">2.4神经科学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5%E5%BF%83%E7%90%86%E5%AD%A6"><span class="nav-text">2.5心理学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B7%A5%E7%A8%8B"><span class="nav-text">2.6计算机工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7%E6%8E%A7%E5%88%B6%E8%AE%BA"><span class="nav-text">2.7控制论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8%E8%AF%AD%E8%A8%80%E5%AD%A6"><span class="nav-text">2.8语言学</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-9%E6%9C%80%E6%96%B0%E5%8F%91%E5%B1%95%E6%B0%B4%E5%B9%B3"><span class="nav-text">2.9最新发展水平</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuan Shuai</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuan Shuai</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.3.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
