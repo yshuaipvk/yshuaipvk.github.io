@@ -115,42 +115,6 @@ $r_{sh}=\frac {\Delta V_{reverse bias}}{\Delta I_{reverse bias}} $
       </categories>
   </entry>
   <entry>
-    <title>Self Modeling Curve Resolution</title>
-    <url>/2020/04/09/SMCR/</url>
-    <content><![CDATA[<h1 id="1-SMCR基础"><a href="#1-SMCR基础" class="headerlink" title="1.SMCR基础"></a>1.SMCR基础</h1><p>对于一组二维数据，可表示为浓度与光谱响应的线性组合，如下所示：</p>
-<script type="math/tex; mode=display">
-D_{m \times n}=C_{m \times p}·S_{p \times n}^T +E</script><p>其中m表示样品数（时间、温度、样品）<br>n表示通道数（波长）<br>p表示成分数</p>
-<p>$D_{m \times n}$m个样品的光谱响应</p>
-<p>$C_{m \times n}$表示不同样品中不同成分的浓度</p>
-<p>$S_{n \times p}$表示不成分的光谱响应</p>
-<h1 id="2-Singular-value-Decomposition-SVD"><a href="#2-Singular-value-Decomposition-SVD" class="headerlink" title="2.Singular value Decomposition(SVD)"></a>2.Singular value Decomposition(SVD)</h1><p>奇异值分解，一个二维矩阵可以表示为三个j矩阵的乘积；</p>
-<script type="math/tex; mode=display">
-D_{m\times n}=U_{m\times n}\Lambda_{m\times n}\cdot V_{n\times n}^T</script><p>对于p个成分则有：</p>
-<script type="math/tex; mode=display">
-\widehat D_{m\times n}=\widehat U_{m\times n}\cdot \widehat\Lambda_{p\times p}\cdot\widehat V^T_{p\times n}</script><p>U和C在同一个向量空间；V和S在同一个向量空间。</p>
-<h1 id="3-T矩阵"><a href="#3-T矩阵" class="headerlink" title="3.T矩阵"></a>3.T矩阵</h1><p>对于一个光谱$s_i$,则有:</p>
-<script type="math/tex; mode=display">
-s_i=\widehat V\cdot t_i</script><script type="math/tex; mode=display">
-S_{n\times p}=\widehat V_{n\times p}\cdot T_{p\times p}</script><script type="math/tex; mode=display">
-C_{m\times p}=\widehat U_{m\times p}\cdot\widehat\Lambda_{p\times p}\cdot(T^T_{p\times p})^{-1}</script><font size =5>因此，SMCR就是找到合适的T矩阵</font>
-
-<h1 id="4-C矩阵和S矩阵非负"><a href="#4-C矩阵和S矩阵非负" class="headerlink" title="4.C矩阵和S矩阵非负"></a>4.C矩阵和S矩阵非负</h1><p>对于物质浓度和光谱响应，理论上都是非负的，即：</p>
-<script type="math/tex; mode=display">
-\widehat {s}_{ij}​ = max(s_{ij},0)​</script><script type="math/tex; mode=display">
-C = D \widehat {S}(\widehat {S}^T \widehat S)^{-1}</script><script type="math/tex; mode=display">
-\widehat {c}_{ij} = max(c_{ij},0)</script><script type="math/tex; mode=display">
- \widetilde {D} = \widetilde {C} \widetilde {S}^T</script><h1 id="5-T矩阵的合理性"><a href="#5-T矩阵的合理性" class="headerlink" title="5.T矩阵的合理性"></a>5.T矩阵的合理性</h1><p>在SVD中的残差</p>
-<p>$\sigma<em>1^2 = \frac {\sum</em>{i=1}^{m}\sum<em>{j=1}^{n}(d</em>{ij}-\widehat {d}_{ij})^2}{(m-p)(n-p)}$</p>
-<p>非负近似中的残差</p>
-<p>$\sigma<em>2^2 = \frac {\sum</em>{i=1}^{m}\sum<em>{j=1}^{n}(\widetilde {d}</em>{ij}-\widehat {d}_{ij})^2}{mn}$</p>
-<p>当$\sigma _2^2 &lt; \sigma_1^2$时，T矩阵即合理</p>
-<h1 id="6-程序的实现"><a href="#6-程序的实现" class="headerlink" title="6.程序的实现"></a>6.程序的实现</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#非负运算</span></span><br><span class="line">def nonnegative(matrix):</span><br><span class="line">    mask = (matrix &lt;= 0) </span><br><span class="line">    out = matrix.copy()</span><br><span class="line">    out[mask] = 0</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> out</span><br><span class="line">    </span><br><span class="line">     </span><br><span class="line"> <span class="comment">#残差</span></span><br><span class="line">def residualVariance1(origin_data,svd_data,components):</span><br><span class="line">    sum_1 = sum(sum((origin_data - svd_data)**2))</span><br><span class="line">    num = (origin_data.shpe[0] - component) *(origin_data.shape[1] - component)</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> sum_1/num</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">def residualVariance2(svd_data, nn_data):</span><br><span class="line">        sum_2 = sum(sum((nn_data - svd_data)**2))</span><br><span class="line">        num = nn_data.shape[0] * nn_data.shape[1]</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">return</span> sum_2/num</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="comment">#导入数据</span></span><br><span class="line">data = np.loadtxt(r<span class="string">&quot;rootdir&quot;</span>)</span><br><span class="line"><span class="comment">#波长数据</span></span><br><span class="line">wavelength = data[:,0]</span><br><span class="line"><span class="comment">#光谱响应强度</span></span><br><span class="line">itensity = data[:,1:]</span><br><span class="line"></span><br><span class="line"><span class="comment">#奇异值分解</span></span><br><span class="line">U,S,Vt = np.linalg.svd(itensity)</span><br><span class="line"><span class="comment">#根据S值找到成分数</span></span><br><span class="line">k=3</span><br><span class="line"></span><br><span class="line"><span class="comment">#新的U,S,Vt矩阵</span></span><br><span class="line">U = U[:,:k]</span><br><span class="line">S = np.diag(S) <span class="comment">#由于奇异值分解中S为一维矩阵，需要转化为对角矩阵</span></span><br><span class="line">S = S[:k,:k]</span><br><span class="line">Vt = Vt[:k,:]</span><br><span class="line">V = np.transpose(Vt)</span><br><span class="line">SVD_itensity = U.dot(S).dot(Vt)</span><br><span class="line"></span><br><span class="line"><span class="comment">#随机生成T矩阵</span></span><br><span class="line">T = np.random.rand(k,k)</span><br><span class="line">Tt = np.transpose(T)</span><br><span class="line">Tt_1 = np.linalg.inv(Tt)</span><br><span class="line"></span><br><span class="line"><span class="comment">#光谱矩阵S</span></span><br><span class="line">spectrum = V.dot(T)</span><br><span class="line"><span class="comment">#浓度矩阵 C</span></span><br><span class="line">concentration = U.dot(S).dot(Tt_1)</span><br><span class="line"><span class="comment">#新的强度矩阵</span></span><br><span class="line">D = C.dot(S)</span><br><span class="line"></span><br><span class="line"><span class="comment">#非负运算</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#非负S矩阵</span></span><br><span class="line">nn_spectrum = nonnegative(spectrum)</span><br><span class="line">nn_spectrum_t = np.transpose(nn_spectrum)</span><br><span class="line"></span><br><span class="line">concentration = D.dot(nn_spectrum).dot(np.linalg.inv(nn_spectrum_t.dot(nn_spectrum)))</span><br><span class="line"></span><br><span class="line"><span class="comment">#非负C矩阵</span></span><br><span class="line">nn_concentration = nonnegative(concentration)</span><br><span class="line"><span class="comment">#非负D矩阵</span></span><br><span class="line">nn_D = nn_concentration.dot(nn_spectrum_t)</span><br><span class="line"></span><br><span class="line"><span class="comment">#计算残差</span></span><br><span class="line"></span><br><span class="line">sigema_1 = residualVariance1(itensity,SVD_itensity,k)</span><br><span class="line"></span><br><span class="line">sigama_2 = residualVariance2(SVD_itensity,nn_D)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>文献阅读</category>
-      </categories>
-  </entry>
-  <entry>
     <title>TPV</title>
     <url>/2020/02/17/TPV/</url>
     <content><![CDATA[<p>$n=n_0+\Delta n $<br>$p=p_0 + \Delta p$</p>
@@ -1246,6 +1210,42 @@ f(x,t)=f(x-vt,0)</script><p>波动方程：</p>
 \frac{\partial^2f}{\partial x^2}=\frac{1}{v^2}\frac{\partial ^2f}{\partial t^2}</script>]]></content>
       <categories>
         <category>物理</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Self Modeling Curve Resolution</title>
+    <url>/2020/04/09/Self%20Modeling%20Curve%20Resolution/</url>
+    <content><![CDATA[<h1 id="1-SMCR基础"><a href="#1-SMCR基础" class="headerlink" title="1.SMCR基础"></a>1.SMCR基础</h1><p>对于一组二维数据，可表示为浓度与光谱响应的线性组合，如下所示：</p>
+<script type="math/tex; mode=display">
+D_{m \times n}=C_{m \times p}·S_{p \times n}^T +E</script><p>其中m表示样品数（时间、温度、样品）<br>n表示通道数（波长）<br>p表示成分数</p>
+<p>$D_{m \times n}$m个样品的光谱响应</p>
+<p>$C_{m \times n}$表示不同样品中不同成分的浓度</p>
+<p>$S_{n \times p}$表示不成分的光谱响应</p>
+<h1 id="2-Singular-value-Decomposition-SVD"><a href="#2-Singular-value-Decomposition-SVD" class="headerlink" title="2.Singular value Decomposition(SVD)"></a>2.Singular value Decomposition(SVD)</h1><p>奇异值分解，一个二维矩阵可以表示为三个j矩阵的乘积；</p>
+<script type="math/tex; mode=display">
+D_{m\times n}=U_{m\times n}\Lambda_{m\times n}\cdot V_{n\times n}^T</script><p>对于p个成分则有：</p>
+<script type="math/tex; mode=display">
+\widehat D_{m\times n}=\widehat U_{m\times n}\cdot \widehat\Lambda_{p\times p}\cdot\widehat V^T_{p\times n}</script><p>U和C在同一个向量空间；V和S在同一个向量空间。</p>
+<h1 id="3-T矩阵"><a href="#3-T矩阵" class="headerlink" title="3.T矩阵"></a>3.T矩阵</h1><p>对于一个光谱$s_i$,则有:</p>
+<script type="math/tex; mode=display">
+s_i=\widehat V\cdot t_i</script><script type="math/tex; mode=display">
+S_{n\times p}=\widehat V_{n\times p}\cdot T_{p\times p}</script><script type="math/tex; mode=display">
+C_{m\times p}=\widehat U_{m\times p}\cdot\widehat\Lambda_{p\times p}\cdot(T^T_{p\times p})^{-1}</script><font size =5>因此，SMCR就是找到合适的T矩阵</font>
+
+<h1 id="4-C矩阵和S矩阵非负"><a href="#4-C矩阵和S矩阵非负" class="headerlink" title="4.C矩阵和S矩阵非负"></a>4.C矩阵和S矩阵非负</h1><p>对于物质浓度和光谱响应，理论上都是非负的，即：</p>
+<script type="math/tex; mode=display">
+\widehat {s}_{ij}​ = max(s_{ij},0)​</script><script type="math/tex; mode=display">
+C = D \widehat {S}(\widehat {S}^T \widehat S)^{-1}</script><script type="math/tex; mode=display">
+\widehat {c}_{ij} = max(c_{ij},0)</script><script type="math/tex; mode=display">
+ \widetilde {D} = \widetilde {C} \widetilde {S}^T</script><h1 id="5-T矩阵的合理性"><a href="#5-T矩阵的合理性" class="headerlink" title="5.T矩阵的合理性"></a>5.T矩阵的合理性</h1><p>在SVD中的残差：</p>
+<script type="math/tex; mode=display">
+\sigma_1^2 = \frac {\sum_{i=1}^{m}\sum_{j=1}^{n}(d_{ij}-\widehat {d}_{ij})^2}{(m-p)(n-p)}</script><p>非负近似中的残差：</p>
+<script type="math/tex; mode=display">
+\sigma_2^2 = \frac {\sum_{i=1}^{m}\sum_{j=1}^{n}(\widetilde {d}_{ij}-\widehat {d}_{ij})^2}{mn}</script><p>当$\sigma _2^2 &lt; \sigma_1^2$时，T矩阵即合理</p>
+<h1 id="6-程序的实现"><a href="#6-程序的实现" class="headerlink" title="6.程序的实现"></a>6.程序的实现</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#非负运算</span></span><br><span class="line">def nonnegative(matrix):</span><br><span class="line">    mask = (matrix &lt;= 0) </span><br><span class="line">    out = matrix.copy()</span><br><span class="line">    out[mask] = 0</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> out</span><br><span class="line">    </span><br><span class="line">     </span><br><span class="line"> <span class="comment">#残差</span></span><br><span class="line">def residualVariance1(origin_data,svd_data,components):</span><br><span class="line">    sum_1 = sum(sum((origin_data - svd_data)**2))</span><br><span class="line">    num = (origin_data.shpe[0] - component) *(origin_data.shape[1] - component)</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> sum_1/num</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">def residualVariance2(svd_data, nn_data):</span><br><span class="line">        sum_2 = sum(sum((nn_data - svd_data)**2))</span><br><span class="line">        num = nn_data.shape[0] * nn_data.shape[1]</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">return</span> sum_2/num</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="comment">#导入数据</span></span><br><span class="line">data = np.loadtxt(r<span class="string">&quot;rootdir&quot;</span>)</span><br><span class="line"><span class="comment">#波长数据</span></span><br><span class="line">wavelength = data[:,0]</span><br><span class="line"><span class="comment">#光谱响应强度</span></span><br><span class="line">itensity = data[:,1:]</span><br><span class="line"></span><br><span class="line"><span class="comment">#奇异值分解</span></span><br><span class="line">U,S,Vt = np.linalg.svd(itensity)</span><br><span class="line"><span class="comment">#根据S值找到成分数</span></span><br><span class="line">k=3</span><br><span class="line"></span><br><span class="line"><span class="comment">#新的U,S,Vt矩阵</span></span><br><span class="line">U = U[:,:k]</span><br><span class="line">S = np.diag(S) <span class="comment">#由于奇异值分解中S为一维矩阵，需要转化为对角矩阵</span></span><br><span class="line">S = S[:k,:k]</span><br><span class="line">Vt = Vt[:k,:]</span><br><span class="line">V = np.transpose(Vt)</span><br><span class="line">SVD_itensity = U.dot(S).dot(Vt)</span><br><span class="line"></span><br><span class="line"><span class="comment">#随机生成T矩阵</span></span><br><span class="line">T = np.random.rand(k,k)</span><br><span class="line">Tt = np.transpose(T)</span><br><span class="line">Tt_1 = np.linalg.inv(Tt)</span><br><span class="line"></span><br><span class="line"><span class="comment">#光谱矩阵S</span></span><br><span class="line">spectrum = V.dot(T)</span><br><span class="line"><span class="comment">#浓度矩阵 C</span></span><br><span class="line">concentration = U.dot(S).dot(Tt_1)</span><br><span class="line"><span class="comment">#新的强度矩阵</span></span><br><span class="line">D = C.dot(S)</span><br><span class="line"></span><br><span class="line"><span class="comment">#非负运算</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#非负S矩阵</span></span><br><span class="line">nn_spectrum = nonnegative(spectrum)</span><br><span class="line">nn_spectrum_t = np.transpose(nn_spectrum)</span><br><span class="line"></span><br><span class="line">concentration = D.dot(nn_spectrum).dot(np.linalg.inv(nn_spectrum_t.dot(nn_spectrum)))</span><br><span class="line"></span><br><span class="line"><span class="comment">#非负C矩阵</span></span><br><span class="line">nn_concentration = nonnegative(concentration)</span><br><span class="line"><span class="comment">#非负D矩阵</span></span><br><span class="line">nn_D = nn_concentration.dot(nn_spectrum_t)</span><br><span class="line"></span><br><span class="line"><span class="comment">#计算残差</span></span><br><span class="line"></span><br><span class="line">sigema_1 = residualVariance1(itensity,SVD_itensity,k)</span><br><span class="line"></span><br><span class="line">sigama_2 = residualVariance2(SVD_itensity,nn_D)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>文献阅读</category>
       </categories>
   </entry>
 </search>

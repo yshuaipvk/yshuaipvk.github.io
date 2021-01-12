@@ -40,7 +40,7 @@
   };
 </script>
 
-  <title>归档 | Hexo</title>
+  <title>Hexo</title>
   
 
 
@@ -110,7 +110,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/archives" rel="section"><i class="fa fa-fw fa-archive"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>归档</a>
 
   </li>
   </ul>
@@ -144,46 +144,109 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 27 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/04/09/Self%20Modeling%20Curve%20Resolution/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/09/Self%20Modeling%20Curve%20Resolution/" class="post-title-link" itemprop="url">Self Modeling Curve Resolution</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-09 14:13:34" itemprop="dateCreated datePublished" datetime="2020-04-09T14:13:34+08:00">2020-04-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-12 16:56:11" itemprop="dateModified" datetime="2021-01-12T16:56:11+08:00">2021-01-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文献阅读</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
+          <h1 id="1-SMCR基础"><a href="#1-SMCR基础" class="headerlink" title="1.SMCR基础"></a>1.SMCR基础</h1><p>对于一组二维数据，可表示为浓度与光谱响应的线性组合，如下所示：</p>
+<script type="math/tex; mode=display">
+D_{m \times n}=C_{m \times p}·S_{p \times n}^T +E</script><p>其中m表示样品数（时间、温度、样品）<br>n表示通道数（波长）<br>p表示成分数</p>
+<p>$D_{m \times n}$m个样品的光谱响应</p>
+<p>$C_{m \times n}$表示不同样品中不同成分的浓度</p>
+<p>$S_{n \times p}$表示不成分的光谱响应</p>
+<h1 id="2-Singular-value-Decomposition-SVD"><a href="#2-Singular-value-Decomposition-SVD" class="headerlink" title="2.Singular value Decomposition(SVD)"></a>2.Singular value Decomposition(SVD)</h1><p>奇异值分解，一个二维矩阵可以表示为三个j矩阵的乘积；</p>
+<script type="math/tex; mode=display">
+D_{m\times n}=U_{m\times n}\Lambda_{m\times n}\cdot V_{n\times n}^T</script><p>对于p个成分则有：</p>
+<script type="math/tex; mode=display">
+\widehat D_{m\times n}=\widehat U_{m\times n}\cdot \widehat\Lambda_{p\times p}\cdot\widehat V^T_{p\times n}</script><p>U和C在同一个向量空间；V和S在同一个向量空间。</p>
+<h1 id="3-T矩阵"><a href="#3-T矩阵" class="headerlink" title="3.T矩阵"></a>3.T矩阵</h1><p>对于一个光谱$s_i$,则有:</p>
+<script type="math/tex; mode=display">
+s_i=\widehat V\cdot t_i</script><script type="math/tex; mode=display">
+S_{n\times p}=\widehat V_{n\times p}\cdot T_{p\times p}</script><script type="math/tex; mode=display">
+C_{m\times p}=\widehat U_{m\times p}\cdot\widehat\Lambda_{p\times p}\cdot(T^T_{p\times p})^{-1}</script><font size =5>因此，SMCR就是找到合适的T矩阵</font>
+
+<h1 id="4-C矩阵和S矩阵非负"><a href="#4-C矩阵和S矩阵非负" class="headerlink" title="4.C矩阵和S矩阵非负"></a>4.C矩阵和S矩阵非负</h1><p>对于物质浓度和光谱响应，理论上都是非负的，即：</p>
+<script type="math/tex; mode=display">
+\widehat {s}_{ij}​ = max(s_{ij},0)​</script><script type="math/tex; mode=display">
+C = D \widehat {S}(\widehat {S}^T \widehat S)^{-1}</script><script type="math/tex; mode=display">
+\widehat {c}_{ij} = max(c_{ij},0)</script><script type="math/tex; mode=display">
+ \widetilde {D} = \widetilde {C} \widetilde {S}^T</script><h1 id="5-T矩阵的合理性"><a href="#5-T矩阵的合理性" class="headerlink" title="5.T矩阵的合理性"></a>5.T矩阵的合理性</h1><p>在SVD中的残差：</p>
+<script type="math/tex; mode=display">
+\sigma_1^2 = \frac {\sum_{i=1}^{m}\sum_{j=1}^{n}(d_{ij}-\widehat {d}_{ij})^2}{(m-p)(n-p)}</script><p>非负近似中的残差：</p>
+<script type="math/tex; mode=display">
+\sigma_2^2 = \frac {\sum_{i=1}^{m}\sum_{j=1}^{n}(\widetilde {d}_{ij}-\widehat {d}_{ij})^2}{mn}</script><p>当$\sigma _2^2 &lt; \sigma_1^2$时，T矩阵即合理</p>
+<h1 id="6-程序的实现"><a href="#6-程序的实现" class="headerlink" title="6.程序的实现"></a>6.程序的实现</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#非负运算</span></span><br><span class="line">def nonnegative(matrix):</span><br><span class="line">    mask = (matrix &lt;= 0) </span><br><span class="line">    out = matrix.copy()</span><br><span class="line">    out[mask] = 0</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> out</span><br><span class="line">    </span><br><span class="line">     </span><br><span class="line"> <span class="comment">#残差</span></span><br><span class="line">def residualVariance1(origin_data,svd_data,components):</span><br><span class="line">    sum_1 = sum(sum((origin_data - svd_data)**2))</span><br><span class="line">    num = (origin_data.shpe[0] - component) *(origin_data.shape[1] - component)</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> sum_1/num</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">def residualVariance2(svd_data, nn_data):</span><br><span class="line">        sum_2 = sum(sum((nn_data - svd_data)**2))</span><br><span class="line">        num = nn_data.shape[0] * nn_data.shape[1]</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">return</span> sum_2/num</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="comment">#导入数据</span></span><br><span class="line">data = np.loadtxt(r<span class="string">&quot;rootdir&quot;</span>)</span><br><span class="line"><span class="comment">#波长数据</span></span><br><span class="line">wavelength = data[:,0]</span><br><span class="line"><span class="comment">#光谱响应强度</span></span><br><span class="line">itensity = data[:,1:]</span><br><span class="line"></span><br><span class="line"><span class="comment">#奇异值分解</span></span><br><span class="line">U,S,Vt = np.linalg.svd(itensity)</span><br><span class="line"><span class="comment">#根据S值找到成分数</span></span><br><span class="line">k=3</span><br><span class="line"></span><br><span class="line"><span class="comment">#新的U,S,Vt矩阵</span></span><br><span class="line">U = U[:,:k]</span><br><span class="line">S = np.diag(S) <span class="comment">#由于奇异值分解中S为一维矩阵，需要转化为对角矩阵</span></span><br><span class="line">S = S[:k,:k]</span><br><span class="line">Vt = Vt[:k,:]</span><br><span class="line">V = np.transpose(Vt)</span><br><span class="line">SVD_itensity = U.dot(S).dot(Vt)</span><br><span class="line"></span><br><span class="line"><span class="comment">#随机生成T矩阵</span></span><br><span class="line">T = np.random.rand(k,k)</span><br><span class="line">Tt = np.transpose(T)</span><br><span class="line">Tt_1 = np.linalg.inv(Tt)</span><br><span class="line"></span><br><span class="line"><span class="comment">#光谱矩阵S</span></span><br><span class="line">spectrum = V.dot(T)</span><br><span class="line"><span class="comment">#浓度矩阵 C</span></span><br><span class="line">concentration = U.dot(S).dot(Tt_1)</span><br><span class="line"><span class="comment">#新的强度矩阵</span></span><br><span class="line">D = C.dot(S)</span><br><span class="line"></span><br><span class="line"><span class="comment">#非负运算</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#非负S矩阵</span></span><br><span class="line">nn_spectrum = nonnegative(spectrum)</span><br><span class="line">nn_spectrum_t = np.transpose(nn_spectrum)</span><br><span class="line"></span><br><span class="line">concentration = D.dot(nn_spectrum).dot(np.linalg.inv(nn_spectrum_t.dot(nn_spectrum)))</span><br><span class="line"></span><br><span class="line"><span class="comment">#非负C矩阵</span></span><br><span class="line">nn_concentration = nonnegative(concentration)</span><br><span class="line"><span class="comment">#非负D矩阵</span></span><br><span class="line">nn_D = nn_concentration.dot(nn_spectrum_t)</span><br><span class="line"></span><br><span class="line"><span class="comment">#计算残差</span></span><br><span class="line"></span><br><span class="line">sigema_1 = residualVariance1(itensity,SVD_itensity,k)</span><br><span class="line"></span><br><span class="line">sigama_2 = residualVariance2(SVD_itensity,nn_D)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-04-09T14:13:34+08:00"
-              content="2020-04-09">
-          04-09
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/04/09/SMCR/" itemprop="url">
-            <span itemprop="name">Self Modeling Curve Resolution</span>
-          </a>
-      </h2>
-
-    </header>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
   </article>
+  
+  
+  
 
-
-    </div>
   </div>
-  
-  
-  
 
   
 
@@ -248,7 +311,7 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+          <a href="/">
         
           <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>

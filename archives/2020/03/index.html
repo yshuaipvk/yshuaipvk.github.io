@@ -40,7 +40,7 @@
   };
 </script>
 
-  <title>归档 | Hexo</title>
+  <title>Hexo</title>
   
 
 
@@ -110,7 +110,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/archives" rel="section"><i class="fa fa-fw fa-archive"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>归档</a>
 
   </li>
   </ul>
@@ -144,166 +144,913 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 27 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/21/%E5%8F%82%E6%95%B0%E6%9B%B4%E6%96%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/21/%E5%8F%82%E6%95%B0%E6%9B%B4%E6%96%B0/" class="post-title-link" itemprop="url">参数更新</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-21 14:57:52" itemprop="dateCreated datePublished" datetime="2020-03-21T14:57:52+08:00">2020-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-24 20:37:07" itemprop="dateModified" datetime="2020-03-24T20:37:07+08:00">2020-03-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
+          <h1 id="随机梯度下降-SGD"><a href="#随机梯度下降-SGD" class="headerlink" title="随机梯度下降(SGD)"></a>随机梯度下降(SGD)</h1><p>SGD表达式如下所示：</p>
+<center>
+$W \leftarrow W-\eta \frac {\partial L}{\partial W}$
+</center>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class SGD:</span><br><span class="line"></span><br><span class="line">    def __init__(self,lr = 0.01)  <span class="comment">#lr 学习速率</span></span><br><span class="line">        self.lr = lr</span><br><span class="line">    </span><br><span class="line">    def update(self,params,grads):</span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> params.key():</span><br><span class="line">            params[key] -= self.lr * grads[key]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">network = TwoLayerNet()</span><br><span class="line">optimizer = SGD()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(10000):</span><br><span class="line">    ····</span><br><span class="line">    x_batch,t_batch = get_mini_batch(···)</span><br><span class="line">    grads = network.gradient(x_batch,t_batch)</span><br><span class="line">    params = network.params</span><br><span class="line">    optimizer.update(params,grads)    </span><br></pre></td></tr></table></figure>
+
+      
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-21T14:57:52+08:00"
-              content="2020-03-21">
-          03-21
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/21/%E5%8F%82%E6%95%B0%E6%9B%B4%E6%96%B0/" itemprop="url">
-            <span itemprop="name">参数更新</span>
-          </a>
-      </h2>
-
-    </header>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
   </article>
+  
+  
+  
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/">
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-19T17:25:36+08:00"
-              content="2020-03-19">
-          03-19
-        </time>
-      </div>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/" itemprop="url">
-            <span itemprop="name">误差反向传播</span>
-          </a>
-      </h2>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/" class="post-title-link" itemprop="url">误差反向传播</a>
+        </h1>
 
-    </header>
-  </article>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+              <time title="创建时间：2020-03-19 17:25:36" itemprop="dateCreated datePublished" datetime="2020-03-19T17:25:36+08:00">2020-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-22 21:06:49" itemprop="dateModified" datetime="2020-09-22T21:06:49+08:00">2020-09-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+                </span>
+            </span>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-18T22:01:26+08:00"
-              content="2020-03-18">
-          03-18
-        </time>
-      </div>
+          
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/18/%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/" itemprop="url">
-            <span itemprop="name">学习算法的实现</span>
-          </a>
-      </h2>
+        </div>
+      </header>
 
-    </header>
-  </article>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-10T21:32:13+08:00"
-              content="2020-03-10">
-          03-10
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url">
-            <span itemprop="name">智能 Agent</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-10T20:23:39+08:00"
-              content="2020-03-10">
-          03-10
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">
-            <span itemprop="name">绪论</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-05T20:48:33+08:00"
-              content="2020-03-05">
-          03-05
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/05/%E4%BB%8E%E5%85%89%E5%AD%90%E5%88%B0%E7%94%B5%E6%B5%81/" itemprop="url">
-            <span itemprop="name">从光子到电流</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-02T22:48:55+08:00"
-              content="2020-03-02">
-          03-02
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/02/%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E6%9B%B2%E7%BA%BF/" itemprop="url">
-            <span itemprop="name">伏安特性曲线</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
+      
+          <p>&emsp;&emsp;通过数值微分计算神经网络的权重参数的梯度，虽然简单，也容易实现，但是在计算上比较费时间；误差反向传播法一种能高效计算权重参数的梯度的办法。</p>
+<h1 id="1-计算图"><a href="#1-计算图" class="headerlink" title="1.计算图"></a>1.计算图</h1><p>问题1：苹果单价100，数量2，消费税10%，计算支付金额：</p>
+<p><img src = "误差反向传播\1.PNG"></p>
+<p>如上图所示，苹果单价100流入到“x2”节点，变成200，然后传递给下一个节点；200流向“x1.1”节点，变成220；最终支付金额为220.</p>
+<p><img src ="误差反向传播\2.PNG"></p>
+<p>问题2：苹果单价100，橘子单价150，2个苹果，3个橘子，消费税10%，计算支付金额：</p>
+<p><img src="误差反向传播\3.PNG"></p>
+<p>从左向右进行的计算称为正方向上的传播，即正向传播，从右向左的计算称为反向传播。“支付金额关于苹果价格的倒数”的值可以通过计算图的反向传播求出来。如下图所示：</p>
+<p><img src ="误差反向传播\4.PNG"></p>
+<p>反向传播从右向左传递倒数值（$1 \rightarrow 1.1 \rightarrow 2.2$）,由此可知“支付金额关于苹果的价格的导数”的值是2.2。即苹果价格上涨1，最终支付金额会增加2.2。</p>
+<h1 id="2-链式法则"><a href="#2-链式法则" class="headerlink" title="2.链式法则"></a>2.链式法则</h1><p>链式法则是关于复合函数导数的性质：</p>
+<blockquote>
+<p>如果某个函数由复合函数表示，则该复合函数的导数可以用构成复合函数的各个函数<br>的导数的乘积表示。</p>
+</blockquote>
+<p>例如$z=(x+y)^2$,由$z=t^2$和$t=x+y$两个式子构成则有：</p>
+<center>
+$\frac {\partial z}{\partial x} = \frac{\partial z}{\partial t} \frac {\partial t}{\partial x}$
 
 
+$\frac {\partial z}{\partial t} = 2t$
+
+
+$\frac {\partial t}{\partial x} = 1$
+
+$\frac {\partial z}{\partial x}= 2t·1=2(x+y)$
+</center>
+
+<p>链式法则计算图如下所示：</p>
+<p><img src ="误差反向传播\5.PNG"></p>
+<p><img src = "误差反向传播\6.PNG"></p>
+<h1 id="3-反向传播"><a href="#3-反向传播" class="headerlink" title="3.反向传播"></a>3.反向传播</h1><h2 id="3-1-加法节点反向传播"><a href="#3-1-加法节点反向传播" class="headerlink" title="3.1 加法节点反向传播"></a>3.1 加法节点反向传播</h2><p>以$z=x+y$为例:</p>
+<center>
+$\frac {\partial z}{\partial x}=1$  ;
+
+$\frac {\partial z}{\partial y}=1$
+</center>
+
+<p>因此，加法节点反向传播只乘以1，输入的值原封不动的流向下一个节点</p>
+<p><img src = "误差反向传播\7.PNG"></p>
+<h2 id="3-2-乘法节点的反向传播"><a href="#3-2-乘法节点的反向传播" class="headerlink" title="3.2 乘法节点的反向传播"></a>3.2 乘法节点的反向传播</h2><p>以$z=xy$为例:</p>
+<center>
+$\frac {\partial z}{\partial x}=y$  ;
+$\frac {\partial z}{\partial y}=x$
+
+</center>
+
+<p>乘法的反向传播将上游的值乘以传播时出入信号的翻转值。<br>对于$ 10 \times 5=50$,反向传播时，如果从上游传来1.3，则$1.3 \times 5 = 6.5$，$1.3 \times 10 = 13$</p>
+<p><img src = "误差反向传播\8.PNG"></p>
+<h1 id="4-简单层的实现"><a href="#4-简单层的实现" class="headerlink" title="4.简单层的实现"></a>4.简单层的实现</h1><h2 id="4-1乘法层"><a href="#4-1乘法层" class="headerlink" title="4.1乘法层"></a>4.1乘法层</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class MulLayer:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.x = None</span><br><span class="line">        self.y = None</span><br><span class="line">          </span><br><span class="line"></span><br><span class="line">    def forward(self,x,y)</span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y</span><br><span class="line">        out = x * y</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    def backward(self,dout):</span><br><span class="line">        dx = dout * self.y </span><br><span class="line">        dy = dout *self.x</span><br><span class="line">        <span class="built_in">return</span> dx, dy</span><br></pre></td></tr></table></figure>
+<p>对于苹果单价10，数量2，消费税1.1则有：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">apple = 100</span><br><span class="line">apple_num = 2</span><br><span class="line">tax = 1.1</span><br><span class="line"><span class="comment">#layer</span></span><br><span class="line">mul_apple_layer = MulLayer()</span><br><span class="line">mul_tax_layer = MulLayer</span><br><span class="line"><span class="comment">#forward</span></span><br><span class="line">apple_price = mul_apple_layer.forward(apple,apple_num)</span><br><span class="line">price = mul_tax_layer.forward(apple_price,tax)</span><br><span class="line"><span class="built_in">print</span>(price) <span class="comment">#220</span></span><br><span class="line"><span class="comment">#backward</span></span><br><span class="line">dprice = 1</span><br><span class="line">dapple_price,dtax = mul_tax_layer.backward(dparice)</span><br><span class="line">dapple,dapple_num = mul_apple_layer.backward(dapple_price)</span><br><span class="line"><span class="built_in">print</span>(dapple,dapple_num,dtax) <span class="comment">#2.2 110 200</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-2-加法层的实现"><a href="#4-2-加法层的实现" class="headerlink" title="4.2 加法层的实现"></a>4.2 加法层的实现</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class AddLayer:</span><br><span class="line">    def __init__(self)</span><br><span class="line">        pass</span><br><span class="line"></span><br><span class="line">    def forward(self,x,y):</span><br><span class="line">        out = x +y</span><br><span class="line">        <span class="built_in">return</span> out</span><br><span class="line"></span><br><span class="line">    def backward(self,dout):</span><br><span class="line">        dx = dout * 1</span><br><span class="line">        dy = dout * 1</span><br><span class="line">        <span class="built_in">return</span> dx,dy</span><br></pre></td></tr></table></figure>
+<p>对于苹果单价100，数量2，橘子单价150，数量3，消费税1.1 则有</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">apple = 100</span><br><span class="line">apple_num = 2</span><br><span class="line">orange = 150</span><br><span class="line">orange_num = 3</span><br><span class="line">tax = 1.1</span><br><span class="line"></span><br><span class="line"><span class="comment"># layer</span></span><br><span class="line">mul_apple_layer = MulLayer()</span><br><span class="line">mul_orange_layer = MulLayer()</span><br><span class="line">add_apple_orange_layer = AddLayer()</span><br><span class="line">mul_tax_layer = MulLayer()</span><br><span class="line"><span class="comment">#forward</span></span><br><span class="line">apple_price = mul_apple_layer.forward(apple,apple_num)</span><br><span class="line">orange_price = mul_orange_layer.forward(orange,orange_num)</span><br><span class="line">all_price = add_apple_orange_layer.forward(apple_price,orange_price)</span><br><span class="line">price = mul_tax_layer.forward(all_price,tax)</span><br><span class="line"><span class="comment">#backward</span></span><br><span class="line">dprice = 1</span><br><span class="line">dall_price,dtax = mul_tax_layer.backward(dprice)</span><br><span class="line">dapple_price,dorange_price=add_apple_orange_layer.backward(dall_price)</span><br><span class="line">dorange,dorange_num = mul_orange_layer.backward(dorange_price)</span><br><span class="line">dapple,dapple_num = mul_apple_layer.backward(dapple_price)</span><br><span class="line"><span class="built_in">print</span>(price)<span class="comment">#715</span></span><br><span class="line"><span class="built_in">print</span>(dapple_num,dapple,dorange,dorange_num,dtax)</span><br><span class="line"><span class="comment">#110 2.2 3.3 165 650</span></span><br></pre></td></tr></table></figure>
+<h1 id="5-激活函数层的实现"><a href="#5-激活函数层的实现" class="headerlink" title="5.激活函数层的实现"></a>5.激活函数层的实现</h1><h2 id="5-1-ReLu层"><a href="#5-1-ReLu层" class="headerlink" title="5.1 ReLu层"></a>5.1 ReLu层</h2><p>激活函数ReLu表达式为：</p>
+<center>
+$y=\begin{cases}
+x & \ (x>0)\\ 
+0 & \ (x\leqslant 0) 
+\end{cases}$
+
+</center>
+
+<p>y关于x的导数为：</p>
+<center>
+$\frac {\partial y}{\partial x} =\begin{cases}
+1 & \ (x>0)\\ 
+0 & \ (x\leqslant 0) 
+\end{cases}$
+
+</center>
+
+<p>正向传播时出入x大于0，则反向传播会将上游的值原封不动的传给下游；若果正向传播时x小于等于0，则反向传播中传给下游的值为0。一般假定forward和backward的参数都是NumPy数组。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class ReLu:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.mask = None</span><br><span class="line">    </span><br><span class="line">    def forward(self,x):</span><br><span class="line">        self.mask = (x&lt;=0)</span><br><span class="line">        out = x.copy()</span><br><span class="line">        out[self.mask] = 0</span><br><span class="line">        <span class="built_in">return</span> out</span><br><span class="line"></span><br><span class="line">    def backward(self,dout):</span><br><span class="line">        dout[self.mask] = 0</span><br><span class="line">        dx = dout</span><br><span class="line">        <span class="built_in">return</span> dx</span><br></pre></td></tr></table></figure>
+<h2 id="5-2-Sigmoid层"><a href="#5-2-Sigmoid层" class="headerlink" title="5.2 Sigmoid层"></a>5.2 Sigmoid层</h2><p>Sigmoid函数的表达式为：</p>
+<p>&emsp;&emsp;&emsp;&emsp;$y= \frac {1}{1+exp(-x)}$</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Sigmoid:</span><br><span class="line">    def __init__(self)</span><br><span class="line">        self.out = None</span><br><span class="line">    </span><br><span class="line">    def forward(self,x):</span><br><span class="line">        out = 1/(1+np.exp(-x))</span><br><span class="line">        self.out = out</span><br><span class="line">        <span class="built_in">return</span> out</span><br><span class="line">    </span><br><span class="line">    def backward(self,dout):</span><br><span class="line">        dx = dout *(1.0 - self.out) * self.out</span><br><span class="line">        <span class="built_in">return</span> dx</span><br></pre></td></tr></table></figure>
+<h2 id="5-3-Affine层-矩阵乘法"><a href="#5-3-Affine层-矩阵乘法" class="headerlink" title="5.3 Affine层(矩阵乘法)"></a>5.3 Affine层(矩阵乘法)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Affine:</span><br><span class="line">    def __init__(self,W,b)</span><br><span class="line">        self.W = W</span><br><span class="line">        self.b = b</span><br><span class="line">        self.x = None</span><br><span class="line">        self.dW = None</span><br><span class="line">        self.db = None</span><br><span class="line">    </span><br><span class="line">    def forward(self,x):</span><br><span class="line">        self.x = x</span><br><span class="line">        out np.dot(x,self.W) +self.b</span><br><span class="line">        <span class="built_in">return</span> out</span><br><span class="line">    </span><br><span class="line">    def backward(self,dout):</span><br><span class="line">        dx = np.dot(dout,self.W.T)</span><br><span class="line">        self.dW = np.dot(self.x.T,dout)</span><br><span class="line">        self,db = np.sum(dout,axis = 0)</span><br><span class="line">        <span class="built_in">return</span> dx</span><br></pre></td></tr></table></figure>
+<h2 id="5-4-Softmax-with-Loss层"><a href="#5-4-Softmax-with-Loss层" class="headerlink" title="5.4 Softmax-with-Loss层"></a>5.4 Softmax-with-Loss层</h2><p>softmax函数会将输入值正规化之后再输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def softmax():</span><br><span class="line">    c = np.max(a)</span><br><span class="line">    exp_a = np.exp(a - c)</span><br><span class="line">    sum_exp_a = np.sum(exp_a)</span><br><span class="line">    y = exp_a / sum_exp_a</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> y</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class SoftmaxWithLoss:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.y = None</span><br><span class="line">        self.t = None</span><br><span class="line">    </span><br><span class="line">    def forward(self,x,t)</span><br><span class="line">        self.t = t</span><br><span class="line">        self.y = softmax(x)</span><br><span class="line">        self.loss = cross_entropy_error(self.y, self.t)</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">return</span> self.loss</span><br><span class="line"></span><br><span class="line">    def backward(self,dout = 1)</span><br><span class="line">        batch_size = self.t.shape[0]</span><br><span class="line">        dx = (self.y - self.t) / batch_size</span><br><span class="line">        <span class="built_in">return</span> dx</span><br></pre></td></tr></table></figure>
+
+      
     </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/18/%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/18/%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">学习算法的实现</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-18 22:01:26" itemprop="dateCreated datePublished" datetime="2020-03-18T22:01:26+08:00">2020-03-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-19 17:24:08" itemprop="dateModified" datetime="2020-03-19T17:24:08+08:00">2020-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-神经网络学习的步骤"><a href="#1-神经网络学习的步骤" class="headerlink" title="1.神经网络学习的步骤"></a>1.神经网络学习的步骤</h1><h2 id="1-1-mini-patch"><a href="#1-1-mini-patch" class="headerlink" title="1.1 mini-patch"></a>1.1 mini-patch</h2><p>从训练数据中随机选出一部分数据，这部分数据成为mini-batch。学习的目标是减小mini-batch的损失函数的值。</p>
+<h2 id="1-2-计算梯度"><a href="#1-2-计算梯度" class="headerlink" title="1.2 计算梯度"></a>1.2 计算梯度</h2><p>为了减小mini-batch的损失函数的值，需要求出各个权重参数的梯度。梯度表示损失函数的值减小最多的方向。</p>
+<h2 id="1-3-更新参数"><a href="#1-3-更新参数" class="headerlink" title="1.3 更新参数"></a>1.3 更新参数</h2><p>将权重参数沿梯度方向进行微小更新。</p>
+<h2 id="1-4-重复"><a href="#1-4-重复" class="headerlink" title="1.4 重复"></a>1.4 重复</h2><p>重复步骤1、步骤2、步骤3。</p>
+<h1 id="2-两层神经网络的类"><a href="#2-两层神经网络的类" class="headerlink" title="2.两层神经网络的类"></a>2.两层神经网络的类</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class TwoLayerNet:</span><br><span class="line">    def __init__(self,input_size,hidden_size,output_size,</span><br><span class="line">                    weight_init_std=0.01):</span><br><span class="line">        <span class="comment">#初始化权重</span></span><br><span class="line">        self.params=&#123;&#125;</span><br><span class="line">        self.params[<span class="string">&#x27;W1&#x27;</span>]=weight_init_std * \</span><br><span class="line">                            np.random.randn(input_size,hidden_size)</span><br><span class="line">        self.params[<span class="string">&#x27;b1&#x27;</span>] = np.zeros(hidden_size)</span><br><span class="line">        self.params[<span class="string">&#x27;W2&#x27;</span>] = weight_init_std * \</span><br><span class="line">                            np.random.randn(hidden_size,output_size)</span><br><span class="line">        self.params[<span class="string">&#x27;b2&#x27;</span>] = np.zeros(output_size)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    def predict(self,x):</span><br><span class="line">        W1,W2 = self.params[<span class="string">&#x27;W1],self.params[&#x27;</span>W2<span class="string">&#x27;]</span></span><br><span class="line"><span class="string">        b1,b2 = self.params[&#x27;</span>b1],self.params[<span class="string">&#x27;b2&#x27;</span>]</span><br><span class="line">        </span><br><span class="line">        a1 = np.dot(x,W1) + b1</span><br><span class="line">        z1 = sigmoid(a1)</span><br><span class="line">        a2 = np.dot(z1,W2) + b2</span><br><span class="line">        y = softmax(a2)</span><br><span class="line">        <span class="built_in">return</span> y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def loss(self,x,t)</span><br><span class="line">        y = self.predict(x)</span><br><span class="line">        <span class="built_in">return</span> cross_entropy_error(y,t)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    def accuracy(self,x,t)</span><br><span class="line">        y = self.predict(x)</span><br><span class="line">        y = np,argmxa(y,axis = 1)</span><br><span class="line">        t = np,argmax(t,axis = 1)</span><br><span class="line">        </span><br><span class="line">        accuracy = np.sum(y == t)/<span class="built_in">float</span>(x.shape[0])</span><br><span class="line">        <span class="built_in">return</span> accuracy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def numerical_gradient(self,x,t)</span><br><span class="line">        loss_W = lambda W:self.loss(x,t)</span><br><span class="line"></span><br><span class="line">        grads = &#123;&#125;</span><br><span class="line">        grads[<span class="string">&#x27;W1&#x27;</span>] = numerical_gradient(loss_W, self.params[<span class="string">&#x27;W1&#x27;</span>])</span><br><span class="line">        grads[<span class="string">&#x27;b1&#x27;</span>] = numerical_gradient(loss_W, self.params[<span class="string">&#x27;b1&#x27;</span>])</span><br><span class="line">        grads[<span class="string">&#x27;W2&#x27;</span>] = numerical_gradient(loss_W, self.params[<span class="string">&#x27;W2&#x27;</span>])</span><br><span class="line">        grads[<span class="string">&#x27;b2&#x27;</span>] = numerical_gradient(loss_W, self.params[<span class="string">&#x27;b2&#x27;</span>])</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">return</span> grads</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>params：保存神经网络的参数的字典型变量</li>
+<li>grads：保存梯度的字典型变量</li>
+</ul>
+<hr>
+<ul>
+<li><strong>init</strong> :进行初始化</li>
+<li>predict（self, x）:进行识别，参数x是图像数据</li>
+<li>loss(self, x, t):计算损失函数的值，x是图像数据，t是正确的标签</li>
+<li>accuracy(self, x, t): 计算权重参数的精度</li>
+<li>gradient(self, x, t):计算权重参数的梯度</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">智能 Agent</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-10 21:32:13" itemprop="dateCreated datePublished" datetime="2020-03-10T21:32:13+08:00">2020-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-15 15:49:02" itemprop="dateModified" datetime="2020-03-15T15:49:02+08:00">2020-03-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">人工智能：一种现代方法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-Agent和环境"><a href="#1-Agent和环境" class="headerlink" title="1.Agent和环境"></a>1.Agent和环境</h1><p>&emsp;&emsp;Agent通过传感器感知环境并通过执行器对所处环境产生影响。人类Agent有眼睛、耳朵和其他器官等传感器，也有手、腿、声道等作为执行器。机器人Agent则可能用摄像头、红外测距仪作为传感器，各种马达作为执行器。软件Agent接受键盘敲击、文件内容和网络数据包作为传感器输入，并以屏幕显示、写文件和发送网络数据包为执行器来用于环境。<br>&emsp;&emsp;真空吸尘器agent：世界上只有两个地点：方格A和方格B。吸尘器agent可以感应到当前处于哪个方格，该方格是否有灰尘。它可以向左移动，向右移动，吸尘，或者什么也不做。该Agent函数列表下入所示：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Percept sequence</th>
+<th style="text-align:center">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">{A,Clean}</td>
+<td style="text-align:center">Right</td>
+</tr>
+<tr>
+<td style="text-align:center">{A,Dirty}</td>
+<td style="text-align:center">Suck</td>
+</tr>
+<tr>
+<td style="text-align:center">{B,Clean}</td>
+<td style="text-align:center">Left</td>
+</tr>
+<tr>
+<td style="text-align:center">{B,Dirty}</td>
+<td style="text-align:center">Suck</td>
+</tr>
+<tr>
+<td style="text-align:center">{A,Clean}{A,Clean}</td>
+<td style="text-align:center">Right</td>
+</tr>
+<tr>
+<td style="text-align:center">{A,Clean}{A,Dirty}</td>
+<td style="text-align:center">Suck</td>
+</tr>
+<tr>
+<td style="text-align:center">···</td>
+<td style="text-align:center">···</td>
+</tr>
+<tr>
+<td style="text-align:center">{A,Clean}{A,Clean}{A,Clean}</td>
+<td style="text-align:center">Right</td>
+</tr>
+<tr>
+<td style="text-align:center">{A,Clean}{A,Clean}{A,Dirty}</td>
+<td style="text-align:center">Suck</td>
+</tr>
+<tr>
+<td style="text-align:center">···</td>
+<td style="text-align:center">···</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="2-好的行为：理性的概念"><a href="#2-好的行为：理性的概念" class="headerlink" title="2.好的行为：理性的概念"></a>2.好的行为：理性的概念</h1><p>理性Agent是做事正确的Agent，从概念上交，Agent函数表格的每一项都填写正确。</p>
+<h2 id="2-1理性"><a href="#2-1理性" class="headerlink" title="2.1理性"></a>2.1理性</h2><ul>
+<li>定义成功标准的性能度量。</li>
+<li>Agent对环境的先验知识。</li>
+<li>Agent可以完成的行动。</li>
+<li>Agent截止到此时的感知序列。</li>
+</ul>
+<p>对每一个可能的感知序列，根据已知的感知序列提供的证据和Agent具有的先验知识，理性Agent应该选择能使其性能度量最大化的行动。</p>
+<h2 id="2-2全知者、学习和自主性"><a href="#2-2全知者、学习和自主性" class="headerlink" title="2.2全知者、学习和自主性"></a>2.2全知者、学习和自主性</h2><ul>
+<li>理性不等于完美</li>
+<li>理性不要求全知</li>
+</ul>
+<h1 id="3-环境的性质"><a href="#3-环境的性质" class="headerlink" title="3.环境的性质"></a>3.环境的性质</h1><h2 id="3-1任务环境规范描述"><a href="#3-1任务环境规范描述" class="headerlink" title="3.1任务环境规范描述"></a>3.1任务环境规范描述</h2><p>&emsp;&emsp;对于吸尘器Agent，性能度量、环境、以及Agen的执行器和传感器都属于任务环境。<br>PEAS:性能（Performance）、环境（Environment）、执行器（Actuators）、传感器（Sensors）<br>对于自动驾驶出租车Agent：</p>
+<table>
+    <tr>
+        <th>Agent Type</th>
+        <th>Performance Measure</th>
+        <th>Environment</th>
+        <th>Actuators</th>
+        <th>Sensors</th>
+    </tr>
+    <tr>
+        <td>Taxi driver</td>
+        <td>
+            safe,fast,legal,
+            confortable trip
+            maximinze profits
+        </td>
+        <td>
+            Roads,other traffic,
+            pedestrians,
+            custonners 
+        </td>
+        <td>
+            Steering,
+            accelentor,
+            brake,signal,
+            horm,display
+        </td>
+        <td>
+            Cameras,sonar,
+            speedometer,
+            GPS,odometer,
+            accelerometer,
+            engine sensors,
+            ketboard
+        </td>
+    </tr>
+
+</table>
+
+<h2 id="3-2任务环境的性质"><a href="#3-2任务环境的性质" class="headerlink" title="3.2任务环境的性质"></a>3.2任务环境的性质</h2><p>&emsp;&emsp;<strong>完全可观察的与部分可观察的</strong>：如果Agent的传感器在每个时间点都能获取环境的完成状态，即完全可观察的。噪音、不精确的传感器，或者传感器丢失部分状态数据，可能导致环境称为部分观察可观察的。<br>&emsp;&emsp;<strong>单Agent与多Agent</strong>：独自玩字谜游戏的Agent处于单Agent环境；下国际象棋的Agent处于双Agent环境。<br>&emsp;&emsp;<strong>确定的和随机的</strong>：如果环境的下一个状态完全区取决于当前状态和Agent执行的动作，那么该环境是确定的；否则是随机的。<br>&emsp;&emsp;<strong>片段式和延续式</strong>：在片段式的任务环境中，Agent的经历被分为一个个原子片段。在每个片段中Agent感知信息并完成单个行动，下一个片段不依赖与以前的片段中采取的行动。在延续式的环境中，当前决策会影响到所有未来的决策。<br>&emsp;&emsp;<strong>静态的和动态的</strong>：环境在Agent计算的时候会变化，那么该Agent的环境是动态的；否者环境是静态的。<br>&emsp;&emsp;<strong>离散的与连续的</strong><br>&emsp;&emsp;<strong>已知的与未知的</strong></p>
+<h1 id="4-Agent的结构"><a href="#4-Agent的结构" class="headerlink" title="4.Agent的结构"></a>4.Agent的结构</h1><p>&emsp;&emsp;AI的任务是设计Agent程序，它实现的是把感知信息映射到行的Agent函数。假设该程序要在某个具备物理传感器和执行器的计算装置上运行，即成为体系结构。Agent=体系结构+程序</p>
+<h2 id="4-1Agent程序"><a href="#4-1Agent程序" class="headerlink" title="4.1Agent程序"></a>4.1Agent程序</h2><p>&emsp;&emsp;Agent程序都具有同样的框架：输入为传感器得到的当前感知信息，返回的是执行器的行动抉择。Agent程序以当前感知为输入，Agent函数是以整个感知历史作为输入。Agent程序只把当前感知作为输入是因为从环境无法得到更多的信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Table-Driven-Agent(precept) returns an action</span><br><span class="line">    persistent: perccepts,a sequence,initally empty</span><br><span class="line">                table,a table of actions,indexed by percept sequences,initially full specified</span><br><span class="line">    append percept to the edn of percepts</span><br><span class="line">    action LookUp(percepts,table)</span><br><span class="line">    <span class="built_in">return</span> action</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>四种基本的Agent程序：</p>
+<ul>
+<li>简单反射Agent</li>
+<li>基于模型的反射Agent</li>
+<li>基于目标的Agent</li>
+<li>基于效用的Agent</li>
+</ul>
+<h2 id="4-2-简单反射Agent"><a href="#4-2-简单反射Agent" class="headerlink" title="4.2 简单反射Agent"></a>4.2 简单反射Agent</h2><p>&emsp;&emsp;简单反射Agent基于当前的感知行动选择心动，不关注历史。</p>
+<p>真空吸尘器简单反射Agent伪代码程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> REFLEX-VACUUM-AGENT([location,status]) returns an action</span><br><span class="line">    <span class="keyword">if</span> status = Dirty <span class="keyword">then</span> <span class="built_in">return</span> Suck</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> location = A <span class="keyword">then</span> <span class="built_in">return</span> Right</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> location = B <span class="keyword">then</span> <span class="built_in">return</span> Left</span><br></pre></td></tr></table></figure>
+<p><img src="人工智能：一种现代方法(二)\simple.PNG"></p>
+<p>简单反射Agent：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fuction SIMPLE-REFLEX-AGENT(pecept) <span class="built_in">return</span> an action</span><br><span class="line">    persistent: relu,a <span class="built_in">set</span> of condition-action rules</span><br><span class="line">    state:INTERPRET-INPUT(percept)</span><br><span class="line">    rule:RULE-MATCH(state,rules)</span><br><span class="line">    action:ACTION</span><br><span class="line">    <span class="built_in">return</span> action</span><br></pre></td></tr></table></figure>
+<h2 id="4-3基于模型的反射Agent"><a href="#4-3基于模型的反射Agent" class="headerlink" title="4.3基于模型的反射Agent"></a>4.3基于模型的反射Agent</h2><p>&emsp;&emsp;处理部分可观测的最有效的途径是让Agent跟踪记录现在看不到的那部分世界。即，Agent应该根据感知历史维持内部状态，从而至少反映出当前状态看不到的信息。</p>
+<blockquote>
+<p>当Agent顺时针转动方向盘的时候，汽车会右转，或者在沿着高速公路向北行驶5分 钟后汽车通常应该离5分钟红前北方大约5英里远。这种关于“世界如何运转”的知识———无论是用简单的布尔电路还是用完备的科学理论实现————都被称为世界模型。使用这种模型的AGent被称为基于模型的Agent。</p>
+</blockquote>
+<p><img src = "人工智能：一种现代方法（二）\2.PNG"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> MODEL-BASE-REFLEX-AGENT(percept) returns an action</span><br><span class="line">    persistent:state,the agents current conception of the world state</span><br><span class="line">        model,a description of how the next stste depends on current state and action</span><br><span class="line">        relus,a <span class="built_in">set</span> of condition-action rules</span><br><span class="line">        action,the most recent action,initially none</span><br><span class="line">    state:UPDATE-STATE(state,action,percept,model)</span><br><span class="line">    rule:RULE_MATCH(state,rules)</span><br><span class="line">    action:rule.ACTION</span><br><span class="line">    <span class="built_in">return</span> action</span><br></pre></td></tr></table></figure>
+<h2 id="4-4基于目标的Agent"><a href="#4-4基于目标的Agent" class="headerlink" title="4.4基于目标的Agent"></a>4.4基于目标的Agent</h2><p>&emsp;&emsp;知道当前的环境状态对于决策而言并不够。例如，在路口，出租车可以左转，右转，或者直行。正确的决定要取决于出租车要去哪里，即除了当前状态的描述，Agent还需要目标信息来描述想达到的状态，例如，要达到乘客的目的地。</p>
+<p><img src = "人工智能：一种现代方法（二）\3.PNG"></p>
+<h2 id="4-5基于效用的Agent"><a href="#4-5基于效用的Agent" class="headerlink" title="4.5基于效用的Agent"></a>4.5基于效用的Agent</h2><p>&emsp;&emsp;仅靠目标在很多环境中不足以生成高品质的行为。例如，有很多序列可以让出租车到达目的地，但有些更快、更安全、更可靠，或者更便宜。</p>
+<p><img src="人工智能：一种现代方法（二）\4.PNG"></p>
+<h1 id="5-学习Agent"><a href="#5-学习Agent" class="headerlink" title="5.学习Agent"></a>5.学习Agent</h1><p><img src = "人工智能：一种现代方法（二）\5.PNG"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title-link" itemprop="url">绪论</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-10 20:23:39" itemprop="dateCreated datePublished" datetime="2020-03-10T20:23:39+08:00">2020-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-11 19:41:10" itemprop="dateModified" datetime="2020-03-11T19:41:10+08:00">2020-03-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">人工智能：一种现代方法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-什么是人工智能"><a href="#1-什么是人工智能" class="headerlink" title="1.什么是人工智能"></a>1.什么是人工智能</h1><p>像人一样思考<br>合理地思考<br>像人一样行动<br>合理地行动</p>
+<h2 id="1-1像人一样行动：图灵测试的途径"><a href="#1-1像人一样行动：图灵测试的途径" class="headerlink" title="1.1像人一样行动：图灵测试的途径"></a>1.1像人一样行动：图灵测试的途径</h2><p>&emsp;&emsp;如果一位人类询问着在提出以下书面问题以后不能区分书面回答来自人还是来自计算机，那么这台计算机就通过测试。</p>
+<ul>
+<li>自然语言处理：成功使用英语交流</li>
+<li>知识表示：储存它知道的或听到的信息 </li>
+<li>自动推理：运用储存的信息来回答问题并推出新结论</li>
+<li>机器学习：适应新情况并检测和预测模式</li>
+<li>计算机视觉：感知物体</li>
+<li>机器人学：操纵和移动对象</li>
+</ul>
+<h2 id="1-2像人一样思考：认知建模的途径"><a href="#1-2像人一样思考：认知建模的途径" class="headerlink" title="1.2像人一样思考：认知建模的途径"></a>1.2像人一样思考：认知建模的途径</h2><ul>
+<li>通过内省——试图捕获我们思维过程</li>
+<li>通过心理实验——观察工作中的一个人</li>
+<li>通过脑成像——观察工作中的头脑</li>
+</ul>
+<h2 id="1-3合理地思考：“思维法则”的途径"><a href="#1-3合理地思考：“思维法则”的途径" class="headerlink" title="1.3合理地思考：“思维法则”的途径"></a>1.3合理地思考：“思维法则”的途径</h2><p>逻辑学</p>
+<h2 id="1-4合理地行动：合理Agent的途径"><a href="#1-4合理地行动：合理Agent的途径" class="headerlink" title="1.4合理地行动：合理Agent的途径"></a>1.4合理地行动：合理Agent的途径</h2><p>&emsp;&emsp;<strong>Agent</strong>就是能够行动的某种东西，所有计算机程序都做某些事情，但是期望计算机Agent做更多的事：自主操作、感知环境、长期持续、适应变化并创建与追求目标。合理地Agent是一个为了试验最佳结果，或者，当存在不确定性时，为了实现最佳期望结果而行动的Agent。</p>
+<h1 id="2-人工智能的基础"><a href="#2-人工智能的基础" class="headerlink" title="2.人工智能的基础"></a>2.人工智能的基础</h1><h2 id="2-1哲学"><a href="#2-1哲学" class="headerlink" title="2.1哲学"></a>2.1哲学</h2><ul>
+<li>形式规则可用于推出有效的结论吗？</li>
+<li>思想如何从物理的大脑中产生的？</li>
+<li>只是来自何方？</li>
+<li>只是如何导致行动？</li>
+</ul>
+<h2 id="2-2数学"><a href="#2-2数学" class="headerlink" title="2.2数学"></a>2.2数学</h2><ul>
+<li>什么事能导出有效结论的形式化规则？</li>
+<li>什么可以被计算？</li>
+<li>我们如何用不确定的信息来推理？</li>
+</ul>
+<h2 id="2-3经济学"><a href="#2-3经济学" class="headerlink" title="2.3经济学"></a>2.3经济学</h2><ul>
+<li>我们应该如何决策以便受益最大？</li>
+<li>当其他人不合作时我们应该如何做到这样？</li>
+<li>当收益遥遥无期时我们应该如何做到那样？</li>
+</ul>
+<h2 id="2-4神经科学"><a href="#2-4神经科学" class="headerlink" title="2.4神经科学"></a>2.4神经科学</h2><ul>
+<li>大脑如何处理信息</li>
+</ul>
+<h2 id="2-5心理学"><a href="#2-5心理学" class="headerlink" title="2.5心理学"></a>2.5心理学</h2><ul>
+<li>人类和动物如何思考与行动</li>
+</ul>
+<h2 id="2-6计算机工程"><a href="#2-6计算机工程" class="headerlink" title="2.6计算机工程"></a>2.6计算机工程</h2><ul>
+<li>我们如何才能建造高效的计算机</li>
+</ul>
+<h2 id="2-7控制论"><a href="#2-7控制论" class="headerlink" title="2.7控制论"></a>2.7控制论</h2><ul>
+<li>人工制品可以如何在其自身的控制下运转？</li>
+</ul>
+<h2 id="2-8语言学"><a href="#2-8语言学" class="headerlink" title="2.8语言学"></a>2.8语言学</h2><ul>
+<li>语言与思维如何关联？</li>
+</ul>
+<h1 id="2-9最新发展水平"><a href="#2-9最新发展水平" class="headerlink" title="2.9最新发展水平"></a>2.9最新发展水平</h1><ul>
+<li>机器人汽车</li>
+<li>语言识别</li>
+<li>自主规划与调度</li>
+<li>博弈</li>
+<li>垃圾信息过滤</li>
+<li>后勤规划</li>
+<li>机器人技术</li>
+<li>机器翻译</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/05/%E4%BB%8E%E5%85%89%E5%AD%90%E5%88%B0%E7%94%B5%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/05/%E4%BB%8E%E5%85%89%E5%AD%90%E5%88%B0%E7%94%B5%E6%B5%81/" class="post-title-link" itemprop="url">从光子到电流</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-05 20:48:33" itemprop="dateCreated datePublished" datetime="2020-03-05T20:48:33+08:00">2020-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-06 16:30:11" itemprop="dateModified" datetime="2020-03-06T16:30:11+08:00">2020-03-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%AA%E9%98%B3%E8%83%BD%E7%94%B5%E6%B1%A0%E7%89%A9%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">太阳能电池物理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="太阳辐射"><a href="#太阳辐射" class="headerlink" title="太阳辐射"></a>太阳辐射</h1><ul>
+<li>辐照度($P$):单位面积上接受电磁波辐射的功率密度($W/cm^2$)</li>
+<li>光谱辐照度($I$):单位面积、单位光谱能量上接受的电磁波辐射功率($W·cm^{-1}eV^{-1}$)<br>辐照度$P$，是在整个光谱范围$E$内，对光谱辐照度$I$的积分：</li>
+</ul>
+<center>
+$I = \frac {dP}{dE}$
+</center>
+
+<ul>
+<li>光子角通量($\beta$):单位面积、单位光谱能量、单位时间、单位立体角通过的光子数($cm^{-2}eV^{-1}s^{-1}sr^{-1}$)</li>
+<li>立体角($\Omega$):用经度($\phi$)、维度($\theta$)描述，$d\Omega = sin\theta d\theta d\phi$</li>
+</ul>
+<h1 id="光生电流"><a href="#光生电流" class="headerlink" title="光生电流"></a>光生电流</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/02/%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E6%9B%B2%E7%BA%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/02/%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E6%9B%B2%E7%BA%BF/" class="post-title-link" itemprop="url">伏安特性曲线</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-02 22:48:55" itemprop="dateCreated datePublished" datetime="2020-03-02T22:48:55+08:00">2020-03-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-04 21:54:37" itemprop="dateModified" datetime="2020-03-04T21:54:37+08:00">2020-03-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%AA%E9%98%B3%E8%83%BD%E7%94%B5%E6%B1%A0%E7%89%A9%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">太阳能电池物理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="伏安特性曲线"><a href="#伏安特性曲线" class="headerlink" title="伏安特性曲线"></a>伏安特性曲线</h1><p>&emsp;&emsp;太阳能电池的伏安特性曲线表征一定光照和环境温度为$T_s=300 K$条件下，电流$I$与电压$V$的函数关系。由于电流与太阳能电池面积成正比，所以常用电流密度($J,A/cm^2$)来取代电流。</p>
+<center>
+$J= \frac {I}{A}$
+</center>
+
+<p>&emsp;&emsp;太阳能电池往往用功率密度衡量电流大小：</p>
+<center>
+$P(V)=J(V)V$
+</center>
+
+<p>&emsp;&emsp;加上负载电阻$R$,根据欧姆定律:</p>
+<center>
+$J(V)=\frac {V}{AR}$
+</center>
+
+<h1 id="光生电流和量子效率"><a href="#光生电流和量子效率" class="headerlink" title="光生电流和量子效率"></a>光生电流和量子效率</h1><p>&emsp;&emsp;太阳能电池在光照下的光生电流，有入射光强$b<em>s$和太阳能电池性能共同决定。光生电流$J</em>{ph}$和短路电流$J_{sc}$相等，可以表示为:</p>
+<center>
+$J_{ph}=J_{sc}=q\int _{0}^{\infty} QE(E)b_s(E,T_s)dE $
+</center>
+
+<p>其中，$q=1.6 \times 10^{-19}$,是电子电量；量子效率($QE(E)$)是光子能量($E,eV$)的函数,描述能量为$E$的光子，产生电子跃迁并进入外部电路的概率；$b_s$是太阳光子通量或入射光强，描述单位时间内，单位面积上，能量在$E$到$E+dE$范围内的太阳辐射光子数，$b_s(E,T_s)$与太阳温度$T_s$有关。</p>
+<h1 id="肖克莱方程和光生电压"><a href="#肖克莱方程和光生电压" class="headerlink" title="肖克莱方程和光生电压"></a>肖克莱方程和光生电压</h1><p>&emsp;&emsp;当加上负载，太阳能电池的接触电极之间形成电压$V$。由于太阳能电池的二极管特性产生暗电流，与光生电流方向相反。如果太阳能电池温度与环境温度相同，处于热平衡状态，则暗电流满足一下方程：</p>
+<center>
+$J_{dark}(V)=J_0[exp(qV/k_BTa)-1]$
+</center>
+
+<p>式中，$J_0$是反向饱和电流，$q$为电子电荷量。$k_B$为玻尔兹曼常数，$T_a$是环境温度。<br>&emsp;&emsp;伏安特性曲线中的电流$J$,是光生电流和暗电流的叠加。</p>
+<p><img src="伏安特性曲线\andianliu.PNG"></p>
+<center>
+$J(V)= J_{sc}-J_{dark}(V)$
+
+$J(V)= J_{sc}-J_0[exp(qV/k_BT_a)-1]$
+</center>
+
+<p>&emsp;&emsp;当电路断开$J(V)=0$，太阳能电池达到开路电压$V=V<em>{oc}$,则此时光生电压$V</em>{ph}$满足:</p>
+<center>
+$V_{ph}= V_{oc}=\frac {k_BT_a}{q}ln(\frac {J_{sc}}{J_0}+1)$
+</center>
+
+<p>由于短路电流$J_{sc}$与入射光强$b_s$成正比，那么开路电压与入射光强对数成正比。</p>
+<h1 id="填充因子和转换效率"><a href="#填充因子和转换效率" class="headerlink" title="填充因子和转换效率"></a>填充因子和转换效率</h1><p>&emsp;&emsp;在最佳工作点，太阳能电池到达最大功率，对应最佳工作电压和最佳工作电流和最佳负载电阻，满足</p>
+<center>
+$R_m = \frac {V_m}{AJ_m}$
+</center>
+填充因子为：
+<center>
+$FF = \frac {P_m}{J_{sc}V_{oc}} = \frac {J_mV_m}{J_{sc}V_{oc}} = \frac {P(V_m)}{J_{sc}V_{oc}}$
+</center>
+
+<h1 id="寄生电阻"><a href="#寄生电阻" class="headerlink" title="寄生电阻"></a>寄生电阻</h1><p>串联电阻<br>并联电阻(分流电阻)</p>
+<p><img scr="伏安特性曲线\2.PNG"></p>
+<p>&emsp;&emsp;从上图可知：</p>
+<center>
+
+$J_{sh} = \frac {V_{sh}}{AR_{sh}}$
+
+J=J_{sc} - J_{dark} - J_{sh}
+
+V_{sh} = V+AJR_s
+</center>
+其中，$J_{sh}$是分流电流，$V_{sh}$是分流电压，带入到肖克莱方程可得：
+
+<center>
+$J = J_{sc}-J_0[exp(qV_{sh}/h_BT_a)-1]- \frac {V_{sh}}{AR_{sh}}$
+</center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
 
   
 
@@ -368,7 +1115,7 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+          <a href="/">
         
           <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>

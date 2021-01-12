@@ -40,7 +40,7 @@
   };
 </script>
 
-  <title>归档 | Hexo</title>
+  <title>Hexo</title>
   
 
 
@@ -110,7 +110,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/archives" rel="section"><i class="fa fa-fw fa-archive"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>归档</a>
 
   </li>
   </ul>
@@ -144,266 +144,1293 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 27 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/25/pyqt-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/25/pyqt-3/" class="post-title-link" itemprop="url">PyQt控件</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-25 21:46:18" itemprop="dateCreated datePublished" datetime="2020-02-25T21:46:18+08:00">2020-02-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-26 00:58:55" itemprop="dateModified" datetime="2020-02-26T00:58:55+08:00">2020-02-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PyQt5/" itemprop="url" rel="index"><span itemprop="name">PyQt5</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
+          <h1 id="QCheckBox"><a href="#QCheckBox" class="headerlink" title="QCheckBox"></a>QCheckBox</h1><p>QCheckBox复选框控件，它有两个状态：打开和关闭。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">from PyQt5.QtWidgets import QWidget, QCheckBox, QApplication</span><br><span class="line">from PyQt5.QtCore import Qt</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">class Example(QWidget):</span><br><span class="line">    </span><br><span class="line">    def __init__(self):</span><br><span class="line">        super().__init__()</span><br><span class="line">        </span><br><span class="line">        self.initUI()</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    def initUI(self):      </span><br><span class="line"> </span><br><span class="line">        cb &#x3D; QCheckBox(&#39;Show title&#39;, self)  #创建复选框控件</span><br><span class="line">        cb.move(20, 20)</span><br><span class="line">        cb.toggle()   #QCheckBox的构造函数</span><br><span class="line">        cb.stateChanged.connect(self.changeTitle)  #将changeTitle方法连接到ststeChanged信号</span><br><span class="line">        </span><br><span class="line">        self.setGeometry(300, 300, 250, 150)</span><br><span class="line">        self.setWindowTitle(&#39;QCheckBox&#39;)</span><br><span class="line">        self.show()</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    def changeTitle(self, state):</span><br><span class="line">      </span><br><span class="line">        if state &#x3D;&#x3D; Qt.Checked:</span><br><span class="line">            self.setWindowTitle(&#39;QCheckBox&#39;)</span><br><span class="line">        else:</span><br><span class="line">            self.setWindowTitle(&#39;&#39;)</span><br><span class="line">            </span><br><span class="line">        </span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    </span><br><span class="line">    app &#x3D; QApplication(sys.argv)</span><br><span class="line">    ex &#x3D; Example()</span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<p>最终，勾选复选框时，将显示窗口的标题“QCheckBox”，不勾选是将显示为空白（也可能为“python”）</p>
+<p><img src="pyqt-3\checkbox.png"></p>
+<h1 id="开关按钮-Toggle-button"><a href="#开关按钮-Toggle-button" class="headerlink" title="开关按钮 Toggle button"></a>开关按钮 Toggle button</h1><p>ToggleButton是QpushButton的特殊模式，有按下和未按下两种模式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">from PyQt5.QtGui import QColor</span><br><span class="line">from PyQt5.QtWidgets import QFrame</span><br><span class="line"></span><br><span class="line"> def initUI(self):      </span><br><span class="line"> </span><br><span class="line">        self.col &#x3D; QColor(0, 0, 0)       </span><br><span class="line"> </span><br><span class="line">        redb &#x3D; QPushButton(&#39;Red&#39;, self)</span><br><span class="line">        redb.setCheckable(True)</span><br><span class="line">        redb.move(10, 10)</span><br><span class="line"> </span><br><span class="line">        redb.clicked[bool].connect(self.setColor)</span><br><span class="line"> </span><br><span class="line">        greenb &#x3D; QPushButton(&#39;Green&#39;, self)</span><br><span class="line">        greenb.setCheckable(True)</span><br><span class="line">        greenb.move(10, 60)</span><br><span class="line"> </span><br><span class="line">        greenb.clicked[bool].connect(self.setColor)</span><br><span class="line"> </span><br><span class="line">        blueb &#x3D; QPushButton(&#39;Blue&#39;, self)</span><br><span class="line">        blueb.setCheckable(True)</span><br><span class="line">        blueb.move(10, 110)</span><br><span class="line"> </span><br><span class="line">        blueb.clicked[bool].connect(self.setColor)</span><br><span class="line"> </span><br><span class="line">        self.square &#x3D; QFrame(self)</span><br><span class="line">        self.square.setGeometry(150, 20, 100, 100)</span><br><span class="line">        self.square.setStyleSheet(&quot;QWidget &#123; background-color: %s &#125;&quot; %  </span><br><span class="line">            self.col.name())</span><br><span class="line">        </span><br><span class="line">        self.setGeometry(300, 300, 280, 170)</span><br><span class="line">        self.setWindowTitle(&#39;Toggle button&#39;)</span><br><span class="line">        self.show()</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    def setColor(self, pressed):</span><br><span class="line">        </span><br><span class="line">        source &#x3D; self.sender()</span><br><span class="line">        </span><br><span class="line">        if pressed:</span><br><span class="line">            val &#x3D; 255</span><br><span class="line">        else: val &#x3D; 0</span><br><span class="line">                        </span><br><span class="line">        if source.text() &#x3D;&#x3D; &quot;Red&quot;:</span><br><span class="line">            self.col.setRed(val)                </span><br><span class="line">        elif source.text() &#x3D;&#x3D; &quot;Green&quot;:</span><br><span class="line">            self.col.setGreen(val)             </span><br><span class="line">        else:</span><br><span class="line">            self.col.setBlue(val) </span><br><span class="line">            </span><br><span class="line">        self.square.setStyleSheet(&quot;QFrame &#123; background-color: %s &#125;&quot; %</span><br><span class="line">            self.col.name())  </span><br></pre></td></tr></table></figure>
+<h1 id="滑动条-Qslider"><a href="#滑动条-Qslider" class="headerlink" title="滑动条 Qslider"></a>滑动条 Qslider</h1><p>通过滑移动来模拟声音大小，改变声音图标<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">from PyQt5.QtGui import QPixmap</span><br><span class="line">from PyQt5.QtWidgets import QSlider</span><br><span class="line"></span><br><span class="line">def initUI(self):      </span><br><span class="line"> </span><br><span class="line">        sld &#x3D; QSlider(Qt.Horizontal, self)</span><br><span class="line">        sld.setFocusPolicy(Qt.NoFocus)</span><br><span class="line">        sld.setGeometry(30, 40, 100, 30)</span><br><span class="line">        sld.valueChanged[int].connect(self.changeValue)</span><br><span class="line">        </span><br><span class="line">        self.label &#x3D; QLabel(self)</span><br><span class="line">        self.label.setPixmap(QPixmap(&#39;audio.ico&#39;))</span><br><span class="line">        self.label.setGeometry(160, 40, 80, 30)</span><br><span class="line">        </span><br><span class="line">        self.setGeometry(300, 300, 280, 170)</span><br><span class="line">        self.setWindowTitle(&#39;QSlider&#39;)</span><br><span class="line">        self.show()</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    def changeValue(self, value):</span><br><span class="line"> </span><br><span class="line">        if value &#x3D;&#x3D; 0:</span><br><span class="line">            self.label.setPixmap(QPixmap(&#39;audio.ico&#39;))</span><br><span class="line">        elif value &gt; 0 and value &lt;&#x3D; 30:</span><br><span class="line">            self.label.setPixmap(QPixmap(&#39;min.ico&#39;))</span><br><span class="line">        elif value &gt; 30 and value &lt; 80:</span><br><span class="line">            self.label.setPixmap(QPixmap(&#39;med.ico&#39;))</span><br><span class="line">        else:</span><br><span class="line">            self.label.setPixmap(QPixmap(&#39;max.ico&#39;))</span><br></pre></td></tr></table></figure><br><img src="pyqt-3\slide.png"></p>
+
+      
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-25T21:46:18+08:00"
-              content="2020-02-25">
-          02-25
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/25/pyqt-3/" itemprop="url">
-            <span itemprop="name">PyQt控件</span>
-          </a>
-      </h2>
-
-    </header>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
   </article>
+  
+  
+  
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/23/pyqt-2/">
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-23T21:44:19+08:00"
-              content="2020-02-23">
-          02-23
-        </time>
-      </div>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/23/pyqt-2/" itemprop="url">
-            <span itemprop="name">PyQt布局管理</span>
-          </a>
-      </h2>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/23/pyqt-2/" class="post-title-link" itemprop="url">PyQt布局管理</a>
+        </h1>
 
-    </header>
-  </article>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+              <time title="创建时间：2020-02-23 21:44:19 / 修改时间：22:02:08" itemprop="dateCreated datePublished" datetime="2020-02-23T21:44:19+08:00">2020-02-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PyQt5/" itemprop="url" rel="index"><span itemprop="name">PyQt5</span></a>
+                </span>
+            </span>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-23T21:15:17+08:00"
-              content="2020-02-23">
-          02-23
-        </time>
-      </div>
+          
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/23/pyqt/" itemprop="url">
-            <span itemprop="name">PyQt基本功能</span>
-          </a>
-      </h2>
+        </div>
+      </header>
 
-    </header>
-  </article>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+          <p>PyQt5布局有两种方式，绝对定位和布局类</p>
+<h1 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h1><p>程序制定每个空间的位置和大小（以像素为单位）<br>绝对定位有以下限制：</p>
+<ul>
+<li>调整窗口，控件大小和位置不会改变</li>
+<li>各种平台上应用程序看起来会不一样</li>
+<li>改变字体，程序布局就会改变</li>
+<li>如果想改变布局，必须完全重做布局</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">from PyQt5.QtWidgets import QWidget, QLabel, QApplication</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">class Example(QWidget):</span><br><span class="line">    </span><br><span class="line">    def __init__(self):</span><br><span class="line">        super().__init__()</span><br><span class="line">        </span><br><span class="line">        self.initUI()</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    def initUI(self):</span><br><span class="line">        </span><br><span class="line">        lbl1 &#x3D; QLabel(&#39;Zetcode&#39;, self)</span><br><span class="line">        lbl1.move(15, 10)</span><br><span class="line"> </span><br><span class="line">        lbl2 &#x3D; QLabel(&#39;tutorials&#39;, self)</span><br><span class="line">        lbl2.move(35, 40)</span><br><span class="line">        </span><br><span class="line">        lbl3 &#x3D; QLabel(&#39;for programmers&#39;, self)</span><br><span class="line">        lbl3.move(55, 70)        </span><br><span class="line">        </span><br><span class="line">        self.setGeometry(300, 300, 250, 150)</span><br><span class="line">        self.setWindowTitle(&#39;Absolute&#39;)    </span><br><span class="line">        self.show()</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    </span><br><span class="line">    app &#x3D; QApplication(sys.argv)</span><br><span class="line">    ex &#x3D; Example()</span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<h1 id="框布局-Boxlayout"><a href="#框布局-Boxlayout" class="headerlink" title="框布局(Boxlayout)"></a>框布局(Boxlayout)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">def initUI(self):</span><br><span class="line">    </span><br><span class="line">    okButton &#x3D; QPushButton(&quot;OK&quot;)</span><br><span class="line">    cancelButton &#x3D; QPushButton(&quot;Cancel&quot;)</span><br><span class="line"> </span><br><span class="line">    hbox &#x3D; QHBoxLayout()</span><br><span class="line">    hbox.addStretch(1)</span><br><span class="line">    hbox.addWidget(okButton)</span><br><span class="line">    hbox.addWidget(cancelButton)</span><br><span class="line"> </span><br><span class="line">    vbox &#x3D; QVBoxLayout()</span><br><span class="line">    vbox.addStretch(1)</span><br><span class="line">    vbox.addLayout(hbox)</span><br><span class="line">    </span><br><span class="line">    self.setLayout(vbox)    </span><br><span class="line">    </span><br><span class="line">    self.setGeometry(300, 300, 300, 150)</span><br><span class="line">    self.setWindowTitle(&#39;Buttons&#39;)    </span><br><span class="line">    self.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="表格布局"><a href="#表格布局" class="headerlink" title="表格布局"></a>表格布局</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">def initUI(self):</span><br><span class="line">    </span><br><span class="line">    grid &#x3D; QGridLayout()</span><br><span class="line">    self.setLayout(grid)</span><br><span class="line"> </span><br><span class="line">    names &#x3D; [&#39;Cls&#39;, &#39;Bck&#39;, &#39;&#39;, &#39;Close&#39;,</span><br><span class="line">             &#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;&#x2F;&#39;,</span><br><span class="line">            &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;*&#39;,</span><br><span class="line">             &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;-&#39;,</span><br><span class="line">            &#39;0&#39;, &#39;.&#39;, &#39;&#x3D;&#39;, &#39;+&#39;]</span><br><span class="line">    </span><br><span class="line">    positions &#x3D; [(i,j) for i in range(5) for j in range(4)]</span><br><span class="line">    </span><br><span class="line">    for position, name in zip(positions, names):</span><br><span class="line">        </span><br><span class="line">        if name &#x3D;&#x3D; &#39;&#39;:</span><br><span class="line">            continue</span><br><span class="line">        button &#x3D; QPushButton(name)</span><br><span class="line">        grid.addWidget(button, *position)</span><br><span class="line">        </span><br><span class="line">    self.move(300, 150)</span><br><span class="line">    self.setWindowTitle(&#39;Calculator&#39;)</span><br><span class="line">    self.show()</span><br></pre></td></tr></table></figure>
+<p><img src="pyqt-2\calculator.png"></p>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-17T19:47:11+08:00"
-              content="2020-02-17">
-          02-17
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/17/IVsweep/" itemprop="url">
-            <span itemprop="name">IV测试</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-17T15:00:48+08:00"
-              content="2020-02-17">
-          02-17
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/17/TPV/" itemprop="url">
-            <span itemprop="name">TPV</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-14T23:33:44+08:00"
-              content="2020-02-14">
-          02-14
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/14/CV%E6%B5%8B%E8%AF%95/" itemprop="url">
-            <span itemprop="name">CV测试</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-14T17:38:10+08:00"
-              content="2020-02-14">
-          02-14
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/" itemprop="url">
-            <span itemprop="name">手写数字识别(MNIST)</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-14T17:21:47+08:00"
-              content="2020-02-14">
-          02-14
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/14/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%A6%E4%B9%A0/" itemprop="url">
-            <span itemprop="name">损失函数</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-10T19:51:54+08:00"
-              content="2020-02-10">
-          02-10
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/" itemprop="url">
-            <span itemprop="name">电化学阻抗</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-05T19:11:35+08:00"
-              content="2020-02-05">
-          02-05
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/" itemprop="url">
-            <span itemprop="name">激活函数</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-04T20:28:03+08:00"
-              content="2020-02-04">
-          02-04
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E9%97%A8/" itemprop="url">
-            <span itemprop="name">门</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-03T21:02:30+08:00"
-              content="2020-02-03">
-          02-03
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%84%9F%E7%9F%A5%E6%9C%BA/" itemprop="url">
-            <span itemprop="name">感知机</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-
+      
     </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/23/pyqt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/23/pyqt/" class="post-title-link" itemprop="url">PyQt基本功能</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-23 21:15:17" itemprop="dateCreated datePublished" datetime="2020-02-23T21:15:17+08:00">2020-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-25 21:45:31" itemprop="dateModified" datetime="2020-02-25T21:45:31+08:00">2020-02-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PyQt5/" itemprop="url" rel="index"><span itemprop="name">PyQt5</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="PyQt5显示一个小窗口"><a href="#PyQt5显示一个小窗口" class="headerlink" title="PyQt5显示一个小窗口"></a>PyQt5显示一个小窗口</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import sys</span><br><span class="line">#提供必要的引用</span><br><span class="line">from PyQt5.QtWidgets import QApplication, QWidget</span><br><span class="line"></span><br><span class="line">if __name__&#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    #每一pyqt5应用程序必须创建一个应用程序对象。sys.argv参数是一个列表，从命令行输入参数。</span><br><span class="line">    app &#x3D; QApplication(sys.argv)</span><br><span class="line">    #QWidget部件是pyqt5所有用户界面对象的基类。他为QWidget提供默认构造函数。默认构造函数没有父类。</span><br><span class="line">    w &#x3D; QWidget()</span><br><span class="line">    #resize()方法调整窗口的大小。这离是250px宽150px高</span><br><span class="line">    w.resize(250, 150)</span><br><span class="line">    #move()方法移动窗口在屏幕上的位置到x &#x3D; 300，y &#x3D; 300坐标。</span><br><span class="line">    w.move(300, 300)</span><br><span class="line">    #设置窗口的标题</span><br><span class="line">    w.setWindowTitle(&#39;Simple&#39;)</span><br><span class="line">    #显示在屏幕上</span><br><span class="line">    w.show()</span><br><span class="line">    </span><br><span class="line">    #系统exit()方法确保应用程序干净的退出</span><br><span class="line">    #的exec_()方法有下划线。因为执行是一个Python关键词。因此，exec_()代替</span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<p><img src="pyqt\simple.png"></p>
+<h1 id="应用程序的图标"><a href="#应用程序的图标" class="headerlink" title="应用程序的图标"></a>应用程序的图标</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">from PyQt5.QtGui import QIcon</span><br><span class="line">from PyQt5.QtWidgets import QApplication,QWidget</span><br><span class="line"></span><br><span class="line">class Example(QWidget):</span><br><span class="line">    </span><br><span class="line">    def __init__(self):</span><br><span class="line">        super().__init__()</span><br><span class="line">        </span><br><span class="line">        self.initUI() #界面绘制交给InitUi方法</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    def initUI(self):</span><br><span class="line">        #设置窗口的位置和大小</span><br><span class="line">        self.setGeometry(300, 300, 300, 220)  </span><br><span class="line">        #设置窗口的标题</span><br><span class="line">        self.setWindowTitle(&#39;Icon&#39;)</span><br><span class="line">        #设置窗口的图标，引用当前目录下的web.png图片</span><br><span class="line">        self.setWindowIcon(QIcon(&#39;web.png&#39;))        </span><br><span class="line">        </span><br><span class="line">        #显示窗口</span><br><span class="line">        self.show()</span><br><span class="line">if __name__&#x3D;&#x3D;&#39;__main__&#39;:</span><br><span class="line">    #创建应用程序和对象</span><br><span class="line">    app &#x3D; QApplication(sys.argv)</span><br><span class="line">    ex &#x3D; Example()</span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<p><img src="pyqt\icon.png"></p>
+<h1 id="显示提示语"><a href="#显示提示语" class="headerlink" title="显示提示语"></a>显示提示语</h1><p>值需要修改 initUI 函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">from PyQt5.QtGui import QFont    </span><br><span class="line">from PyQt5.QtWidget import QToolTip,QPushButton</span><br><span class="line"></span><br><span class="line">    def initUI(self):</span><br><span class="line">        #这种静态的方法设置一个用于显示工具提示的字体。我们使用10px滑体字体。</span><br><span class="line">        QToolTip.setFont(QFont(&#39;SansSerif&#39;, 10))</span><br><span class="line">        </span><br><span class="line">        #创建一个提示，我们称之为settooltip()方法。我们可以使用丰富的文本格式</span><br><span class="line">        self.setToolTip(&#39;This is a &lt;b&gt;QWidget&lt;&#x2F;b&gt; widget&#39;)</span><br><span class="line">        </span><br><span class="line">        #创建一个PushButton并为他设置一个tooltip</span><br><span class="line">        btn &#x3D; QPushButton(&#39;Button&#39;, self)</span><br><span class="line">        btn.setToolTip(&#39;This is a &lt;b&gt;QPushButton&lt;&#x2F;b&gt; widget&#39;)</span><br><span class="line">        </span><br><span class="line">        #btn.sizeHint()显示默认尺寸</span><br><span class="line">        btn.resize(btn.sizeHint())</span><br><span class="line">        </span><br><span class="line">        #移动窗口的位置</span><br><span class="line">        btn.move(50, 50)       </span><br><span class="line">        </span><br><span class="line">        self.setGeometry(300, 300, 300, 200)</span><br><span class="line">        self.setWindowTitle(&#39;Tooltips&#39;)    </span><br><span class="line">        self.show()</span><br></pre></td></tr></table></figure><br><img src="pyqt\tooltips.png"></p>
+<h1 id="关闭窗口"><a href="#关闭窗口" class="headerlink" title="关闭窗口"></a>关闭窗口</h1><p>关闭一个窗口可以点击标题栏上的X。在下面的例子中，我们将展示我们如何通过编程来关闭窗口。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from PyQt5.QtCore import QCoreApplication</span><br><span class="line"></span><br><span class="line">    def initUI(self):               </span><br><span class="line">        </span><br><span class="line">        qbtn &#x3D; QPushButton(&#39;Quit&#39;, self)</span><br><span class="line">        qbtn.clicked.connect(QCoreApplication.instance().quit)</span><br><span class="line">        qbtn.resize(qbtn.sizeHint())</span><br><span class="line">        qbtn.move(50, 50)       </span><br><span class="line">        </span><br><span class="line">        self.setGeometry(300, 300, 250, 150)</span><br><span class="line">        self.setWindowTitle(&#39;Quit button&#39;)    </span><br><span class="line">        self.show()</span><br></pre></td></tr></table></figure></p>
+<h1 id="消息框"><a href="#消息框" class="headerlink" title="消息框"></a>消息框</h1><p>默认情况下,如果我们单击x按钮窗口就关门了。有时我们想修改这个默认的行为。<br>例如我们在编辑器中修改了一个文件,当关闭他的时候，我们显示一个消息框确认。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">from PyQt5.QtWidgets import QMessageBox</span><br><span class="line"></span><br><span class="line">    def initUI(self):               </span><br><span class="line">        </span><br><span class="line">        self.setGeometry(300, 300, 250, 150)        </span><br><span class="line">        self.setWindowTitle(&#39;Message box&#39;)    </span><br><span class="line">        self.show()</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    def closeEvent(self, event):</span><br><span class="line">        </span><br><span class="line">        reply &#x3D; QMessageBox.question(self, &#39;Message&#39;,</span><br><span class="line">            &quot;Are you sure to quit?&quot;, QMessageBox.Yes | </span><br><span class="line">            QMessageBox.No, QMessageBox.No)</span><br><span class="line"> </span><br><span class="line">        if reply &#x3D;&#x3D; QMessageBox.Yes:</span><br><span class="line">            event.accept()</span><br><span class="line">        else:</span><br><span class="line">            event.ignore()        </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>当关闭窗口时，触发QCloseEvent</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">reply &#x3D; QMessageBox.question(self, &#39;Message&#39;,</span><br><span class="line">    &quot;Are you sure to quit?&quot;, QMessageBox.Yes | </span><br><span class="line">    QMessageBox.No, QMessageBox.No)</span><br></pre></td></tr></table></figure>
+<p>显示一个消息框，两个按钮：“是”和“不是”。第一个字符串是titlebar。<br>第二个字符串是显示的文本，第三个参数指定按钮的组合出现在对话框中，最后一个参数是默认按钮。</p>
+<p><img src="pyqt\messagebox.png"></p>
+<h1 id="窗口显示在屏幕的中间"><a href="#窗口显示在屏幕的中间" class="headerlink" title="窗口显示在屏幕的中间"></a>窗口显示在屏幕的中间</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    def initUI(self):                 </span><br><span class="line">        self.resize(250, 150)</span><br><span class="line">        self.center()</span><br><span class="line">        self.setWindowTitle(&#39;Center&#39;)    </span><br><span class="line">        self.show()</span><br><span class="line">#控制窗口显示在屏幕中心的方法    </span><br><span class="line">    def center(self):</span><br><span class="line">        </span><br><span class="line">        #获得窗口</span><br><span class="line">        qr &#x3D; self.frameGeometry()</span><br><span class="line">        #获得屏幕中心点</span><br><span class="line">        cp &#x3D; QDesktopWidget().availableGeometry().center()</span><br><span class="line">        #显示到屏幕中心</span><br><span class="line">        qr.moveCenter(cp)</span><br><span class="line">        self.move(qr.topLeft())</span><br></pre></td></tr></table></figure>
+<p>QtGui.QdesktopWidget类提供了用户桌面信息，包括屏幕大小。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/17/IVsweep/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/17/IVsweep/" class="post-title-link" itemprop="url">IV测试</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-17 19:47:11" itemprop="dateCreated datePublished" datetime="2020-02-17T19:47:11+08:00">2020-02-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-11 15:35:28" itemprop="dateModified" datetime="2021-01-11T15:35:28+08:00">2021-01-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Keithley-4200-SCS/" itemprop="url" rel="index"><span itemprop="name">Keithley 4200-SCS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="基本参数"><a href="#基本参数" class="headerlink" title="基本参数"></a>基本参数</h1><p>&ensp;&ensp;&ensp;&ensp;太阳能电池由光敏电流源(I<sub>L</sub>)、二极管、串联电阻、并联电阻构成。如下图所示:</p>
+<p><img src="IVsweep\solarcell.PNG"></p>
+<p>根据等效电路，可得到太阳能电池I-V表达式为：</p>
+<center>
+$I=I_{ph}-I_0[exp(\frac {q(V+IR_s)}{nKT})-1]-\frac {V+IR_s}{R_sh}$
+</center>
+
+<p>其中：$I<em>{ph}$为光生电流，$n$为理想因子，$q$为电荷常数，$K$为玻尔兹曼常数，$T$为温度，$R_s$为串联电阻，$R</em>{sh}$为并联电阻，$I$为输出电流，$V$为输出电压，</p>
+<p><img src="IVsweep\IVsweep.PNG"></p>
+<p>在短路条件下即$V=0$,此时$I<em>{ph}=I</em>{sc}$,&ensp;$I<em>{sc}$即短路电流。在开路条件下即$I=0$,此时$V=V</em>{oc}$,&ensp;$V<em>{oc}$即开路电压<br>填充因子:<br>&emsp;&emsp;&emsp;&emsp;$FF=\frac {I</em>{max}V<em>{max}}{I</em>{sc}V_{oc}}$</p>
+<h1 id="测量串联电阻"><a href="#测量串联电阻" class="headerlink" title="测量串联电阻"></a>测量串联电阻</h1><p>在光照条件下通过并联电阻的电流远小于光电流，因此可以忽略不计，<br>上式可简化为：</p>
+<center>
+$I=I_{ph}-I_0[exp(\frac {q(V+IR_s)}{nKT})-1]$
+</center> 
+由于$exp(\frac {q(V+IR_s)}{nKT}>>1$故可以进一步简化为：
+<center>
+$I=I_{ph}-I_0exp(\frac {q(V+IR_s)}{nKT})$
+</center>
+
+
+<p>令$\lambda =\frac {q}{nKT}$则：</p>
+<center>
+$V=\frac {1}{\lambda}ln(\frac {I_{ph}-I}{I_0})-IR_s$
+</center>
+
+
+<p>当接近开路时即$I \rightarrow 0$,&ensp;$(I<em>{ph}-I) \rightarrow I</em>{ph}$，电压的表达式为:</p>
+<center>
+$V= \frac {1}{\lambda}ln(\frac {I_{ph}}{I_0})-IR_s$
+</center>
+
+<p>在开路条件下，电池出输出电压等于开路电压，即$V=V_{oc}$,电池输出电流等于0,则：</p>
+<center>
+$V_{oc}=\frac {1}{\lambda}ln(\frac {I_{ph}}{I_0})$  
+
+
+$V=V_{oc}-IR_s$
+</center>
+
+<p>此时可以看出太阳能电池在开路状态下，电压和电流具有很好的线性关系，对I-V曲线求导可得:</p>
+<center>
+$R_s=\frac {dV}{dI}$
+</center>
+
+
+<h1 id="测量并联电阻"><a href="#测量并联电阻" class="headerlink" title="测量并联电阻"></a>测量并联电阻</h1><p>并联电阻通常在暗态下，反向偏置I-V曲线。<br>计算曲线的线性部分斜率可以得到并联电阻：</p>
+<center>
+$r_{sh}=\frac {\Delta V_{reverse bias}}{\Delta I_{reverse bias}} $
+</center>
+
+<p>如下图所示：</p>
+<p><img src="IVsweep\reverse_sweep.PNG"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/17/TPV/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/17/TPV/" class="post-title-link" itemprop="url">TPV</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-17 15:00:48" itemprop="dateCreated datePublished" datetime="2020-02-17T15:00:48+08:00">2020-02-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-20 22:01:35" itemprop="dateModified" datetime="2020-03-20T22:01:35+08:00">2020-03-20</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>$n=n_0+\Delta n $<br>$p=p_0 + \Delta p$</p>
+<p>$ \frac {dn}{dt} = -kn-R(np)$</p>
+<p>$\frac {d(n_0+\Delta n)}{dt} = -k(n_0+\Delta n)-R((n_0+\Delta n)(p_0+\Delta p))$</p>
+<p>$ \frac {d\Delta n}{dt} = -k \Delta n$</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/14/CV%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/14/CV%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">CV测试</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-14 23:33:44" itemprop="dateCreated datePublished" datetime="2020-02-14T23:33:44+08:00">2020-02-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-11 15:37:30" itemprop="dateModified" datetime="2021-01-11T15:37:30+08:00">2021-01-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Keithley-4200-SCS/" itemprop="url" rel="index"><span itemprop="name">Keithley 4200-SCS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Measurement-functions"><a href="#Measurement-functions" class="headerlink" title="Measurement functions"></a>Measurement functions</h1><p>The 4210-CVU can measure these parameter:</p>
+<ul>
+<li>Parallel capacitance and conduction(Cp-Gp) (并联电容-电导)</li>
+<li>Parallel capactitance and dissipation factor (Cp-D) (并联电容-损耗因子)</li>
+<li>Series capacitance and resistance(Cs-Rs) (串联电容-电阻)</li>
+<li>Series capacitance and dissipation(Cs-D) （串联电容-损耗因子）</li>
+<li>Resistance and reactance(R-jX) (电阻-电抗)</li>
+<li>Impandance and phase angle(Z-theta) (阻抗-相位角)</li>
+</ul>
+<p>The time domain of the AC current and AC voltage must be processed into the frequency domain to<br>produce the phasor form of the DUT impedance.<br>The capacitive impedance (and conductance) are calculated based on the measured AC impedance<br>and phase.</p>
+<p><img width="400" height="200" src="CV测试\cvtest.PNG"></p>
+<p>The capacitance is calculated from the capacitive impedance and the test frequency using the<br>formula:</p>
+<script type="math/tex; mode=display">
+C_{DUT} = \frac {I_{DUT}}{2 \pi f V_{AC} }</script><center>
+$
+
+
+
+C<sub>DUT</sub> = Capacitance of the DUT(F)
+I<sub>DUT</sub> = Current of the DUT
+f = Test frequency(Hz)
+V<sub>AC</sub>=Measured AC voltage
+</center>
+
+<p>The inductance (L) can be calculated from the reactance (X) and test frequency (f):</p>
+<p><center>
+$L=\frac {X}{2 \pi f}$
+</center></p>
+<hr>
+<h1 id="Test-signal"><a href="#Test-signal" class="headerlink" title="Test signal"></a>Test signal</h1><ul>
+<li>1 kHz to 10 kHz in 1 kHz increments</li>
+<li>10 kHz to 100 kHz in 10 kHz increments</li>
+<li>100 kHz to 1 MHz in 100 kHz increments</li>
+<li>1 MHz to 10 MHz in 1 MHz increments</li>
+</ul>
+<p>The AC signal output level can be set from 10 mVRMS to 100 mVRMS (1 mVRMS resolution). The<br>output impedance is 100 Ω (typical). The AC voltage measure range is 100 mVRMS.<br>The ranges available to measure current are 1 μA, 30 μA, or 1 mA. With autorange selected, range<br>selection is done automatically.</p>
+<hr>
+<h1 id="C-V-Sweep-for-solar-cells"><a href="#C-V-Sweep-for-solar-cells" class="headerlink" title="C-V Sweep for solar cells"></a>C-V Sweep for solar cells</h1><p>C‑V measurements can be made either forward-biased or reverse-biased. However, when the cell is<br>forward-biased,the applied DC voltage must be limited; otherwise, the conductance may get too high<br>for the capacitance meter to measure. The maximum DC current cannot be greater than 10mA;<br>otherwise, the instrument’s DC voltage source will go into compliance and the DC voltage output will not be at  the desired level.</p>
+<p><img height="300" width="300" src="CV测试\reversecv.jpg"></p>
+<h2 id="dropping-density"><a href="#dropping-density" class="headerlink" title="dropping density"></a>dropping density</h2><p>Rather than plotting dC/dV, it is sometimes desirable to view the data as 1/C2 vs. voltage<br>because some parameters are related to the 1/C2 data. For example, the doping density (N) can<br>be derived from the slope of this curve because N is related to the capacitance by:</p>
+<script type="math/tex; mode=display">
+N(a)=\frac {2}{qE_sA_2[d(1/C^2)/dV]}</script><h2 id="Defect-Density-Drive-Level-Capacitance-Profiling-DLCP"><a href="#Defect-Density-Drive-Level-Capacitance-Profiling-DLCP" class="headerlink" title="Defect Density: Drive Level Capacitance Profiling (DLCP)"></a>Defect Density: Drive Level Capacitance Profiling (DLCP)</h2><p>&emsp;&emsp;激励电平电容分析是一种测量光伏器件缺陷态密度(N<sub>DL</sub>)的技术，在DLCP中测试中，<br>施加的交流电(AC)电压时扫描变化(sweep),在电容测试时直流(DC)电电压也随之变化。<br>在传统C-V测试中，交流电电压时固定的，直流电电压时扫描的。<br>&emsp;&emsp;在DLCP中，当AC扫描时，DC自动调整使(AC+DC)保持一致，通过保持施加的总偏<br>压一致，使电荷固定在同一个位置($X_e$),其中$X_e$表示能级为$E_e=E_F-E_V$的位置。$X_e$<br>的位置可以通过改变施加偏压来改变；同时也可以改变交流电频率或者温度来改变能量位置。<br>&emsp;&emsp;缺陷态密度可以用下式表示：</p>
+<script type="math/tex; mode=display">
+N_{DL}=\frac {C_{0}^{3}}{2q \epsilon A^2C_1}= \frac {|\rho|}{q}=p+\int^{E_V+E_e}_{E_{F}^0}g(E,X_e)dE</script><p>&emsp;&emsp;$C_0$和$C_1$可用如下公式拟合得到：</p>
+<script type="math/tex; mode=display">
+\frac{dQ}{dV} = C_2(dV)^2+C_1(dV)+C_0</script><p>但是，只有$C_0$和$C_1$被使用。<br>在测试中，AC幅值可从 10 mVrms变化到100mVrms（14.14mV到141.4mV p-p）；测量频率可以从1KHz到10MHz</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/" class="post-title-link" itemprop="url">手写数字识别(MNIST)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-14 17:38:10" itemprop="dateCreated datePublished" datetime="2020-02-14T17:38:10+08:00">2020-02-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-18 22:02:05" itemprop="dateModified" datetime="2020-03-18T22:02:05+08:00">2020-03-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="MNIST数据集"><a href="#MNIST数据集" class="headerlink" title="MNIST数据集"></a>MNIST数据集</h1><p>MNIST是机器学习领域最有名的数据集之一，被应用于从简单的实验到发表的论文研究等各种场合。实际上，在阅读图像识别或机器学习的论文时，MNIST数据集经常作为实验用的数据出现。MNIST数据集是由0 到9 的数字图像构成的。训练图像有6 万张，测试图像有1万张，这些图像可以用于学习和推理。MNIST数据集的一般使用方法是，先用训练图像进行学习，再用学习到的模型度量能在多大程度上对测试图像进行正确的分类。</p>
+<p><img height="100" width="200" src="深度学习-手写数字识别\mnist.PNG"></p>
+<p>MNIST的图像数据是28像素×28像素的灰度图像，各个像素取值在0到255之间，每个图像数据都相应的标有”7” “2”等标签。</p>
+<h1 id="MNIST数据预处理处理"><a href="#MNIST数据预处理处理" class="headerlink" title="MNIST数据预处理处理"></a>MNIST数据预处理处理</h1><h2 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h2><p>此处通过keras导入数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from keras.datesets import mnist</span><br><span class="line"></span><br><span class="line">(x_train,t_train),(x_test,t_test)&#x3D;mnist.load_data()</span><br></pre></td></tr></table></figure>
+<p>x_train,&ensp;t_train,&ensp;x_test,&ensp;t_test分别为训练图像、训练标签、测试图像、测试标签。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;x_train.shape</span><br><span class="line">(60000,28,28)</span><br><span class="line">&gt;&gt;&gt;t_train.shape</span><br><span class="line">(60000,)</span><br><span class="line">&gt;&gt;&gt;x_test.shape</span><br><span class="line">(10000,28,28)</span><br><span class="line">&gt;&gt;&gt;t_test.shape</span><br><span class="line">(10000,)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from keras.datesets import mnist</span><br><span class="line"></span><br><span class="line">(x_train,t_train),(x_test,t_test)&#x3D;mnist.load_data()</span><br><span class="line"></span><br><span class="line">#重构数据 将28x28数据重构为1x784</span><br><span class="line"></span><br><span class="line">x_train&#x3D;x_train.reshape(60000,784)</span><br><span class="line">x_test&#x3D;x_test.reshape(10000,784)</span><br><span class="line"></span><br><span class="line">#为了防止数据溢出，将数据归一化</span><br><span class="line">x_train&#x3D;np.array(x_train,dtype&#x3D;np.float16)&#x2F;255</span><br><span class="line">x_test&#x3D;np.array(x_test,dtype&#x3D;np.float16)&#x2F;255</span><br><span class="line"></span><br><span class="line">#one-hot</span><br><span class="line">t_train&#x3D;to_categorical(t_train)</span><br><span class="line">t_test&#x3D;to_categorical(t_test)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/14/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/14/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">损失函数</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-14 17:21:47" itemprop="dateCreated datePublished" datetime="2020-02-14T17:21:47+08:00">2020-02-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-11 21:07:31" itemprop="dateModified" datetime="2021-01-11T21:07:31+08:00">2021-01-11</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="训练数据和测试数据"><a href="#训练数据和测试数据" class="headerlink" title="训练数据和测试数据"></a>训练数据和测试数据</h1><p>机器学习中，一般将数据分为训练数据和测试数据两部分来进行学习和实验。首先，使用训练数据进行学习，寻找最优的参数；然后使用测试数据评价训练得到的模型的实际能力。</p>
+<h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1><p>神经网络以某个指标为线索寻找最后的权重参数，这个指标被称为损失函数，这个损失函数可以是由任意函数，但一般使用均方差和交叉熵误差。</p>
+<h2 id="均方误差"><a href="#均方误差" class="headerlink" title="均方误差"></a>均方误差</h2><p>可用做损失函数的函数有很多，其中最有名的是均方误差，用如式所示：</p>
+<center>
+$E=\frac {1}{2}\sum (y_k-t_k)^2$
+</center>>
+其中,$y_k$表示神经网络的输出，$t_k$表示监督数据，$k$表示数据的维度。
+在手写数字识别中，$y_k$和$t_k$由如下10个元素构成：
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; y=[0.1,0.05,0.6,0.0,0.05,0.1,0.0,0.1,0.0,0.0]</span><br><span class="line">&gt;&gt;&gt; t=[0,0,1,0,0,0,0,0,0]</span><br></pre></td></tr></table></figure>
+数组元素的索引从第一个开始依次对应数字“0”“1”“2”······，神经网络输出表示“0”的概率是0.1，“1”的概率是0.05······；在家奴数据中，标签“2”的概率为1，其他均为0。
+利用代码实现均方误差：
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def mean_squared_error(y,t):</span><br><span class="line">    <span class="built_in">return</span> 0.5*np.sum((y-t)**2)</span><br></pre></td></tr></table></figure>
+## 交叉熵误差
+&emsp;&emsp;除了均方误差外，交叉熵误差常被用作损失函数。
+
+<center>
+$E=-\sum t_klny_k$
+</center>
+用代码实现表示为：
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def cross_entropy_error(y,t):</span><br><span class="line">    delta = 1e-7</span><br><span class="line">    <span class="built_in">return</span> -np.sum(t*np.log(y+delta))</span><br></pre></td></tr></table></figure>
+在此处加上一个微小的delta是为了防止$log(0)$变为负无穷大。
+
+## mini-batch学习
+&emsp;&emsp;对于数据批量学习，需要把批量数据的损失函数的总和作为学习指标，以交叉熵误差为例，批量学习时可以变为：
+
+<center>
+$E=-\frac {1}{N} \sum_{n}^{}\sum_{k}^{} t_{nk}ln(y_{nk})$
+</center>
+
+<p>用代码实现表示为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def cross_entropy_error(y,t)</span><br><span class="line">    <span class="keyword">if</span> y.ndim == 1:</span><br><span class="line">        t = t.reshape(1,t.size)</span><br><span class="line">        y = y.reshape(1,y.size)</span><br><span class="line">    batch_size = y.shape[0]</span><br><span class="line">    <span class="built_in">return</span> -np.sum(t*np.log(y+1e-7))/batch_size</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/" class="post-title-link" itemprop="url">电化学阻抗</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-10 19:51:54" itemprop="dateCreated datePublished" datetime="2020-02-10T19:51:54+08:00">2020-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-11 15:00:51" itemprop="dateModified" datetime="2021-01-11T15:00:51+08:00">2021-01-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/" itemprop="url" rel="index"><span itemprop="name">电化学阻抗</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-电化学阻抗的含义"><a href="#1-电化学阻抗的含义" class="headerlink" title="1.电化学阻抗的含义"></a>1.电化学阻抗的含义</h1><p>给电化学系统输入一个扰动函数X，它就会输出一个响应信号Y。用来描述扰动与响应之<br>间关系的函数，称为传输函数$G(\omega)$。 可用如下公式描述：</p>
+<script type="math/tex; mode=display">
+Y=G(\omega)X\rightarrow G(\omega)=\frac{Y}{X}</script><p>如果X为角频率为$\omega$的正弦电流信号，Y为正弦电势信号，此时$G(\omega)$称为阻抗(impedance)，用Z表<br>示。如果X为电势信号，Y为电流信号，$G(\omega)$称为导纳(admittance)，用Y表示.阻抗和导纳称为阻纳<br>(immittance),用G表示，阻抗导纳互为倒数关系。</p>
+<hr>
+<h1 id="2-简单电路"><a href="#2-简单电路" class="headerlink" title="2.简单电路"></a>2.简单电路</h1><p>以给正弦电势信号为例：<br>给定的为正弦电势信号 $e = Esin\omega t$</p>
+<p>得到的为正弦电流信号 $i = Isin(\omega t+\phi)$</p>
+<p>在阻抗谱中，我们得到的最原始的数据为正弦电流信号，具体来说是电流信号的幅值和相位</p>
+<p>如下图所示：<br><img src="电化学阻抗\sinx.png"></p>
+<h2 id="2-1原始数据的处理："><a href="#2-1原始数据的处理：" class="headerlink" title="2.1原始数据的处理："></a>2.1原始数据的处理：</h2><script type="math/tex; mode=display">
+Z = \frac {e}{i}= \frac {Esin\omega t}{Isin(\omega t+\phi)}</script><script type="math/tex; mode=display">
+Z = Z_0\frac{sin\omega t}{sin(\omega t +\phi)}=Z_0e^{-i\phi}=Z_0(cos\phi-isin\phi)</script><script type="math/tex; mode=display">
+Z=Z_0cos\phi-iZ_0 sin\phi=Z_{re}-iZ_{im}</script><ul>
+<li>通常Nyquist图中x轴为实部，x轴为虚部的相反数</li>
+</ul>
+<hr>
+<h2 id="2-2-电阻"><a href="#2-2-电阻" class="headerlink" title="2.2 电阻"></a>2.2 电阻</h2><p><img  src="电化学阻抗\resistance.png"></p>
+<p>对于纯电阻 $\phi = 0 $<br>根据欧姆定律:<br>$e = iR$    $\Longrightarrow$   $i = \frac{E}{R}sin(\omega t)$</p>
+<p>写成复数：$Z_C = R$</p>
+<p>实部：${Z}’_R = R $</p>
+<p>虚部：${Z}”_R = 0 $</p>
+<p>在Nyquist图上为横轴上一个点</p>
+<p><img src="电化学阻抗\r_N.png"></p>
+<hr>
+<h2 id="2-3-电容"><a href="#2-3-电容" class="headerlink" title="2.3 电容"></a>2.3 电容</h2><p><img  src="电化学阻抗\capacitance.png"></p>
+<p>对于电容 $\phi = \frac {\pi}{2}$</p>
+<p>$e=Esin\omega t$</p>
+<p>$i=\frac {dQ}{dt}= \frac{d(CU)}{dt}=C \frac{d}{dt}(Esin \omega t)<br>= E \omega C cos \omega t = E \omega C sin(\omega t +\frac {\pi}{2})$</p>
+<p>$i = \frac {E}{X_C}sin(\omega t +\frac {\pi}{2})$</p>
+<p>$X_C= \frac {1}{\omega C}$</p>
+<p>写成复数：$Z_C=-jX_C=-\frac {j}{\omega C}$</p>
+<p>实部：${Z}’_C = 0 $</p>
+<p>虚部：${Z}”_C = -\frac {1}{\omega C}$</p>
+<p>Nyquist图上为与纵轴重合的一条直线</p>
+<p><img  src="电化学阻抗\c_N.png"></p>
+<hr>
+<h2 id="2-4-电感"><a href="#2-4-电感" class="headerlink" title="2.4 电感"></a>2.4 电感</h2><p>$i= Isin \omega t$</p>
+<p>$e_L=-L \frac {dI}{dt}=-L \frac {d}{dt}(Isin \omega t) =<br>-I \omega t sin(\omega t +\frac {\pi}{2})$<br>$U_L=-e_L=Isin(\omega t+ \frac {\pi}{2})$</p>
+<p>$Z=j \omega L$</p>
+<ul>
+<li>Nyquist中上为与纵轴负轴重合的一条直线</li>
+</ul>
+<hr>
+<h2 id="2-5电阻R和电容C串联"><a href="#2-5电阻R和电容C串联" class="headerlink" title="2.5电阻R和电容C串联"></a>2.5电阻R和电容C串联</h2><p><img  src="电化学阻抗\randc.png"></p>
+<p>串联电阻的阻抗是各串联元件阻抗之和：</p>
+<p>$Z = Z_R + Z_C = R - \frac {j}{\omega C}$</p>
+<p>实部：${Z}’ = R$</p>
+<p>虚部：${Z}” = \frac {1}{\omega C}$</p>
+<p>Nyquist图上为与横轴交于R与纵轴平行的一条直线</p>
+<p><img width = 200 height=200 src="电化学阻抗\randc_N.png"></p>
+<hr>
+<h2 id="2-5-电阻R和电容C并联的电路"><a href="#2-5-电阻R和电容C并联的电路" class="headerlink" title="2.5 电阻R和电容C并联的电路"></a>2.5 电阻R和电容C并联的电路</h2><p><img  src="电化学阻抗\rorc.png"></p>
+<p>并联电路对阻抗的倒数是各并联元件阻抗倒数之和</p>
+<p>$\frac{1}{Z} = \frac {1}{Z_R}+\frac{1}{Z_C}=\frac{1}{R}+j\omega C$</p>
+<p>$Z = \frac{R}{1+(\omega RC)^2}-j\frac{\omega R^2C}{1+(\omega RC)^2}$</p>
+<p>实部：${Z}’ = \frac{R}{1+(\omega RC)^2}$</p>
+<p>虚部：${Z}”=- \frac{\omega R^2 C}{1+(\omega RC)^2}$</p>
+<p>消去$\omega$ ,整理得：$({Z}’ - \frac{R}{2})^2 + {Z}”^2 = (\frac {R}{2})^2$</p>
+<p>在Nyquist图中为圆心为(R/2,0),半径为R/2的圆</p>
+<p><img src="电化学阻抗\rorc_N.png"></p>
+<h2 id="2-6-阻抗谱测到的信号"><a href="#2-6-阻抗谱测到的信号" class="headerlink" title="2.6 阻抗谱测到的信号"></a>2.6 阻抗谱测到的信号</h2><ul>
+<li>Parallel capacitance and conduction(Cp-Gp) (并联电容-电导)</li>
+<li>Parallel capactitance and dissipation factor (Cp-D) (并联电容-损耗因子)</li>
+<li>Series capacitance and resistance(Cs-Rs) (串联电容-电阻)</li>
+<li>Series capacitance and dissipation(Cs-D) （串联电容-损耗因子）</li>
+<li>Resistance and reactance(R-jX) (电阻-电抗)</li>
+<li>Impandance and phase angle(Z-theta) (阻抗-相位角)</li>
+</ul>
+<p><img width="400" height="200" src = "电化学阻抗\cvtest.PNG"></p>
+<hr>
+<h1 id="3-典型电化学过程"><a href="#3-典型电化学过程" class="headerlink" title="3.典型电化学过程"></a>3.典型电化学过程</h1><p><img src = "电化学阻抗\电化学系统.jpg"></p>
+<p>其中包含内阻$R_{\Omega}$,双电层电容$C_D$,法拉第阻抗$Z_f$<br>内阻:电解液和电极的内阻<br>双电层电容：源自电解液中的非活性例子，无化学反应发生，仅改变电荷分布<br>法拉第电阻：源自电解液中的活性离子，有反应发生，有电荷转移</p>
+<p><img src = "电化学阻抗\电路图.jpg"></p>
+<p>法拉第过程分为电荷转移和物质转移分别对应电荷转移电阻和Warburg阻抗</p>
+<p><img src = "D:\ys\Hexo\source\_posts\电化学阻抗\法拉第过程.jpg"></p>
+<p><img src = "电化学阻抗\法拉第过程阻抗.jpg"></p>
+<p>$\sigma$是于物质转移有关的系数</p>
+<p>（1）当w趋近于0（低频）：$ Z<em>{Im} = Z</em>{Re} - R<em>{\Omega}-R</em>{ct}+2\sigma ^2 C_d$</p>
+<p> <img src = "电化学阻抗\1.jpg"></p>
+<p>（2）当w很大时（高频）:变化周期太短，物质来不及转移Warbug阻抗作用消失</p>
+<p><img src = "电化学阻抗\2.jpg"></p>
+<p>则有：</p>
+<p>$(Z<em>{Re}-Z</em>{\Omega}- \frac {R<em>{ct}}{2})^2 +Z</em>{Im}^{2}=(\frac {R{ct}}{2})^2$</p>
+<p><img src = "电化学阻抗\3.jpg"></p>
+<p>低频区物质转移控制，高频区电荷转移控制</p>
+<p><img src = "电化学阻抗\4.jpg"></p>
+<h1 id="4-太阳能电池"><a href="#4-太阳能电池" class="headerlink" title="4.太阳能电池"></a>4.太阳能电池</h1><h2 id="1、经典二极管模型"><a href="#1、经典二极管模型" class="headerlink" title="1、经典二极管模型"></a>1、经典二极管模型</h2><p><img src = "电化学阻抗\solar cell.png"></p>
+<p>$R_s $：串联电阻，传输</p>
+<p>$R_{sh}$:并联电阻，复合</p>
+<p>$C_d$:平行电极板电容</p>
+<p>$(Z<em>{Re}-Z</em>{\Omega}- \frac {R<em>{ct}}{2})^2 +Z</em>{Im}^{2}=(\frac {R{ct}}{2})^2$</p>
+<p><img src = "电化学阻抗\solar cell N.png"></p>
+<h2 id="2、考虑离子迁移"><a href="#2、考虑离子迁移" class="headerlink" title="2、考虑离子迁移"></a>2、考虑离子迁移</h2><p>若考虑离子在界面累计形成电容，则电路模型可以看作为如下图所示：</p>
+<p><img src="电化学阻抗\solarcellioncircle_1.png"></p>
+<p>其中$R<em>s$ 为串联电阻，$R</em>{sh}$ 为并联电阻，$C_d$为几何电容，$C_i$和$R_i$为离子迁移在界面累计的电容和电阻</p>
+<p>通过以上电路可推导得到</p>
+<script type="math/tex; mode=display">
+Z_{re} = R_s + \frac{R_{sh}}{(1+\omega C_d)^2 }+\frac{R_i}{(1+\omega C_i)^2}</script><script type="math/tex; mode=display">
+Z_{im}=\frac{(\omega R_{sh}^2C_d)}{1+(\omega R_{sh}C_d)^2}+\frac{(\omega R_i^2C_i)}{1+(\omega R_iC_i)^2}</script><p>当$R<em>s =10$,$R</em>{sh}=30000$,$C_d=10^{-7}$,$R_i=100000$,$C_i=10^{-3}$时，可得到下图</p>
+<p><img src="电化学阻抗/solarcellion_1.png"></p>
+<h1 id="3-纯离子迁移"><a href="#3-纯离子迁移" class="headerlink" title="3.纯离子迁移"></a>3.纯离子迁移</h1><p><img src="电化学阻抗\5.PNG"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">激活函数</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-05 19:11:35" itemprop="dateCreated datePublished" datetime="2020-02-05T19:11:35+08:00">2020-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-13 20:40:27" itemprop="dateModified" datetime="2020-02-13T20:40:27+08:00">2020-02-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="从感知机到神经网络"><a href="#从感知机到神经网络" class="headerlink" title="从感知机到神经网络"></a>从感知机到神经网络</h1><p>感知机接收x<sub>1</sub>和x<sub>2</sub>两个输入信号，输出y，可用如下图所示：</p>
+<p><img width=300 src='深度学习-激活函数/感知机公式.PNG'></p>
+<p>其中b为偏置，用于控制被激活函数激活的容易程度，w<sub>1</sub>，w<sub>2</sub>表示各个信号的权重参数。<br>用于控制各个信号的重要性。引入新的函数：$y=h(b+w_1x_1+w_2x_2)$<br>h(x)满足：<br><img width=200 src="深度学习-激活函数/hx.PNG"></p>
+<p>输入信号的总和被函数$h(x)$转换，转换之后输出y，$h(x)$也称作激活函数。</p>
+<h1 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h1><h2 id="阶跃函数"><a href="#阶跃函数" class="headerlink" title="阶跃函数"></a>阶跃函数</h2><p>当输入大于0阶跃函数输出1，当输入小于等于0，阶跃函数输出0。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def step_fucntion(x):</span><br><span class="line">    if x &gt; 0:</span><br><span class="line">        return 1</span><br><span class="line">    else:</span><br><span class="line">        return 0</span><br></pre></td></tr></table></figure></p>
+<h2 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h2><p>$y=\frac{1}{1+e^{-x}}$<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def sigmoid(x):</span><br><span class="line">    return 1&#x2F;(1+np.exp(-x))</span><br></pre></td></tr></table></figure><br>在分类问题中，softmax通常使用如下函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def softmax(a):</span><br><span class="line">    #exp_a &#x3D; np.exp(a)</span><br><span class="line">    c &#x3D; np.max(a)       #防止指数计算溢出，通常减去最大值</span><br><span class="line">    exp_a &#x3D; np.exp(a - c) </span><br><span class="line">    sum_exp_a &#x3D; np.sum(exp_a)</span><br><span class="line">    y &#x3D; exp_a &#x2F; sum_exp_a</span><br><span class="line">    return y  </span><br></pre></td></tr></table></figure></p>
+<h2 id="ReLU-函数"><a href="#ReLU-函数" class="headerlink" title="ReLU 函数"></a>ReLU 函数</h2><p>ReLU函数在输入大于0时，直接输出该值，输入小于等于0时，输出0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def relu(x):</span><br><span class="line">    return np.maximum(0,x)</span><br></pre></td></tr></table></figure></p>
+<h2 id="恒等函数"><a href="#恒等函数" class="headerlink" title="恒等函数"></a>恒等函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def identity_function(x):</span><br><span class="line">    return x</span><br></pre></td></tr></table></figure>
+<h1 id="三层神经网络的实现"><a href="#三层神经网络的实现" class="headerlink" title="三层神经网络的实现"></a>三层神经网络的实现</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def init_network():  #初始化网络，确定参数w1b1,w2,b2,w3,b3</span><br><span class="line">    network &#x3D; &#123;&#125;</span><br><span class="line">    network[&#39;W1&#39;] &#x3D; np.array([[0.1, 0.3, 0.5], [0.2, 0.4, 0.6]])</span><br><span class="line">    network[&#39;b1&#39;] &#x3D; np.array([0.1, 0.2, 0.3])</span><br><span class="line">    network[&#39;W2&#39;] &#x3D; np.array([[0.1, 0.4], [0.2, 0.5], [0.3, 0.6]])</span><br><span class="line">    network[&#39;b2&#39;] &#x3D; np.array([0.1, 0.2])</span><br><span class="line">    network[&#39;W3&#39;] &#x3D; np.array([[0.1, 0.3], [0.2, 0.4]])</span><br><span class="line">    network[&#39;b3&#39;] &#x3D; np.array([0.1, 0.2])</span><br><span class="line">    return network</span><br><span class="line">def forward(network, x): #正向传播网络</span><br><span class="line">    W1, W2, W3 &#x3D; network[&#39;W1&#39;], network[&#39;W2&#39;], network[&#39;W3&#39;]</span><br><span class="line">    b1, b2, b3 &#x3D; network[&#39;b1&#39;], network[&#39;b2&#39;], network[&#39;b3&#39;]</span><br><span class="line">    a1 &#x3D; np.dot(x, W1) + b1</span><br><span class="line">    z1 &#x3D; sigmoid(a1)</span><br><span class="line">    a2 &#x3D; np.dot(z1, W2) + b2</span><br><span class="line">    z2 &#x3D; sigmoid(a2)</span><br><span class="line">    a3 &#x3D; np.dot(z2, W3) + b3</span><br><span class="line">    y &#x3D; identity_function(a3)</span><br><span class="line">    return y</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E9%97%A8/" class="post-title-link" itemprop="url">门</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-04 20:28:03" itemprop="dateCreated datePublished" datetime="2020-02-04T20:28:03+08:00">2020-02-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-14 16:48:27" itemprop="dateModified" datetime="2020-02-14T16:48:27+08:00">2020-02-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>首先导入numpy库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br></pre></td></tr></table></figure></p>
+<h1 id="或门"><a href="#或门" class="headerlink" title="或门"></a>或门</h1><p>当x<sub>1</sub>或x<sub>2</sub>输入1时，输出1</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">x<sub>1</sub></th>
+<th style="text-align:left">x<sub>2</sub></th>
+<th style="text-align:left">y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def OR(x1, x2):</span><br><span class="line">    x &#x3D; np.array([x1, x2])</span><br><span class="line">    w &#x3D; np.array([0.5, 0.5])</span><br><span class="line">    b &#x3D; -0.2</span><br><span class="line">    tmp &#x3D; np.sum(w * x) + b</span><br><span class="line">    if tmp &lt;&#x3D; 0:</span><br><span class="line">        return 0</span><br><span class="line">    else:</span><br><span class="line">        return 1</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h1 id="与门"><a href="#与门" class="headerlink" title="与门"></a>与门</h1><p>当x<sub>1</sub>和x<sub>2</sub>均输入1时，输出1</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">x<sub>1</sub></th>
+<th style="text-align:left">x<sub>2</sub></th>
+<th style="text-align:left">y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0 </td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def AND(x1, x2): </span><br><span class="line">    x &#x3D; np.array([x1, x2])</span><br><span class="line">    w &#x3D; np.array([0.5, 0.5])</span><br><span class="line">    b &#x3D; -0.7</span><br><span class="line">    tmp &#x3D; np.sum(w * x) + b</span><br><span class="line">    if tmp &lt;&#x3D; 0:</span><br><span class="line">        return 0</span><br><span class="line">    else:</span><br><span class="line">        return 1</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h1 id="与非门"><a href="#与非门" class="headerlink" title="与非门"></a>与非门</h1><p>输出情况和与门相反，当x<sub>1</sub>和x<sub>2</sub>均输入1时，输出0</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">x<sub>1</sub></th>
+<th style="text-align:left">x<sub>2</sub></th>
+<th style="text-align:left">y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def NAND(x1, x2):</span><br><span class="line">    x &#x3D; np.array([x1, x2])</span><br><span class="line">    w &#x3D; np.array([-0.5, -0.5])</span><br><span class="line">    b &#x3D; 0.7</span><br><span class="line">    tmp &#x3D; np.sum(w * x) + b</span><br><span class="line">    if tmp &lt;&#x3D; 0:</span><br><span class="line">        return 0</span><br><span class="line">    else:</span><br><span class="line">        return 1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h1 id="异或门"><a href="#异或门" class="headerlink" title="异或门"></a>异或门</h1><p>x<sub>1</sub>和x<sub>2</sub>仅一个输入为1时，输出为1</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">x<sub>1</sub></th>
+<th style="text-align:left">x<sub>2</sub></th>
+<th style="text-align:left">y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def XOR(x1, x2):</span><br><span class="line">    s1 &#x3D; NAND(x1, x2)</span><br><span class="line">    s2 &#x3D; OR(x1, x2)</span><br><span class="line">    y &#x3D; AND(s1, s2)</span><br><span class="line">    return y</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%84%9F%E7%9F%A5%E6%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%84%9F%E7%9F%A5%E6%9C%BA/" class="post-title-link" itemprop="url">感知机</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-03 21:02:30" itemprop="dateCreated datePublished" datetime="2020-02-03T21:02:30+08:00">2020-02-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-18 22:00:05" itemprop="dateModified" datetime="2020-03-18T22:00:05+08:00">2020-03-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>感知机接受多个输入信号，输出一个信号。如下图所x<sub>1</sub>,x<sub>2</sub>输入信号，y是输出信号，w<sub>1</sub>、w<sub>2</sub>是权重。圆圈为神经节点，输入信号被送往神经元，会被分别乘以固定的权重，神经元会计算传送过来的信号的总和，只有当这个总和超过某个界限值时，才会输出1.也称为“神经元被激活”，界限值也称为阈值，用θ表示。<br><img width=300 height=200 src="深度学习-感知机/感知机1.PNG"></p>
+<p>用数学形式描述感知机，如下图所示：</p>
+<p><img width=200 height= 200 src="深度学习-感知机/感知机2.PNG"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
 
   
 
@@ -468,7 +1495,7 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+          <a href="/">
         
           <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
