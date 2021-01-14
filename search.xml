@@ -556,7 +556,7 @@ $W \leftarrow W-\eta \frac {\partial L}{\partial W}$
       </categories>
   </entry>
   <entry>
-    <title></title>
+    <title>常用公式</title>
     <url>/2020/01/11/%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F/</url>
     <content><![CDATA[<p>热导纳谱计算公式：</p>
 <script type="math/tex; mode=display">
