@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2020/02/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/深度学习-手写数字识别/mnist.PNG">
 <meta property="article:published_time" content="2020-02-14T09:38:10.000Z">
-<meta property="article:modified_time" content="2020-03-18T14:02:05.407Z">
+<meta property="article:modified_time" content="2021-01-15T07:06:17.700Z">
 <meta property="article:author" content="Yuan Shuai">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2020/02/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/深度学习-手写数字识别/mnist.PNG">
@@ -185,7 +185,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-18 22:02:05" itemprop="dateModified" datetime="2020-03-18T22:02:05+08:00">2020-03-18</time>
+                <time title="修改时间：2021-01-15 15:06:17" itemprop="dateModified" datetime="2021-01-15T15:06:17+08:00">2021-01-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -209,7 +209,7 @@
 
       
         <h1 id="MNIST数据集"><a href="#MNIST数据集" class="headerlink" title="MNIST数据集"></a>MNIST数据集</h1><p>MNIST是机器学习领域最有名的数据集之一，被应用于从简单的实验到发表的论文研究等各种场合。实际上，在阅读图像识别或机器学习的论文时，MNIST数据集经常作为实验用的数据出现。MNIST数据集是由0 到9 的数字图像构成的。训练图像有6 万张，测试图像有1万张，这些图像可以用于学习和推理。MNIST数据集的一般使用方法是，先用训练图像进行学习，再用学习到的模型度量能在多大程度上对测试图像进行正确的分类。</p>
-<p><img height="100" width="200" src="深度学习-手写数字识别\mnist.PNG"></p>
+<p><img src="深度学习-手写数字识别\mnist.PNG"></p>
 <p>MNIST的图像数据是28像素×28像素的灰度图像，各个像素取值在0到255之间，每个图像数据都相应的标有”7” “2”等标签。</p>
 <h1 id="MNIST数据预处理处理"><a href="#MNIST数据预处理处理" class="headerlink" title="MNIST数据预处理处理"></a>MNIST数据预处理处理</h1><h2 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h2><p>此处通过keras导入数据</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from keras.datesets import mnist</span><br><span class="line"></span><br><span class="line">(x_train,t_train),(x_test,t_test)&#x3D;mnist.load_data()</span><br></pre></td></tr></table></figure>
