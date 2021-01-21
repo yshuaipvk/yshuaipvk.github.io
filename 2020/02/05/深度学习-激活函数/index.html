@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="从感知机到神经网络感知机接收x1和x2两个输入信号，输出y，可用如下图所示：  其中b为偏置，用于控制被激活函数激活的容易程度，w1，w2表示各个信号的权重参数。用于控制各个信号的重要性。引入新的函数：$y&#x3D;h(b+w_1x_1+w_2x_2)$h(x)满足： 输入信号的总和被函数$h(x)$转换，转换之后输出y，$h(x)$也称作激活函数。 激活函数阶跃函数当输入大于0阶跃函数输出1，当输入小于">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2020/02/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/深度学习-激活函数/感知机公式.PNG">
-<meta property="og:image" content="http://example.com/2020/02/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/深度学习-激活函数/hx.PNG">
+<meta property="og:image" content="http://example.com/2020/02/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/感知机公式.PNG">
+<meta property="og:image" content="http://example.com/2020/02/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/hx.PNG">
 <meta property="article:published_time" content="2020-02-05T11:11:35.000Z">
 <meta property="article:modified_time" content="2020-02-13T12:40:27.397Z">
 <meta property="article:author" content="Yuan Shuai">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/02/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/深度学习-激活函数/感知机公式.PNG">
+<meta name="twitter:image" content="http://example.com/2020/02/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/感知机公式.PNG">
 
 <link rel="canonical" href="http://example.com/2020/02/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/">
 
@@ -210,8 +210,8 @@
 
       
         <h1 id="从感知机到神经网络"><a href="#从感知机到神经网络" class="headerlink" title="从感知机到神经网络"></a>从感知机到神经网络</h1><p>感知机接收x<sub>1</sub>和x<sub>2</sub>两个输入信号，输出y，可用如下图所示：</p>
-<p><img width=300 src='深度学习-激活函数/感知机公式.PNG'></p>
-<p>其中b为偏置，用于控制被激活函数激活的容易程度，w<sub>1</sub>，w<sub>2</sub>表示各个信号的权重参数。<br>用于控制各个信号的重要性。引入新的函数：$y=h(b+w_1x_1+w_2x_2)$<br>h(x)满足：<br><img width=200 src="深度学习-激活函数/hx.PNG"></p>
+<p><img width="300" src="/2020/02/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/感知机公式.PNG"></p>
+<p>其中b为偏置，用于控制被激活函数激活的容易程度，w<sub>1</sub>，w<sub>2</sub>表示各个信号的权重参数。<br>用于控制各个信号的重要性。引入新的函数：$y=h(b+w_1x_1+w_2x_2)$<br>h(x)满足：<br><img width="200" src="/2020/02/05/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/hx.PNG"></p>
 <p>输入信号的总和被函数$h(x)$转换，转换之后输出y，$h(x)$也称作激活函数。</p>
 <h1 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h1><h2 id="阶跃函数"><a href="#阶跃函数" class="headerlink" title="阶跃函数"></a>阶跃函数</h2><p>当输入大于0阶跃函数输出1，当输入小于等于0，阶跃函数输出0。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def step_fucntion(x):</span><br><span class="line">    if x &gt; 0:</span><br><span class="line">        return 1</span><br><span class="line">    else:</span><br><span class="line">        return 0</span><br></pre></td></tr></table></figure></p>
 <h2 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h2><p>$y=\frac{1}{1+e^{-x}}$<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def sigmoid(x):</span><br><span class="line">    return 1&#x2F;(1+np.exp(-x))</span><br></pre></td></tr></table></figure><br>在分类问题中，softmax通常使用如下函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def softmax(a):</span><br><span class="line">    #exp_a &#x3D; np.exp(a)</span><br><span class="line">    c &#x3D; np.max(a)       #防止指数计算溢出，通常减去最大值</span><br><span class="line">    exp_a &#x3D; np.exp(a - c) </span><br><span class="line">    sum_exp_a &#x3D; np.sum(exp_a)</span><br><span class="line">    y &#x3D; exp_a &#x2F; sum_exp_a</span><br><span class="line">    return y  </span><br></pre></td></tr></table></figure></p>

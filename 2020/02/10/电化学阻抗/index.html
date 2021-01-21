@@ -27,23 +27,34 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1.电化学阻抗的含义给电化学系统输入一个扰动函数X，它就会输出一个响应信号Y。用来描述扰动与响应之间关系的函数，称为传输函数$G(\omega)$。 可用如下公式描述：  Y&#x3D;G(\omega)X\rightarrow G(\omega)&#x3D;\frac{Y}{X}如果X为角频率为$\omega$的正弦电流信号，Y为正弦电势信号，此时$G(\omega)$称为阻抗(impedance)，用Z表示。如果">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学阻抗/sinx.png">
-<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学阻抗/resistance.png">
-<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学阻抗/r_N.png">
-<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学阻抗/capacitance.png">
-<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学阻抗/c_N.png">
-<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学阻抗/randc.png">
-<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学阻抗/randc_N.png">
-<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学阻抗/rorc.png">
-<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学阻抗/rorc_N.png">
-<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学阻抗/solarcellioncircle_1.png">
-<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学阻抗/solarcellion_1.png">
-<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学阻抗/5.PNG">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/sinx.png">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/resistance.png">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/r_N.png">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/capacitance.png">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/c_N.png">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/randc.png">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/randc_N.png">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/rorc.png">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/rorc_N.png">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/cvtest.PNG">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学系统.jpg">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电路图.jpg">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/ys/Hexo/source/_posts/电化学阻抗/法拉第过程.jpg">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/法拉第过程阻抗.jpg">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/1.jpg">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/2.jpg">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/3.jpg">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/4.jpg">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/solar%20cell.png">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/solar%20cell%20N.png">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/solarcellioncircle_1.png">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/solarcellion_1.png">
+<meta property="og:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/5.PNG">
 <meta property="article:published_time" content="2020-02-10T11:51:54.000Z">
 <meta property="article:modified_time" content="2021-01-11T07:00:51.540Z">
 <meta property="article:author" content="Yuan Shuai">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学阻抗/sinx.png">
+<meta name="twitter:image" content="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/sinx.png">
 
 <link rel="canonical" href="http://example.com/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/">
 
@@ -226,7 +237,7 @@ Y=G(\omega)X\rightarrow G(\omega)=\frac{Y}{X}</script><p>如果X为角频率为$
 <h1 id="2-简单电路"><a href="#2-简单电路" class="headerlink" title="2.简单电路"></a>2.简单电路</h1><p>以给正弦电势信号为例：<br>给定的为正弦电势信号 $e = Esin\omega t$</p>
 <p>得到的为正弦电流信号 $i = Isin(\omega t+\phi)$</p>
 <p>在阻抗谱中，我们得到的最原始的数据为正弦电流信号，具体来说是电流信号的幅值和相位</p>
-<p>如下图所示：<br><img src="电化学阻抗\sinx.png"></p>
+<p>如下图所示：<br><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/sinx.png"></p>
 <h2 id="2-1原始数据的处理："><a href="#2-1原始数据的处理：" class="headerlink" title="2.1原始数据的处理："></a>2.1原始数据的处理：</h2><script type="math/tex; mode=display">
 Z = \frac {e}{i}= \frac {Esin\omega t}{Isin(\omega t+\phi)}</script><script type="math/tex; mode=display">
 Z = Z_0\frac{sin\omega t}{sin(\omega t +\phi)}=Z_0e^{-i\phi}=Z_0(cos\phi-isin\phi)</script><script type="math/tex; mode=display">
@@ -234,15 +245,15 @@ Z=Z_0cos\phi-iZ_0 sin\phi=Z_{re}-iZ_{im}</script><ul>
 <li>通常Nyquist图中x轴为实部，x轴为虚部的相反数</li>
 </ul>
 <hr>
-<h2 id="2-2-电阻"><a href="#2-2-电阻" class="headerlink" title="2.2 电阻"></a>2.2 电阻</h2><p><img  src="电化学阻抗\resistance.png"></p>
+<h2 id="2-2-电阻"><a href="#2-2-电阻" class="headerlink" title="2.2 电阻"></a>2.2 电阻</h2><p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/resistance.png"></p>
 <p>对于纯电阻 $\phi = 0 $<br>根据欧姆定律:<br>$e = iR$    $\Longrightarrow$   $i = \frac{E}{R}sin(\omega t)$</p>
 <p>写成复数：$Z_C = R$</p>
 <p>实部：${Z}’_R = R $</p>
 <p>虚部：${Z}”_R = 0 $</p>
 <p>在Nyquist图上为横轴上一个点</p>
-<p><img src="电化学阻抗\r_N.png"></p>
+<p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/r_N.png"></p>
 <hr>
-<h2 id="2-3-电容"><a href="#2-3-电容" class="headerlink" title="2.3 电容"></a>2.3 电容</h2><p><img  src="电化学阻抗\capacitance.png"></p>
+<h2 id="2-3-电容"><a href="#2-3-电容" class="headerlink" title="2.3 电容"></a>2.3 电容</h2><p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/capacitance.png"></p>
 <p>对于电容 $\phi = \frac {\pi}{2}$</p>
 <p>$e=Esin\omega t$</p>
 <p>$i=\frac {dQ}{dt}= \frac{d(CU)}{dt}=C \frac{d}{dt}(Esin \omega t)<br>= E \omega C cos \omega t = E \omega C sin(\omega t +\frac {\pi}{2})$</p>
@@ -252,7 +263,7 @@ Z=Z_0cos\phi-iZ_0 sin\phi=Z_{re}-iZ_{im}</script><ul>
 <p>实部：${Z}’_C = 0 $</p>
 <p>虚部：${Z}”_C = -\frac {1}{\omega C}$</p>
 <p>Nyquist图上为与纵轴重合的一条直线</p>
-<p><img  src="电化学阻抗\c_N.png"></p>
+<p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/c_N.png"></p>
 <hr>
 <h2 id="2-4-电感"><a href="#2-4-电感" class="headerlink" title="2.4 电感"></a>2.4 电感</h2><p>$i= Isin \omega t$</p>
 <p>$e_L=-L \frac {dI}{dt}=-L \frac {d}{dt}(Isin \omega t) =<br>-I \omega t sin(\omega t +\frac {\pi}{2})$<br>$U_L=-e_L=Isin(\omega t+ \frac {\pi}{2})$</p>
@@ -261,15 +272,15 @@ Z=Z_0cos\phi-iZ_0 sin\phi=Z_{re}-iZ_{im}</script><ul>
 <li>Nyquist中上为与纵轴负轴重合的一条直线</li>
 </ul>
 <hr>
-<h2 id="2-5电阻R和电容C串联"><a href="#2-5电阻R和电容C串联" class="headerlink" title="2.5电阻R和电容C串联"></a>2.5电阻R和电容C串联</h2><p><img  src="电化学阻抗\randc.png"></p>
+<h2 id="2-5电阻R和电容C串联"><a href="#2-5电阻R和电容C串联" class="headerlink" title="2.5电阻R和电容C串联"></a>2.5电阻R和电容C串联</h2><p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/randc.png"></p>
 <p>串联电阻的阻抗是各串联元件阻抗之和：</p>
 <p>$Z = Z_R + Z_C = R - \frac {j}{\omega C}$</p>
 <p>实部：${Z}’ = R$</p>
 <p>虚部：${Z}” = \frac {1}{\omega C}$</p>
 <p>Nyquist图上为与横轴交于R与纵轴平行的一条直线</p>
-<p><img width = 200 height=200 src="电化学阻抗\randc_N.png"></p>
+<p><img width="200" height="200" src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/randc_N.png"></p>
 <hr>
-<h2 id="2-5-电阻R和电容C并联的电路"><a href="#2-5-电阻R和电容C并联的电路" class="headerlink" title="2.5 电阻R和电容C并联的电路"></a>2.5 电阻R和电容C并联的电路</h2><p><img  src="电化学阻抗\rorc.png"></p>
+<h2 id="2-5-电阻R和电容C并联的电路"><a href="#2-5-电阻R和电容C并联的电路" class="headerlink" title="2.5 电阻R和电容C并联的电路"></a>2.5 电阻R和电容C并联的电路</h2><p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/rorc.png"></p>
 <p>并联电路对阻抗的倒数是各并联元件阻抗倒数之和</p>
 <p>$\frac{1}{Z} = \frac {1}{Z_R}+\frac{1}{Z_C}=\frac{1}{R}+j\omega C$</p>
 <p>$Z = \frac{R}{1+(\omega RC)^2}-j\frac{\omega R^2C}{1+(\omega RC)^2}$</p>
@@ -277,7 +288,7 @@ Z=Z_0cos\phi-iZ_0 sin\phi=Z_{re}-iZ_{im}</script><ul>
 <p>虚部：${Z}”=- \frac{\omega R^2 C}{1+(\omega RC)^2}$</p>
 <p>消去$\omega$ ,整理得：$({Z}’ - \frac{R}{2})^2 + {Z}”^2 = (\frac {R}{2})^2$</p>
 <p>在Nyquist图中为圆心为(R/2,0),半径为R/2的圆</p>
-<p><img src="电化学阻抗\rorc_N.png"></p>
+<p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/rorc_N.png"></p>
 <h2 id="2-6-阻抗谱测到的信号"><a href="#2-6-阻抗谱测到的信号" class="headerlink" title="2.6 阻抗谱测到的信号"></a>2.6 阻抗谱测到的信号</h2><ul>
 <li>Parallel capacitance and conduction(Cp-Gp) (并联电容-电导)</li>
 <li>Parallel capactitance and dissipation factor (Cp-D) (并联电容-损耗因子)</li>
@@ -286,39 +297,39 @@ Z=Z_0cos\phi-iZ_0 sin\phi=Z_{re}-iZ_{im}</script><ul>
 <li>Resistance and reactance(R-jX) (电阻-电抗)</li>
 <li>Impandance and phase angle(Z-theta) (阻抗-相位角)</li>
 </ul>
-<p><img width="400" height="200" src = "电化学阻抗\cvtest.PNG"></p>
+<p><img width="400" height="200" src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/cvtest.PNG"></p>
 <hr>
-<h1 id="3-典型电化学过程"><a href="#3-典型电化学过程" class="headerlink" title="3.典型电化学过程"></a>3.典型电化学过程</h1><p><img src = "电化学阻抗\电化学系统.jpg"></p>
+<h1 id="3-典型电化学过程"><a href="#3-典型电化学过程" class="headerlink" title="3.典型电化学过程"></a>3.典型电化学过程</h1><p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电化学系统.jpg"></p>
 <p>其中包含内阻$R_{\Omega}$,双电层电容$C_D$,法拉第阻抗$Z_f$<br>内阻:电解液和电极的内阻<br>双电层电容：源自电解液中的非活性例子，无化学反应发生，仅改变电荷分布<br>法拉第电阻：源自电解液中的活性离子，有反应发生，有电荷转移</p>
-<p><img src = "电化学阻抗\电路图.jpg"></p>
+<p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/电路图.jpg"></p>
 <p>法拉第过程分为电荷转移和物质转移分别对应电荷转移电阻和Warburg阻抗</p>
-<p><img src = "D:\ys\Hexo\source\_posts\电化学阻抗\法拉第过程.jpg"></p>
-<p><img src = "电化学阻抗\法拉第过程阻抗.jpg"></p>
+<p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/ys\Hexo\source\_posts\电化学阻抗\法拉第过程.jpg"></p>
+<p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/法拉第过程阻抗.jpg"></p>
 <p>$\sigma$是于物质转移有关的系数</p>
 <p>（1）当w趋近于0（低频）：$ Z<em>{Im} = Z</em>{Re} - R<em>{\Omega}-R</em>{ct}+2\sigma ^2 C_d$</p>
-<p> <img src = "电化学阻抗\1.jpg"></p>
+<p> <img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/1.jpg"></p>
 <p>（2）当w很大时（高频）:变化周期太短，物质来不及转移Warbug阻抗作用消失</p>
-<p><img src = "电化学阻抗\2.jpg"></p>
+<p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/2.jpg"></p>
 <p>则有：</p>
 <p>$(Z<em>{Re}-Z</em>{\Omega}- \frac {R<em>{ct}}{2})^2 +Z</em>{Im}^{2}=(\frac {R{ct}}{2})^2$</p>
-<p><img src = "电化学阻抗\3.jpg"></p>
+<p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/3.jpg"></p>
 <p>低频区物质转移控制，高频区电荷转移控制</p>
-<p><img src = "电化学阻抗\4.jpg"></p>
-<h1 id="4-太阳能电池"><a href="#4-太阳能电池" class="headerlink" title="4.太阳能电池"></a>4.太阳能电池</h1><h2 id="1、经典二极管模型"><a href="#1、经典二极管模型" class="headerlink" title="1、经典二极管模型"></a>1、经典二极管模型</h2><p><img src = "电化学阻抗\solar cell.png"></p>
+<p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/4.jpg"></p>
+<h1 id="4-太阳能电池"><a href="#4-太阳能电池" class="headerlink" title="4.太阳能电池"></a>4.太阳能电池</h1><h2 id="1、经典二极管模型"><a href="#1、经典二极管模型" class="headerlink" title="1、经典二极管模型"></a>1、经典二极管模型</h2><p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/solar cell.png"></p>
 <p>$R_s $：串联电阻，传输</p>
 <p>$R_{sh}$:并联电阻，复合</p>
 <p>$C_d$:平行电极板电容</p>
 <p>$(Z<em>{Re}-Z</em>{\Omega}- \frac {R<em>{ct}}{2})^2 +Z</em>{Im}^{2}=(\frac {R{ct}}{2})^2$</p>
-<p><img src = "电化学阻抗\solar cell N.png"></p>
+<p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/solar cell N.png"></p>
 <h2 id="2、考虑离子迁移"><a href="#2、考虑离子迁移" class="headerlink" title="2、考虑离子迁移"></a>2、考虑离子迁移</h2><p>若考虑离子在界面累计形成电容，则电路模型可以看作为如下图所示：</p>
-<p><img src="电化学阻抗\solarcellioncircle_1.png"></p>
+<p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/solarcellioncircle_1.png"></p>
 <p>其中$R<em>s$ 为串联电阻，$R</em>{sh}$ 为并联电阻，$C_d$为几何电容，$C_i$和$R_i$为离子迁移在界面累计的电容和电阻</p>
 <p>通过以上电路可推导得到</p>
 <script type="math/tex; mode=display">
 Z_{re} = R_s + \frac{R_{sh}}{(1+\omega C_d)^2 }+\frac{R_i}{(1+\omega C_i)^2}</script><script type="math/tex; mode=display">
 Z_{im}=\frac{(\omega R_{sh}^2C_d)}{1+(\omega R_{sh}C_d)^2}+\frac{(\omega R_i^2C_i)}{1+(\omega R_iC_i)^2}</script><p>当$R<em>s =10$,$R</em>{sh}=30000$,$C_d=10^{-7}$,$R_i=100000$,$C_i=10^{-3}$时，可得到下图</p>
-<p><img src="电化学阻抗/solarcellion_1.png"></p>
-<h1 id="3-纯离子迁移"><a href="#3-纯离子迁移" class="headerlink" title="3.纯离子迁移"></a>3.纯离子迁移</h1><p><img src="电化学阻抗\5.PNG"></p>
+<p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/solarcellion_1.png"></p>
+<h1 id="3-纯离子迁移"><a href="#3-纯离子迁移" class="headerlink" title="3.纯离子迁移"></a>3.纯离子迁移</h1><p><img src="/2020/02/10/%E7%94%B5%E5%8C%96%E5%AD%A6%E9%98%BB%E6%8A%97/5.PNG"></p>
 
     </div>
 

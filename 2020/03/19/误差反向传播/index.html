@@ -27,12 +27,19 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;通过数值微分计算神经网络的权重参数的梯度，虽然简单，也容易实现，但是在计算上比较费时间；误差反向传播法一种能高效计算权重参数的梯度的办法。 1.计算图问题1：苹果单价100，数量2，消费税10%，计算支付金额：  如上图所示，苹果单价100流入到“x2”节点，变成200，然后传递给下一个节点；200流向“x1.1”节点，变成220；最终支付金额为220.  问题2：苹果单价">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/误差反向传播/3.PNG">
+<meta property="og:image" content="http://example.com/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/1.PNG">
+<meta property="og:image" content="http://example.com/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/2.PNG">
+<meta property="og:image" content="http://example.com/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/3.PNG">
+<meta property="og:image" content="http://example.com/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/4.PNG">
+<meta property="og:image" content="http://example.com/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/5.PNG">
+<meta property="og:image" content="http://example.com/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/6.PNG">
+<meta property="og:image" content="http://example.com/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/7.PNG">
+<meta property="og:image" content="http://example.com/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/8.PNG">
 <meta property="article:published_time" content="2020-03-19T09:25:36.000Z">
 <meta property="article:modified_time" content="2020-09-22T13:06:49.420Z">
 <meta property="article:author" content="Yuan Shuai">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/误差反向传播/3.PNG">
+<meta name="twitter:image" content="http://example.com/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/1.PNG">
 
 <link rel="canonical" href="http://example.com/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/">
 
@@ -210,13 +217,13 @@
       
         <p>&emsp;&emsp;通过数值微分计算神经网络的权重参数的梯度，虽然简单，也容易实现，但是在计算上比较费时间；误差反向传播法一种能高效计算权重参数的梯度的办法。</p>
 <h1 id="1-计算图"><a href="#1-计算图" class="headerlink" title="1.计算图"></a>1.计算图</h1><p>问题1：苹果单价100，数量2，消费税10%，计算支付金额：</p>
-<p><img src = "误差反向传播\1.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/1.PNG"></p>
 <p>如上图所示，苹果单价100流入到“x2”节点，变成200，然后传递给下一个节点；200流向“x1.1”节点，变成220；最终支付金额为220.</p>
-<p><img src ="误差反向传播\2.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/2.PNG"></p>
 <p>问题2：苹果单价100，橘子单价150，2个苹果，3个橘子，消费税10%，计算支付金额：</p>
-<p><img src="误差反向传播\3.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/3.PNG"></p>
 <p>从左向右进行的计算称为正方向上的传播，即正向传播，从右向左的计算称为反向传播。“支付金额关于苹果价格的倒数”的值可以通过计算图的反向传播求出来。如下图所示：</p>
-<p><img src ="误差反向传播\4.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/4.PNG"></p>
 <p>反向传播从右向左传递倒数值（$1 \rightarrow 1.1 \rightarrow 2.2$）,由此可知“支付金额关于苹果的价格的导数”的值是2.2。即苹果价格上涨1，最终支付金额会增加2.2。</p>
 <h1 id="2-链式法则"><a href="#2-链式法则" class="headerlink" title="2.链式法则"></a>2.链式法则</h1><p>链式法则是关于复合函数导数的性质：</p>
 <blockquote>
@@ -236,8 +243,8 @@ $\frac {\partial z}{\partial x}= 2t·1=2(x+y)$
 </center>
 
 <p>链式法则计算图如下所示：</p>
-<p><img src ="误差反向传播\5.PNG"></p>
-<p><img src = "误差反向传播\6.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/5.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/6.PNG"></p>
 <h1 id="3-反向传播"><a href="#3-反向传播" class="headerlink" title="3.反向传播"></a>3.反向传播</h1><h2 id="3-1-加法节点反向传播"><a href="#3-1-加法节点反向传播" class="headerlink" title="3.1 加法节点反向传播"></a>3.1 加法节点反向传播</h2><p>以$z=x+y$为例:</p>
 <center>
 $\frac {\partial z}{\partial x}=1$  ;
@@ -246,7 +253,7 @@ $\frac {\partial z}{\partial y}=1$
 </center>
 
 <p>因此，加法节点反向传播只乘以1，输入的值原封不动的流向下一个节点</p>
-<p><img src = "误差反向传播\7.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/7.PNG"></p>
 <h2 id="3-2-乘法节点的反向传播"><a href="#3-2-乘法节点的反向传播" class="headerlink" title="3.2 乘法节点的反向传播"></a>3.2 乘法节点的反向传播</h2><p>以$z=xy$为例:</p>
 <center>
 $\frac {\partial z}{\partial x}=y$  ;
@@ -255,7 +262,7 @@ $\frac {\partial z}{\partial y}=x$
 </center>
 
 <p>乘法的反向传播将上游的值乘以传播时出入信号的翻转值。<br>对于$ 10 \times 5=50$,反向传播时，如果从上游传来1.3，则$1.3 \times 5 = 6.5$，$1.3 \times 10 = 13$</p>
-<p><img src = "误差反向传播\8.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/8.PNG"></p>
 <h1 id="4-简单层的实现"><a href="#4-简单层的实现" class="headerlink" title="4.简单层的实现"></a>4.简单层的实现</h1><h2 id="4-1乘法层"><a href="#4-1乘法层" class="headerlink" title="4.1乘法层"></a>4.1乘法层</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class MulLayer:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.x = None</span><br><span class="line">        self.y = None</span><br><span class="line">          </span><br><span class="line"></span><br><span class="line">    def forward(self,x,y)</span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y</span><br><span class="line">        out = x * y</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    def backward(self,dout):</span><br><span class="line">        dx = dout * self.y </span><br><span class="line">        dy = dout *self.x</span><br><span class="line">        <span class="built_in">return</span> dx, dy</span><br></pre></td></tr></table></figure>
 <p>对于苹果单价10，数量2，消费税1.1则有：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">apple = 100</span><br><span class="line">apple_num = 2</span><br><span class="line">tax = 1.1</span><br><span class="line"><span class="comment">#layer</span></span><br><span class="line">mul_apple_layer = MulLayer()</span><br><span class="line">mul_tax_layer = MulLayer</span><br><span class="line"><span class="comment">#forward</span></span><br><span class="line">apple_price = mul_apple_layer.forward(apple,apple_num)</span><br><span class="line">price = mul_tax_layer.forward(apple_price,tax)</span><br><span class="line"><span class="built_in">print</span>(price) <span class="comment">#220</span></span><br><span class="line"><span class="comment">#backward</span></span><br><span class="line">dprice = 1</span><br><span class="line">dapple_price,dtax = mul_tax_layer.backward(dparice)</span><br><span class="line">dapple,dapple_num = mul_apple_layer.backward(dapple_price)</span><br><span class="line"><span class="built_in">print</span>(dapple,dapple_num,dtax) <span class="comment">#2.2 110 200</span></span><br></pre></td></tr></table></figure>

@@ -285,13 +285,13 @@ $W \leftarrow W-\eta \frac {\partial L}{\partial W}$
       
           <p>&emsp;&emsp;通过数值微分计算神经网络的权重参数的梯度，虽然简单，也容易实现，但是在计算上比较费时间；误差反向传播法一种能高效计算权重参数的梯度的办法。</p>
 <h1 id="1-计算图"><a href="#1-计算图" class="headerlink" title="1.计算图"></a>1.计算图</h1><p>问题1：苹果单价100，数量2，消费税10%，计算支付金额：</p>
-<p><img src = "误差反向传播\1.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/1.PNG"></p>
 <p>如上图所示，苹果单价100流入到“x2”节点，变成200，然后传递给下一个节点；200流向“x1.1”节点，变成220；最终支付金额为220.</p>
-<p><img src ="误差反向传播\2.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/2.PNG"></p>
 <p>问题2：苹果单价100，橘子单价150，2个苹果，3个橘子，消费税10%，计算支付金额：</p>
-<p><img src="误差反向传播\3.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/3.PNG"></p>
 <p>从左向右进行的计算称为正方向上的传播，即正向传播，从右向左的计算称为反向传播。“支付金额关于苹果价格的倒数”的值可以通过计算图的反向传播求出来。如下图所示：</p>
-<p><img src ="误差反向传播\4.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/4.PNG"></p>
 <p>反向传播从右向左传递倒数值（$1 \rightarrow 1.1 \rightarrow 2.2$）,由此可知“支付金额关于苹果的价格的导数”的值是2.2。即苹果价格上涨1，最终支付金额会增加2.2。</p>
 <h1 id="2-链式法则"><a href="#2-链式法则" class="headerlink" title="2.链式法则"></a>2.链式法则</h1><p>链式法则是关于复合函数导数的性质：</p>
 <blockquote>
@@ -311,8 +311,8 @@ $\frac {\partial z}{\partial x}= 2t·1=2(x+y)$
 </center>
 
 <p>链式法则计算图如下所示：</p>
-<p><img src ="误差反向传播\5.PNG"></p>
-<p><img src = "误差反向传播\6.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/5.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/6.PNG"></p>
 <h1 id="3-反向传播"><a href="#3-反向传播" class="headerlink" title="3.反向传播"></a>3.反向传播</h1><h2 id="3-1-加法节点反向传播"><a href="#3-1-加法节点反向传播" class="headerlink" title="3.1 加法节点反向传播"></a>3.1 加法节点反向传播</h2><p>以$z=x+y$为例:</p>
 <center>
 $\frac {\partial z}{\partial x}=1$  ;
@@ -321,7 +321,7 @@ $\frac {\partial z}{\partial y}=1$
 </center>
 
 <p>因此，加法节点反向传播只乘以1，输入的值原封不动的流向下一个节点</p>
-<p><img src = "误差反向传播\7.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/7.PNG"></p>
 <h2 id="3-2-乘法节点的反向传播"><a href="#3-2-乘法节点的反向传播" class="headerlink" title="3.2 乘法节点的反向传播"></a>3.2 乘法节点的反向传播</h2><p>以$z=xy$为例:</p>
 <center>
 $\frac {\partial z}{\partial x}=y$  ;
@@ -330,7 +330,7 @@ $\frac {\partial z}{\partial y}=x$
 </center>
 
 <p>乘法的反向传播将上游的值乘以传播时出入信号的翻转值。<br>对于$ 10 \times 5=50$,反向传播时，如果从上游传来1.3，则$1.3 \times 5 = 6.5$，$1.3 \times 10 = 13$</p>
-<p><img src = "误差反向传播\8.PNG"></p>
+<p><img src="/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/8.PNG"></p>
 <h1 id="4-简单层的实现"><a href="#4-简单层的实现" class="headerlink" title="4.简单层的实现"></a>4.简单层的实现</h1><h2 id="4-1乘法层"><a href="#4-1乘法层" class="headerlink" title="4.1乘法层"></a>4.1乘法层</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class MulLayer:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.x = None</span><br><span class="line">        self.y = None</span><br><span class="line">          </span><br><span class="line"></span><br><span class="line">    def forward(self,x,y)</span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y</span><br><span class="line">        out = x * y</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    def backward(self,dout):</span><br><span class="line">        dx = dout * self.y </span><br><span class="line">        dy = dout *self.x</span><br><span class="line">        <span class="built_in">return</span> dx, dy</span><br></pre></td></tr></table></figure>
 <p>对于苹果单价10，数量2，消费税1.1则有：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">apple = 100</span><br><span class="line">apple_num = 2</span><br><span class="line">tax = 1.1</span><br><span class="line"><span class="comment">#layer</span></span><br><span class="line">mul_apple_layer = MulLayer()</span><br><span class="line">mul_tax_layer = MulLayer</span><br><span class="line"><span class="comment">#forward</span></span><br><span class="line">apple_price = mul_apple_layer.forward(apple,apple_num)</span><br><span class="line">price = mul_tax_layer.forward(apple_price,tax)</span><br><span class="line"><span class="built_in">print</span>(price) <span class="comment">#220</span></span><br><span class="line"><span class="comment">#backward</span></span><br><span class="line">dprice = 1</span><br><span class="line">dapple_price,dtax = mul_tax_layer.backward(dparice)</span><br><span class="line">dapple,dapple_num = mul_apple_layer.backward(dapple_price)</span><br><span class="line"><span class="built_in">print</span>(dapple,dapple_num,dtax) <span class="comment">#2.2 110 200</span></span><br></pre></td></tr></table></figure>
@@ -646,20 +646,20 @@ $\frac {\partial y}{\partial x} =\begin{cases}
 <h2 id="4-2-简单反射Agent"><a href="#4-2-简单反射Agent" class="headerlink" title="4.2 简单反射Agent"></a>4.2 简单反射Agent</h2><p>&emsp;&emsp;简单反射Agent基于当前的感知行动选择心动，不关注历史。</p>
 <p>真空吸尘器简单反射Agent伪代码程序：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> REFLEX-VACUUM-AGENT([location,status]) returns an action</span><br><span class="line">    <span class="keyword">if</span> status = Dirty <span class="keyword">then</span> <span class="built_in">return</span> Suck</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> location = A <span class="keyword">then</span> <span class="built_in">return</span> Right</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> location = B <span class="keyword">then</span> <span class="built_in">return</span> Left</span><br></pre></td></tr></table></figure>
-<p><img src="人工智能：一种现代方法(二)\simple.PNG"></p>
+<p><img src="/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/simple.PNG"></p>
 <p>简单反射Agent：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fuction SIMPLE-REFLEX-AGENT(pecept) <span class="built_in">return</span> an action</span><br><span class="line">    persistent: relu,a <span class="built_in">set</span> of condition-action rules</span><br><span class="line">    state:INTERPRET-INPUT(percept)</span><br><span class="line">    rule:RULE-MATCH(state,rules)</span><br><span class="line">    action:ACTION</span><br><span class="line">    <span class="built_in">return</span> action</span><br></pre></td></tr></table></figure>
 <h2 id="4-3基于模型的反射Agent"><a href="#4-3基于模型的反射Agent" class="headerlink" title="4.3基于模型的反射Agent"></a>4.3基于模型的反射Agent</h2><p>&emsp;&emsp;处理部分可观测的最有效的途径是让Agent跟踪记录现在看不到的那部分世界。即，Agent应该根据感知历史维持内部状态，从而至少反映出当前状态看不到的信息。</p>
 <blockquote>
 <p>当Agent顺时针转动方向盘的时候，汽车会右转，或者在沿着高速公路向北行驶5分 钟后汽车通常应该离5分钟红前北方大约5英里远。这种关于“世界如何运转”的知识———无论是用简单的布尔电路还是用完备的科学理论实现————都被称为世界模型。使用这种模型的AGent被称为基于模型的Agent。</p>
 </blockquote>
-<p><img src = "人工智能：一种现代方法（二）\2.PNG"></p>
+<p><img src="/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/2.PNG"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> MODEL-BASE-REFLEX-AGENT(percept) returns an action</span><br><span class="line">    persistent:state,the agents current conception of the world state</span><br><span class="line">        model,a description of how the next stste depends on current state and action</span><br><span class="line">        relus,a <span class="built_in">set</span> of condition-action rules</span><br><span class="line">        action,the most recent action,initially none</span><br><span class="line">    state:UPDATE-STATE(state,action,percept,model)</span><br><span class="line">    rule:RULE_MATCH(state,rules)</span><br><span class="line">    action:rule.ACTION</span><br><span class="line">    <span class="built_in">return</span> action</span><br></pre></td></tr></table></figure>
 <h2 id="4-4基于目标的Agent"><a href="#4-4基于目标的Agent" class="headerlink" title="4.4基于目标的Agent"></a>4.4基于目标的Agent</h2><p>&emsp;&emsp;知道当前的环境状态对于决策而言并不够。例如，在路口，出租车可以左转，右转，或者直行。正确的决定要取决于出租车要去哪里，即除了当前状态的描述，Agent还需要目标信息来描述想达到的状态，例如，要达到乘客的目的地。</p>
-<p><img src = "人工智能：一种现代方法（二）\3.PNG"></p>
+<p><img src="/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/3.PNG"></p>
 <h2 id="4-5基于效用的Agent"><a href="#4-5基于效用的Agent" class="headerlink" title="4.5基于效用的Agent"></a>4.5基于效用的Agent</h2><p>&emsp;&emsp;仅靠目标在很多环境中不足以生成高品质的行为。例如，有很多序列可以让出租车到达目的地，但有些更快、更安全、更可靠，或者更便宜。</p>
-<p><img src="人工智能：一种现代方法（二）\4.PNG"></p>
-<h1 id="5-学习Agent"><a href="#5-学习Agent" class="headerlink" title="5.学习Agent"></a>5.学习Agent</h1><p><img src = "人工智能：一种现代方法（二）\5.PNG"></p>
+<p><img src="/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/4.PNG"></p>
+<h1 id="5-学习Agent"><a href="#5-学习Agent" class="headerlink" title="5.学习Agent"></a>5.学习Agent</h1><p><img src="/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/5.PNG"></p>
 
       
     </div>
@@ -926,7 +926,7 @@ I = \frac {dP}{dE}</script></li>
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-14 15:21:23" itemprop="dateModified" datetime="2021-01-14T15:21:23+08:00">2021-01-14</time>
+                <time title="修改时间：2021-01-15 09:04:19" itemprop="dateModified" datetime="2021-01-15T09:04:19+08:00">2021-01-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -962,7 +962,7 @@ J_{ph}=J_{sc}=q\int _{0}^{\infty} QE(E)b_s(E,T_s)dE</script><p>其中，$q=1.6 \
 <script type="math/tex; mode=display">
 J_{dark}(V)=J_0[exp(qV/k_BTa)-1]</script><p>式中，$J_0$是反向饱和电流，$q$为电子电荷量。$k_B$为玻尔兹曼常数，$T_a$是环境温度。</p>
 <p>​    伏安特性曲线中的电流$J$,是光生电流和暗电流的叠加。</p>
-<p><img src="伏安特性曲线\andianliu.PNG"></p>
+<p><img src="/2020/03/02/%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E6%9B%B2%E7%BA%BF/andianliu.PNG"></p>
 <script type="math/tex; mode=display">
 J(V)= J_{sc}-J_{dark}(V)</script><script type="math/tex; mode=display">
 J(V)= J_{sc}-J_0[exp(qV/k_BT_a)-1]</script><p>当电路断开即$J(V)=0$,太阳能电池得到开路电压$V=V<em>{OC}$, 则此时广生电压$V</em>{Ph}满足：</p>
@@ -973,7 +973,7 @@ V_{ph}= V_{oc}=\frac {k_BT_a}{q}ln(\frac {J_{sc}}{J_0}+1)</script><p>由于短�
 R_m = \frac {V_m}{AJ_m}</script><p>填充因子为：</p>
 <script type="math/tex; mode=display">
 FF = \frac {P_m}{J_{sc}V_{oc}} = \frac {J_mV_m}{J_{sc}V_{oc}} = \frac {P(V_m)}{J_{sc}V_{oc}}</script><h1 id="寄生电阻"><a href="#寄生电阻" class="headerlink" title="寄生电阻"></a>寄生电阻</h1><p>串联电阻<br>并联电阻(分流电阻)</p>
-<p><img src="伏安特性曲线\2.PNG"></p>
+<p><img src="/2020/03/02/%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E6%9B%B2%E7%BA%BF/2.PNG"></p>
 <p>&emsp;&emsp;从上图可知：</p>
 <script type="math/tex; mode=display">
 J_{sh} = \frac {V_{sh}}{AR_{sh}}</script><script type="math/tex; mode=display">

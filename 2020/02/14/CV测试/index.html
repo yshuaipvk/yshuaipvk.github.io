@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Measurement functionsThe 4210-CVU can measure these parameter:  Parallel capacitance and conduction(Cp-Gp) (并联电容-电导) Parallel capactitance and dissipation factor (Cp-D) (并联电容-损耗因子) Series capacitance">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2020/02/14/CV%E6%B5%8B%E8%AF%95/CV测试/cvtest.PNG">
-<meta property="og:image" content="http://example.com/2020/02/14/CV%E6%B5%8B%E8%AF%95/CV测试/reversecv.jpg">
+<meta property="og:image" content="http://example.com/2020/02/14/CV%E6%B5%8B%E8%AF%95/cvtest.PNG">
+<meta property="og:image" content="http://example.com/2020/02/14/CV%E6%B5%8B%E8%AF%95/reversecv.jpg">
 <meta property="article:published_time" content="2020-02-14T15:33:44.000Z">
 <meta property="article:modified_time" content="2021-01-11T07:37:30.471Z">
 <meta property="article:author" content="Yuan Shuai">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/02/14/CV%E6%B5%8B%E8%AF%95/CV测试/cvtest.PNG">
+<meta name="twitter:image" content="http://example.com/2020/02/14/CV%E6%B5%8B%E8%AF%95/cvtest.PNG">
 
 <link rel="canonical" href="http://example.com/2020/02/14/CV%E6%B5%8B%E8%AF%95/">
 
@@ -219,7 +219,7 @@
 <li>Impandance and phase angle(Z-theta) (阻抗-相位角)</li>
 </ul>
 <p>The time domain of the AC current and AC voltage must be processed into the frequency domain to<br>produce the phasor form of the DUT impedance.<br>The capacitive impedance (and conductance) are calculated based on the measured AC impedance<br>and phase.</p>
-<p><img width="400" height="200" src="CV测试\cvtest.PNG"></p>
+<p><img width="400" height="200" src="/2020/02/14/CV%E6%B5%8B%E8%AF%95/cvtest.PNG"></p>
 <p>The capacitance is calculated from the capacitive impedance and the test frequency using the<br>formula:</p>
 <script type="math/tex; mode=display">
 C_{DUT} = \frac {I_{DUT}}{2 \pi f V_{AC} }</script><center>
@@ -247,7 +247,7 @@ $L=\frac {X}{2 \pi f}$
 <p>The AC signal output level can be set from 10 mVRMS to 100 mVRMS (1 mVRMS resolution). The<br>output impedance is 100 Ω (typical). The AC voltage measure range is 100 mVRMS.<br>The ranges available to measure current are 1 μA, 30 μA, or 1 mA. With autorange selected, range<br>selection is done automatically.</p>
 <hr>
 <h1 id="C-V-Sweep-for-solar-cells"><a href="#C-V-Sweep-for-solar-cells" class="headerlink" title="C-V Sweep for solar cells"></a>C-V Sweep for solar cells</h1><p>C‑V measurements can be made either forward-biased or reverse-biased. However, when the cell is<br>forward-biased,the applied DC voltage must be limited; otherwise, the conductance may get too high<br>for the capacitance meter to measure. The maximum DC current cannot be greater than 10mA;<br>otherwise, the instrument’s DC voltage source will go into compliance and the DC voltage output will not be at  the desired level.</p>
-<p><img height="300" width="300" src="CV测试\reversecv.jpg"></p>
+<p><img height="300" width="300" src="/2020/02/14/CV%E6%B5%8B%E8%AF%95/reversecv.jpg"></p>
 <h2 id="dropping-density"><a href="#dropping-density" class="headerlink" title="dropping density"></a>dropping density</h2><p>Rather than plotting dC/dV, it is sometimes desirable to view the data as 1/C2 vs. voltage<br>because some parameters are related to the 1/C2 data. For example, the doping density (N) can<br>be derived from the slope of this curve because N is related to the capacitance by:</p>
 <script type="math/tex; mode=display">
 N(a)=\frac {2}{qE_sA_2[d(1/C^2)/dV]}</script><h2 id="Defect-Density-Drive-Level-Capacitance-Profiling-DLCP"><a href="#Defect-Density-Drive-Level-Capacitance-Profiling-DLCP" class="headerlink" title="Defect Density: Drive Level Capacitance Profiling (DLCP)"></a>Defect Density: Drive Level Capacitance Profiling (DLCP)</h2><p>&emsp;&emsp;激励电平电容分析是一种测量光伏器件缺陷态密度(N<sub>DL</sub>)的技术，在DLCP中测试中，<br>施加的交流电(AC)电压时扫描变化(sweep),在电容测试时直流(DC)电电压也随之变化。<br>在传统C-V测试中，交流电电压时固定的，直流电电压时扫描的。<br>&emsp;&emsp;在DLCP中，当AC扫描时，DC自动调整使(AC+DC)保持一致，通过保持施加的总偏<br>压一致，使电荷固定在同一个位置($X_e$),其中$X_e$表示能级为$E_e=E_F-E_V$的位置。$X_e$<br>的位置可以通过改变施加偏压来改变；同时也可以改变交流电频率或者温度来改变能量位置。<br>&emsp;&emsp;缺陷态密度可以用下式表示：</p>
