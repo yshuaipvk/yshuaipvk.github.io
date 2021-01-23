@@ -50,15 +50,15 @@ N_{DL}=\frac {C_{0}^{3}}{2q \epsilon A^2C_1}= \frac {|\rho|}{q}=p+\int^{E_V+E_e}
 <script type="math/tex; mode=display">
 I=I_{ph}-I_0[exp(\frac {q(V+IR_s)}{nKT})-1]-\frac {V+IR_s}{R_sh}</script><p>其中：$I<em>{ph}$为光生电流，$n$为理想因子，$q$为电荷常数，$K$为玻尔兹曼常数，$T$为温度，$R_s$为串联电阻，$R</em>{sh}$为并联电阻，$I$为输出电流，$V$为输出电压，</p>
 <p><img src="/2020/02/17/IVsweep/IVsweep.PNG"></p>
-<p>在短路条件下即$V=0$,此时$I<em>{ph}=I</em>{sc}$,&ensp;$I<em>{sc}$即短路电流。在开路条件下即$I=0$,此时$V=V</em>{oc}$,&ensp;$V_{oc}$即开路电压<br>填充因子:</p>
+<p>在短路条件下即$V=0$,此时$I<em>{ph}=I</em>{sc},I<em>{sc}$即短路电流。在开路条件下即$I=0$,此时$V=V</em>{oc},V_{oc}$即开路电压<br>填充因子:</p>
 <script type="math/tex; mode=display">
 FF=\frac {I_{max}V_{max}}{I_{sc}V_{oc}}</script><h1 id="测量串联电阻"><a href="#测量串联电阻" class="headerlink" title="测量串联电阻"></a>测量串联电阻</h1><p>在光照条件下通过并联电阻的电流远小于光电流，因此可以忽略不计，<br>上式可简化为：</p>
 <script type="math/tex; mode=display">
-I=I_{ph}-I_0[exp(\frac {q(V+IR_s)}{nKT})-1]</script><p>由于$exp(\frac {q(V+IR_s)}{nKT}&gt;&gt;1$故可以进一步简化为：</p>
+I=I_{ph}-I_0[exp(\frac {q(V+IR_s)}{nKT})-1]</script><p>由于$exp(\frac {q(V+IR_s)}{nKT})&gt;&gt;1$故可以进一步简化为：</p>
 <script type="math/tex; mode=display">
 I=I_{ph}-I_0exp(\frac {q(V+IR_s)}{nKT})</script><p>令$\lambda =\frac {q}{nKT}$则：</p>
 <script type="math/tex; mode=display">
-V=\frac {1}{\lambda}ln(\frac {I_{ph}-I}{I_0})-IR_s</script><p>当接近开路时即$I \rightarrow 0$,&ensp;$(I<em>{ph}-I) \rightarrow I</em>{ph}$，电压的表达式为:</p>
+V=\frac {1}{\lambda}ln(\frac {I_{ph}-I}{I_0})-IR_s</script><p>当接近开路时即$I \rightarrow 0,(I<em>{ph}-I) \rightarrow I</em>{ph}$，电压的表达式为:</p>
 <script type="math/tex; mode=display">
 V= \frac {1}{\lambda}ln(\frac {I_{ph}}{I_0})-IR_s</script><p>在开路条件下，电池出输出电压等于开路电压，即$V=V_{oc}$,电池输出电流等于0,则：</p>
 <script type="math/tex; mode=display">
