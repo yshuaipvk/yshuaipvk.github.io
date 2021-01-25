@@ -149,6 +149,97 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/18/%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/18/%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">学习算法的实现</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-18 22:01:26" itemprop="dateCreated datePublished" datetime="2020-03-18T22:01:26+08:00">2020-03-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-19 17:24:08" itemprop="dateModified" datetime="2020-03-19T17:24:08+08:00">2020-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-神经网络学习的步骤"><a href="#1-神经网络学习的步骤" class="headerlink" title="1.神经网络学习的步骤"></a>1.神经网络学习的步骤</h1><h2 id="1-1-mini-patch"><a href="#1-1-mini-patch" class="headerlink" title="1.1 mini-patch"></a>1.1 mini-patch</h2><p>从训练数据中随机选出一部分数据，这部分数据成为mini-batch。学习的目标是减小mini-batch的损失函数的值。</p>
+<h2 id="1-2-计算梯度"><a href="#1-2-计算梯度" class="headerlink" title="1.2 计算梯度"></a>1.2 计算梯度</h2><p>为了减小mini-batch的损失函数的值，需要求出各个权重参数的梯度。梯度表示损失函数的值减小最多的方向。</p>
+<h2 id="1-3-更新参数"><a href="#1-3-更新参数" class="headerlink" title="1.3 更新参数"></a>1.3 更新参数</h2><p>将权重参数沿梯度方向进行微小更新。</p>
+<h2 id="1-4-重复"><a href="#1-4-重复" class="headerlink" title="1.4 重复"></a>1.4 重复</h2><p>重复步骤1、步骤2、步骤3。</p>
+<h1 id="2-两层神经网络的类"><a href="#2-两层神经网络的类" class="headerlink" title="2.两层神经网络的类"></a>2.两层神经网络的类</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class TwoLayerNet:</span><br><span class="line">    def __init__(self,input_size,hidden_size,output_size,</span><br><span class="line">                    weight_init_std=0.01):</span><br><span class="line">        <span class="comment">#初始化权重</span></span><br><span class="line">        self.params=&#123;&#125;</span><br><span class="line">        self.params[<span class="string">&#x27;W1&#x27;</span>]=weight_init_std * \</span><br><span class="line">                            np.random.randn(input_size,hidden_size)</span><br><span class="line">        self.params[<span class="string">&#x27;b1&#x27;</span>] = np.zeros(hidden_size)</span><br><span class="line">        self.params[<span class="string">&#x27;W2&#x27;</span>] = weight_init_std * \</span><br><span class="line">                            np.random.randn(hidden_size,output_size)</span><br><span class="line">        self.params[<span class="string">&#x27;b2&#x27;</span>] = np.zeros(output_size)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    def predict(self,x):</span><br><span class="line">        W1,W2 = self.params[<span class="string">&#x27;W1],self.params[&#x27;</span>W2<span class="string">&#x27;]</span></span><br><span class="line"><span class="string">        b1,b2 = self.params[&#x27;</span>b1],self.params[<span class="string">&#x27;b2&#x27;</span>]</span><br><span class="line">        </span><br><span class="line">        a1 = np.dot(x,W1) + b1</span><br><span class="line">        z1 = sigmoid(a1)</span><br><span class="line">        a2 = np.dot(z1,W2) + b2</span><br><span class="line">        y = softmax(a2)</span><br><span class="line">        <span class="built_in">return</span> y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def loss(self,x,t)</span><br><span class="line">        y = self.predict(x)</span><br><span class="line">        <span class="built_in">return</span> cross_entropy_error(y,t)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    def accuracy(self,x,t)</span><br><span class="line">        y = self.predict(x)</span><br><span class="line">        y = np,argmxa(y,axis = 1)</span><br><span class="line">        t = np,argmax(t,axis = 1)</span><br><span class="line">        </span><br><span class="line">        accuracy = np.sum(y == t)/<span class="built_in">float</span>(x.shape[0])</span><br><span class="line">        <span class="built_in">return</span> accuracy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def numerical_gradient(self,x,t)</span><br><span class="line">        loss_W = lambda W:self.loss(x,t)</span><br><span class="line"></span><br><span class="line">        grads = &#123;&#125;</span><br><span class="line">        grads[<span class="string">&#x27;W1&#x27;</span>] = numerical_gradient(loss_W, self.params[<span class="string">&#x27;W1&#x27;</span>])</span><br><span class="line">        grads[<span class="string">&#x27;b1&#x27;</span>] = numerical_gradient(loss_W, self.params[<span class="string">&#x27;b1&#x27;</span>])</span><br><span class="line">        grads[<span class="string">&#x27;W2&#x27;</span>] = numerical_gradient(loss_W, self.params[<span class="string">&#x27;W2&#x27;</span>])</span><br><span class="line">        grads[<span class="string">&#x27;b2&#x27;</span>] = numerical_gradient(loss_W, self.params[<span class="string">&#x27;b2&#x27;</span>])</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">return</span> grads</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>params：保存神经网络的参数的字典型变量</li>
+<li>grads：保存梯度的字典型变量</li>
+</ul>
+<hr>
+<ul>
+<li><strong>init</strong> :进行初始化</li>
+<li>predict（self, x）:进行识别，参数x是图像数据</li>
+<li>loss(self, x, t):计算损失函数的值，x是图像数据，t是正确的标签</li>
+<li>accuracy(self, x, t): 计算权重参数的精度</li>
+<li>gradient(self, x, t):计算权重参数的梯度</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%EF%BC%9A%E4%B8%80%E7%A7%8D%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -670,86 +761,6 @@ J = J_{sc}-J_0[exp(qV_{sh}/h_BT_a)-1]- \frac {V_{sh}}{AR_{sh}}</script>
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/25/pyqt-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yuan Shuai">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/25/pyqt-3/" class="post-title-link" itemprop="url">PyQt控件</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-25 21:46:18" itemprop="dateCreated datePublished" datetime="2020-02-25T21:46:18+08:00">2020-02-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-26 00:58:55" itemprop="dateModified" datetime="2020-02-26T00:58:55+08:00">2020-02-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PyQt5/" itemprop="url" rel="index"><span itemprop="name">PyQt5</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="QCheckBox"><a href="#QCheckBox" class="headerlink" title="QCheckBox"></a>QCheckBox</h1><p>QCheckBox复选框控件，它有两个状态：打开和关闭。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">from PyQt5.QtWidgets import QWidget, QCheckBox, QApplication</span><br><span class="line">from PyQt5.QtCore import Qt</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">class Example(QWidget):</span><br><span class="line">    </span><br><span class="line">    def __init__(self):</span><br><span class="line">        super().__init__()</span><br><span class="line">        </span><br><span class="line">        self.initUI()</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    def initUI(self):      </span><br><span class="line"> </span><br><span class="line">        cb &#x3D; QCheckBox(&#39;Show title&#39;, self)  #创建复选框控件</span><br><span class="line">        cb.move(20, 20)</span><br><span class="line">        cb.toggle()   #QCheckBox的构造函数</span><br><span class="line">        cb.stateChanged.connect(self.changeTitle)  #将changeTitle方法连接到ststeChanged信号</span><br><span class="line">        </span><br><span class="line">        self.setGeometry(300, 300, 250, 150)</span><br><span class="line">        self.setWindowTitle(&#39;QCheckBox&#39;)</span><br><span class="line">        self.show()</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    def changeTitle(self, state):</span><br><span class="line">      </span><br><span class="line">        if state &#x3D;&#x3D; Qt.Checked:</span><br><span class="line">            self.setWindowTitle(&#39;QCheckBox&#39;)</span><br><span class="line">        else:</span><br><span class="line">            self.setWindowTitle(&#39;&#39;)</span><br><span class="line">            </span><br><span class="line">        </span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    </span><br><span class="line">    app &#x3D; QApplication(sys.argv)</span><br><span class="line">    ex &#x3D; Example()</span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
-<p>最终，勾选复选框时，将显示窗口的标题“QCheckBox”，不勾选是将显示为空白（也可能为“python”）</p>
-<p><img src="/2020/02/25/pyqt-3/checkbox.png"></p>
-<h1 id="开关按钮-Toggle-button"><a href="#开关按钮-Toggle-button" class="headerlink" title="开关按钮 Toggle button"></a>开关按钮 Toggle button</h1><p>ToggleButton是QpushButton的特殊模式，有按下和未按下两种模式。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">from PyQt5.QtGui import QColor</span><br><span class="line">from PyQt5.QtWidgets import QFrame</span><br><span class="line"></span><br><span class="line"> def initUI(self):      </span><br><span class="line"> </span><br><span class="line">        self.col &#x3D; QColor(0, 0, 0)       </span><br><span class="line"> </span><br><span class="line">        redb &#x3D; QPushButton(&#39;Red&#39;, self)</span><br><span class="line">        redb.setCheckable(True)</span><br><span class="line">        redb.move(10, 10)</span><br><span class="line"> </span><br><span class="line">        redb.clicked[bool].connect(self.setColor)</span><br><span class="line"> </span><br><span class="line">        greenb &#x3D; QPushButton(&#39;Green&#39;, self)</span><br><span class="line">        greenb.setCheckable(True)</span><br><span class="line">        greenb.move(10, 60)</span><br><span class="line"> </span><br><span class="line">        greenb.clicked[bool].connect(self.setColor)</span><br><span class="line"> </span><br><span class="line">        blueb &#x3D; QPushButton(&#39;Blue&#39;, self)</span><br><span class="line">        blueb.setCheckable(True)</span><br><span class="line">        blueb.move(10, 110)</span><br><span class="line"> </span><br><span class="line">        blueb.clicked[bool].connect(self.setColor)</span><br><span class="line"> </span><br><span class="line">        self.square &#x3D; QFrame(self)</span><br><span class="line">        self.square.setGeometry(150, 20, 100, 100)</span><br><span class="line">        self.square.setStyleSheet(&quot;QWidget &#123; background-color: %s &#125;&quot; %  </span><br><span class="line">            self.col.name())</span><br><span class="line">        </span><br><span class="line">        self.setGeometry(300, 300, 280, 170)</span><br><span class="line">        self.setWindowTitle(&#39;Toggle button&#39;)</span><br><span class="line">        self.show()</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    def setColor(self, pressed):</span><br><span class="line">        </span><br><span class="line">        source &#x3D; self.sender()</span><br><span class="line">        </span><br><span class="line">        if pressed:</span><br><span class="line">            val &#x3D; 255</span><br><span class="line">        else: val &#x3D; 0</span><br><span class="line">                        </span><br><span class="line">        if source.text() &#x3D;&#x3D; &quot;Red&quot;:</span><br><span class="line">            self.col.setRed(val)                </span><br><span class="line">        elif source.text() &#x3D;&#x3D; &quot;Green&quot;:</span><br><span class="line">            self.col.setGreen(val)             </span><br><span class="line">        else:</span><br><span class="line">            self.col.setBlue(val) </span><br><span class="line">            </span><br><span class="line">        self.square.setStyleSheet(&quot;QFrame &#123; background-color: %s &#125;&quot; %</span><br><span class="line">            self.col.name())  </span><br></pre></td></tr></table></figure>
-<h1 id="滑动条-Qslider"><a href="#滑动条-Qslider" class="headerlink" title="滑动条 Qslider"></a>滑动条 Qslider</h1><p>通过滑移动来模拟声音大小，改变声音图标<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">from PyQt5.QtGui import QPixmap</span><br><span class="line">from PyQt5.QtWidgets import QSlider</span><br><span class="line"></span><br><span class="line">def initUI(self):      </span><br><span class="line"> </span><br><span class="line">        sld &#x3D; QSlider(Qt.Horizontal, self)</span><br><span class="line">        sld.setFocusPolicy(Qt.NoFocus)</span><br><span class="line">        sld.setGeometry(30, 40, 100, 30)</span><br><span class="line">        sld.valueChanged[int].connect(self.changeValue)</span><br><span class="line">        </span><br><span class="line">        self.label &#x3D; QLabel(self)</span><br><span class="line">        self.label.setPixmap(QPixmap(&#39;audio.ico&#39;))</span><br><span class="line">        self.label.setGeometry(160, 40, 80, 30)</span><br><span class="line">        </span><br><span class="line">        self.setGeometry(300, 300, 280, 170)</span><br><span class="line">        self.setWindowTitle(&#39;QSlider&#39;)</span><br><span class="line">        self.show()</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    def changeValue(self, value):</span><br><span class="line"> </span><br><span class="line">        if value &#x3D;&#x3D; 0:</span><br><span class="line">            self.label.setPixmap(QPixmap(&#39;audio.ico&#39;))</span><br><span class="line">        elif value &gt; 0 and value &lt;&#x3D; 30:</span><br><span class="line">            self.label.setPixmap(QPixmap(&#39;min.ico&#39;))</span><br><span class="line">        elif value &gt; 30 and value &lt; 80:</span><br><span class="line">            self.label.setPixmap(QPixmap(&#39;med.ico&#39;))</span><br><span class="line">        else:</span><br><span class="line">            self.label.setPixmap(QPixmap(&#39;max.ico&#39;))</span><br></pre></td></tr></table></figure><br><img src="/2020/02/25/pyqt-3/slide.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -820,14 +831,14 @@ J = J_{sc}-J_0[exp(qV_{sh}/h_BT_a)-1]- \frac {V_{sh}}{AR_{sh}}</script>
       <div class="site-state-item site-state-posts">
           <a href="/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>

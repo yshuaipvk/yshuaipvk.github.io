@@ -75,6 +75,29 @@ r_{sh}=\frac {\Delta V_{reverse bias}}{\Delta I_{reverse bias}}</script><p>如�
       </categories>
   </entry>
   <entry>
+    <title>TPV</title>
+    <url>/2020/02/17/TPV/</url>
+    <content><![CDATA[<p>$n=n_0+\Delta n $<br>$p=p_0 + \Delta p$</p>
+<p>$ \frac {dn}{dt} = -kn-R(np)$</p>
+<p>$\frac {d(n_0+\Delta n)}{dt} = -k(n_0+\Delta n)-R((n_0+\Delta n)(p_0+\Delta p))$</p>
+<p>$ \frac {d\Delta n}{dt} = -k \Delta n$</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2019/08/23/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new &quot;My New Post&quot;</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Self Modeling Curve Resolution</title>
     <url>/2020/04/09/Self%20Modeling%20Curve%20Resolution/</url>
     <content><![CDATA[<h1 id="1-SMCR基础"><a href="#1-SMCR基础" class="headerlink" title="1.SMCR基础"></a>1.SMCR基础</h1><p>对于一组二维数据，可表示为浓度与光谱响应的线性组合，如下所示：</p>
@@ -109,29 +132,6 @@ C = D \widehat {S}(\widehat {S}^T \widehat S)^{-1}</script><script type="math/te
       <categories>
         <category>文献阅读</category>
       </categories>
-  </entry>
-  <entry>
-    <title>TPV</title>
-    <url>/2020/02/17/TPV/</url>
-    <content><![CDATA[<p>$n=n_0+\Delta n $<br>$p=p_0 + \Delta p$</p>
-<p>$ \frac {dn}{dt} = -kn-R(np)$</p>
-<p>$\frac {d(n_0+\Delta n)}{dt} = -k(n_0+\Delta n)-R((n_0+\Delta n)(p_0+\Delta p))$</p>
-<p>$ \frac {d\Delta n}{dt} = -k \Delta n$</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2019/08/23/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new &quot;My New Post&quot;</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>PyQt布局管理</title>
@@ -254,6 +254,26 @@ C = D \widehat {S}(\widehat {S}^T \widehat S)^{-1}</script><script type="math/te
 ]]></content>
       <categories>
         <category>人工智能：一种现代方法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>从光子到电流</title>
+    <url>/2020/03/05/%E4%BB%8E%E5%85%89%E5%AD%90%E5%88%B0%E7%94%B5%E6%B5%81/</url>
+    <content><![CDATA[<h1 id="太阳辐射"><a href="#太阳辐射" class="headerlink" title="太阳辐射"></a>太阳辐射</h1><ul>
+<li><p>辐照度($P$):单位面积上接受电磁波辐射的功率密度($W/cm^2$)</p>
+</li>
+<li><p>光谱辐照度($I$):单位面积、单位光谱能量上接受的电磁波辐射功率($W·cm^{-1}eV^{-1}$)<br>辐照度$P$，是在整个光谱范围$E$内，对光谱辐照度$I$的积分：</p>
+<script type="math/tex; mode=display">
+I = \frac {dP}{dE}</script></li>
+<li></li>
+</ul>
+<ul>
+<li>光子角通量($\beta$):单位面积、单位光谱能量、单位时间、单位立体角通过的光子数($cm^{-2}eV^{-1}s^{-1}sr^{-1}$)</li>
+<li>立体角($\Omega$):用经度($\phi$)、维度($\theta$)描述，$d\Omega = sin\theta d\theta d\phi$</li>
+</ul>
+<h1 id="光生电流"><a href="#光生电流" class="headerlink" title="光生电流"></a>光生电流</h1>]]></content>
+      <categories>
+        <category>太阳能电池物理</category>
       </categories>
   </entry>
   <entry>
@@ -397,26 +417,6 @@ C = D \widehat {S}(\widehat {S}^T \widehat S)^{-1}</script><script type="math/te
       </categories>
   </entry>
   <entry>
-    <title>从光子到电流</title>
-    <url>/2020/03/05/%E4%BB%8E%E5%85%89%E5%AD%90%E5%88%B0%E7%94%B5%E6%B5%81/</url>
-    <content><![CDATA[<h1 id="太阳辐射"><a href="#太阳辐射" class="headerlink" title="太阳辐射"></a>太阳辐射</h1><ul>
-<li><p>辐照度($P$):单位面积上接受电磁波辐射的功率密度($W/cm^2$)</p>
-</li>
-<li><p>光谱辐照度($I$):单位面积、单位光谱能量上接受的电磁波辐射功率($W·cm^{-1}eV^{-1}$)<br>辐照度$P$，是在整个光谱范围$E$内，对光谱辐照度$I$的积分：</p>
-<script type="math/tex; mode=display">
-I = \frac {dP}{dE}</script></li>
-<li></li>
-</ul>
-<ul>
-<li>光子角通量($\beta$):单位面积、单位光谱能量、单位时间、单位立体角通过的光子数($cm^{-2}eV^{-1}s^{-1}sr^{-1}$)</li>
-<li>立体角($\Omega$):用经度($\phi$)、维度($\theta$)描述，$d\Omega = sin\theta d\theta d\phi$</li>
-</ul>
-<h1 id="光生电流"><a href="#光生电流" class="headerlink" title="光生电流"></a>光生电流</h1>]]></content>
-      <categories>
-        <category>太阳能电池物理</category>
-      </categories>
-  </entry>
-  <entry>
     <title>伏安特性曲线</title>
     <url>/2020/03/02/%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E6%9B%B2%E7%BA%BF/</url>
     <content><![CDATA[<h1 id="伏安特性曲线"><a href="#伏安特性曲线" class="headerlink" title="伏安特性曲线"></a>伏安特性曲线</h1><p>&emsp;&emsp;太阳能电池的伏安特性曲线表征一定光照和环境温度为$T_s=300 K$条件下，电流$I$与电压$V$的函数关系。由于电流与太阳能电池面积成正比，所以常用电流密度($J,A/cm^2$)来取代电流。</p>
@@ -456,6 +456,69 @@ J = J_{sc}-J_0[exp(qV_{sh}/h_BT_a)-1]- \frac {V_{sh}}{AR_{sh}}</script>]]></cont
       </categories>
   </entry>
   <entry>
+    <title>光学（一）:波动</title>
+    <url>/2021/01/24/%E5%85%89%E5%AD%A6%EF%BC%88%E4%B8%80%EF%BC%89%E6%B3%A2%E5%8A%A8/</url>
+    <content><![CDATA[<h1 id="1-一维波"><a href="#1-一维波" class="headerlink" title="1. 一维波"></a>1. 一维波</h1><blockquote>
+<p>横波:：介质在波的运动方向上位移（声波）</p>
+<p>纵波：介质的位移方向与波的运动方向垂直（电池波）</p>
+</blockquote>
+<p>假设扰动 $\Psi$ 以恒定的速率 $v$ 沿正方向移动，那么扰动必然是位置和时间的函数</p>
+<script type="math/tex; mode=display">
+\Psi = f(x,t)</script><p>在0时刻有:</p>
+<script type="math/tex; mode=display">
+\Psi = f(x,0)=f(x)</script><p>假设穿越空间前行是波的形状不改变，在t时刻之后波移动了 $vt$ </p>
+<p>建立新的坐标系 S‘ ，在新的坐标系中有:</p>
+<script type="math/tex; mode=display">
+\Psi = f(x')</script><p> 其中</p>
+<script type="math/tex; mode=display">
+x'=x-vt</script><p>带入S坐标系中则有：</p>
+<script type="math/tex; mode=display">
+\Psi (x,t)=f(x-vt)</script><h1 id="2-微分波动方程"><a href="#2-微分波动方程" class="headerlink" title="2. 微分波动方程"></a>2. 微分波动方程</h1><blockquote>
+<p>波是几个独立变量的函数（时间、空间；电场、磁场）</p>
+</blockquote>
+<h2 id="2-1-一阶"><a href="#2-1-一阶" class="headerlink" title="2.1 一阶"></a>2.1 一阶</h2><p>为了将 $\Psi(x,t)$ 对空间的依赖关系和对时间的依赖关系想联系，求 $ \Psi(x,t)=f(x’)$ d的偏微商，让 $t$ 不变,令 $x’=x-vt$ ，（或者 $x’=x+vt$）则有：</p>
+<script type="math/tex; mode=display">
+\frac{\partial\Psi}{\partial x}=\frac{\partial f}{\partial x}</script><script type="math/tex; mode=display">
+\frac{\partial\Psi}{\partial x}=\frac{\partial f}{\partial x'}\frac{\partial x'}{\partial x}=\frac{\partial f}{\partial x'}</script><script type="math/tex; mode=display">
+\frac{\partial x'}{x}=\frac{\partial (x-vt)}{\partial x}=1</script><p>让 $x$ 不变，对时间的偏微商为:</p>
+<script type="math/tex; mode=display">
+\frac {\partial \Psi}{\partial t}=\frac{\partial f}{\partial x'}\frac{\partial x'}{\partial x}=\frac{\partial f}{x'}(-v)=-v\frac{\partial f}{\partial x}</script><p>(7)和（9）可以写为：</p>
+<script type="math/tex; mode=display">
+\frac {\partial \Psi}{\partial t}=-v\frac{\partial \Psi}{\partial x}</script><p>表示 $\Psi$ 随 $t$ 的变化率和随 $x$ 的变化率只差一个常数倍</p>
+<h2 id="2-2-二阶"><a href="#2-2-二阶" class="headerlink" title="2.2 二阶"></a>2.2 二阶</h2><p>二阶偏微商分别为：</p>
+<script type="math/tex; mode=display">
+\frac{\partial^2 \Psi}{\partial^2x}=\frac{\partial^2 f}{\partial^2 x'}</script><script type="math/tex; mode=display">
+\frac {\partial^2\Psi}{\partial t^2}=\frac{\partial}{\partial t}(-v\frac{\partial f}{\partial x'})=-v\frac{\partial}{\partial x'}(\frac{\partial f}{\partial t})</script><p>由于</p>
+<script type="math/tex; mode=display">
+\frac{\partial \Psi}{\partial t}=\frac{\partial f}{\partial t}</script><script type="math/tex; mode=display">
+\frac {\partial^2\Psi}{\partial t^2}=-v\frac{\partial}{\partial x'}(\frac{\partial \Psi}{\partial t})=v^2\frac{\partial^2f}{\partial x'^2}</script><p>最终得到：</p>
+<script type="math/tex; mode=display">
+\frac {\partial^2\Psi}{\partial^2t}=\frac{1}{v^2}\frac{\partial^2\Psi}{\partial t^2}</script><p>即一维<strong>波动微分方程</strong></p>
+<h1 id="3-谐波"><a href="#3-谐波" class="headerlink" title="3. 谐波"></a>3. 谐波</h1><p>轮廓是正弦或者余弦的波叫做谐波，任意波形都可以由谐波叠加得到</p>
+<p>表示谐波的函数为：</p>
+<script type="math/tex; mode=display">
+\Psi (x,t)|_{t=0}=\Psi(x)=Asinkx=f(x)</script><p>其中 $k$ 为<strong>传播数</strong> ，$A$ 为<strong>振幅</strong> </p>
+<p>若波的传播速率为 $v$ ,则有：</p>
+<script type="math/tex; mode=display">
+\Psi (x,t)=Asink(x-vt)=f(x-vt)</script><p>当固定 x或者t的时候，波在空间和时间上都是周期的，空间周期叫做波长，即有：</p>
+<script type="math/tex; mode=display">
+\Psi(x,t)=\Psi(x+\lambda,t)=\Psi(x-\lambda,t)</script><p>对于谐波,相当于正弦函数自变量改变 $2\pi$ ,即：</p>
+<script type="math/tex; mode=display">
+sink(x-vt)=sin(k[(x+\lambda)-vt])=sin[k(x-vt)+2\pi]</script><script type="math/tex; mode=display">
+|k\lambda|=2\pi</script><script type="math/tex; mode=display">
+k=2\pi/\lambda</script><p>在时间上叫做时间周期  $\tau$ </p>
+<script type="math/tex; mode=display">
+\Psi (x,t)=\Psi(x,t-\tau)=\Psi(x,t+\tau)</script><script type="math/tex; mode=display">
+sin k(x-vt)=sin k[x-v(t-\tau)]=sin[k(x-vt)+2\pi]</script><script type="math/tex; mode=display">
+|kv\tau|=2\pi</script><script type="math/tex; mode=display">
+\frac{2\pi}{\lambda}v\tau=2\pi</script><script type="math/tex; mode=display">
+\tau=\lambda/v</script><p>周期是每个波长占多少个时间单位,周期的倒数是频率，即单位时间里波的个数</p>
+<h1 id="4-相位和相速度"><a href="#4-相位和相速度" class="headerlink" title="4. 相位和相速度"></a>4. 相位和相速度</h1>]]></content>
+      <categories>
+        <category>光学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>参数更新</title>
     <url>/2020/03/21/%E5%8F%82%E6%95%B0%E6%9B%B4%E6%96%B0/</url>
     <content><![CDATA[<h1 id="随机梯度下降-SGD"><a href="#随机梯度下降-SGD" class="headerlink" title="随机梯度下降(SGD)"></a>随机梯度下降(SGD)</h1><p>SGD表达式如下所示：</p>
@@ -468,6 +531,18 @@ $W \leftarrow W-\eta \frac {\partial L}{\partial W}$
 ]]></content>
       <categories>
         <category>深度学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>常用公式</title>
+    <url>/2020/01/11/%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F/</url>
+    <content><![CDATA[<p>热导纳谱计算公式：</p>
+<script type="math/tex; mode=display">
+N_T(E_\omega)=-\frac{V_{bi}}{qW}\frac{dC}{d\omega}\frac{\omega}{k_BT}</script><p>空间电荷限制电流：</p>
+<script type="math/tex; mode=display">
+n_t=\frac{2\varepsilon\varepsilon_0V_{TFL}}{eL^2}</script>]]></content>
+      <categories>
+        <category>其他</category>
       </categories>
   </entry>
   <entry>
@@ -494,18 +569,6 @@ $W \leftarrow W-\eta \frac {\partial L}{\partial W}$
 ]]></content>
       <categories>
         <category>深度学习</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>常用公式</title>
-    <url>/2020/01/11/%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F/</url>
-    <content><![CDATA[<p>热导纳谱计算公式：</p>
-<script type="math/tex; mode=display">
-N_T(E_\omega)=-\frac{V_{bi}}{qW}\frac{dC}{d\omega}\frac{\omega}{k_BT}</script><p>空间电荷限制电流：</p>
-<script type="math/tex; mode=display">
-n_t=\frac{2\varepsilon\varepsilon_0V_{TFL}}{eL^2}</script>]]></content>
-      <categories>
-        <category>其他</category>
       </categories>
   </entry>
   <entry>
@@ -841,62 +904,6 @@ Z_{im}=\frac{(\omega R_{sh}^2C_d)}{1+(\omega R_{sh}C_d)^2}+\frac{(\omega R_i^2C_
       </categories>
   </entry>
   <entry>
-    <title>电磁波推导</title>
-    <url>/2020/10/12/%E7%94%B5%E7%A3%81%E6%B3%A2%E6%8E%A8%E5%AF%BC/</url>
-    <content><![CDATA[<h1 id="波的本质"><a href="#波的本质" class="headerlink" title="波的本质"></a>波的本质</h1><ul>
-<li><p>波随时间（t）和空间（x）变化:$f(x,t)$</p>
-</li>
-<li><p>波在传播的时候，虽然不同时刻波所在位置不一样，但形状始终是一样的。</p>
-</li>
-</ul>
-<script type="math/tex; mode=display">
-f(x,t)=f(x-vt,0)</script><p>波动方程：</p>
-<script type="math/tex; mode=display">
-\frac{\partial^2f}{\partial x^2}=\frac{1}{v^2}\frac{\partial ^2f}{\partial t^2}</script>]]></content>
-      <categories>
-        <category>物理</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>损失函数</title>
-    <url>/2020/02/14/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="训练数据和测试数据"><a href="#训练数据和测试数据" class="headerlink" title="训练数据和测试数据"></a>训练数据和测试数据</h1><p>机器学习中，一般将数据分为训练数据和测试数据两部分来进行学习和实验。首先，使用训练数据进行学习，寻找最优的参数；然后使用测试数据评价训练得到的模型的实际能力。</p>
-<h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1><p>神经网络以某个指标为线索寻找最后的权重参数，这个指标被称为损失函数，这个损失函数可以是由任意函数，但一般使用均方差和交叉熵误差。</p>
-<h2 id="均方误差"><a href="#均方误差" class="headerlink" title="均方误差"></a>均方误差</h2><p>可用做损失函数的函数有很多，其中最有名的是均方误差，用如式所示：</p>
-<center>
-$E=\frac {1}{2}\sum (y_k-t_k)^2$
-</center>>
-其中,$y_k$表示神经网络的输出，$t_k$表示监督数据，$k$表示数据的维度。
-在手写数字识别中，$y_k$和$t_k$由如下10个元素构成：
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; y=[0.1,0.05,0.6,0.0,0.05,0.1,0.0,0.1,0.0,0.0]</span><br><span class="line">&gt;&gt;&gt; t=[0,0,1,0,0,0,0,0,0]</span><br></pre></td></tr></table></figure>
-数组元素的索引从第一个开始依次对应数字“0”“1”“2”······，神经网络输出表示“0”的概率是0.1，“1”的概率是0.05······；在家奴数据中，标签“2”的概率为1，其他均为0。
-利用代码实现均方误差：
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">def mean_squared_error(y,t):</span><br><span class="line">    <span class="built_in">return</span> 0.5*np.sum((y-t)**2)</span><br></pre></td></tr></table></figure>
-## 交叉熵误差
-&emsp;&emsp;除了均方误差外，交叉熵误差常被用作损失函数。
-
-<center>
-$E=-\sum t_klny_k$
-</center>
-用代码实现表示为：
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">def cross_entropy_error(y,t):</span><br><span class="line">    delta = 1e-7</span><br><span class="line">    <span class="built_in">return</span> -np.sum(t*np.log(y+delta))</span><br></pre></td></tr></table></figure>
-在此处加上一个微小的delta是为了防止$log(0)$变为负无穷大。
-
-## mini-batch学习
-&emsp;&emsp;对于数据批量学习，需要把批量数据的损失函数的总和作为学习指标，以交叉熵误差为例，批量学习时可以变为：
-
-<center>
-$E=-\frac {1}{N} \sum_{n}^{}\sum_{k}^{} t_{nk}ln(y_{nk})$
-</center>
-
-<p>用代码实现表示为：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">def cross_entropy_error(y,t)</span><br><span class="line">    <span class="keyword">if</span> y.ndim == 1:</span><br><span class="line">        t = t.reshape(1,t.size)</span><br><span class="line">        y = y.reshape(1,y.size)</span><br><span class="line">    batch_size = y.shape[0]</span><br><span class="line">    <span class="built_in">return</span> -np.sum(t*np.log(y+1e-7))/batch_size</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>误差反向传播</title>
     <url>/2020/03/19/%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/</url>
     <content><![CDATA[<p>&emsp;&emsp;通过数值微分计算神经网络的权重参数的梯度，虽然简单，也容易实现，但是在计算上比较费时间；误差反向传播法一种能高效计算权重参数的梯度的办法。</p>
@@ -984,6 +991,62 @@ $\frac {\partial y}{\partial x} =\begin{cases}
       <categories>
         <category>深度学习</category>
       </categories>
+  </entry>
+  <entry>
+    <title>电磁波推导</title>
+    <url>/2020/10/12/%E7%94%B5%E7%A3%81%E6%B3%A2%E6%8E%A8%E5%AF%BC/</url>
+    <content><![CDATA[<h1 id="波的本质"><a href="#波的本质" class="headerlink" title="波的本质"></a>波的本质</h1><ul>
+<li><p>波随时间（t）和空间（x）变化:$f(x,t)$</p>
+</li>
+<li><p>波在传播的时候，虽然不同时刻波所在位置不一样，但形状始终是一样的。</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+f(x,t)=f(x-vt,0)</script><p>波动方程：</p>
+<script type="math/tex; mode=display">
+\frac{\partial^2f}{\partial x^2}=\frac{1}{v^2}\frac{\partial ^2f}{\partial t^2}</script>]]></content>
+      <categories>
+        <category>物理</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>损失函数</title>
+    <url>/2020/02/14/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="训练数据和测试数据"><a href="#训练数据和测试数据" class="headerlink" title="训练数据和测试数据"></a>训练数据和测试数据</h1><p>机器学习中，一般将数据分为训练数据和测试数据两部分来进行学习和实验。首先，使用训练数据进行学习，寻找最优的参数；然后使用测试数据评价训练得到的模型的实际能力。</p>
+<h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1><p>神经网络以某个指标为线索寻找最后的权重参数，这个指标被称为损失函数，这个损失函数可以是由任意函数，但一般使用均方差和交叉熵误差。</p>
+<h2 id="均方误差"><a href="#均方误差" class="headerlink" title="均方误差"></a>均方误差</h2><p>可用做损失函数的函数有很多，其中最有名的是均方误差，用如式所示：</p>
+<center>
+$E=\frac {1}{2}\sum (y_k-t_k)^2$
+</center>>
+其中,$y_k$表示神经网络的输出，$t_k$表示监督数据，$k$表示数据的维度。
+在手写数字识别中，$y_k$和$t_k$由如下10个元素构成：
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; y=[0.1,0.05,0.6,0.0,0.05,0.1,0.0,0.1,0.0,0.0]</span><br><span class="line">&gt;&gt;&gt; t=[0,0,1,0,0,0,0,0,0]</span><br></pre></td></tr></table></figure>
+数组元素的索引从第一个开始依次对应数字“0”“1”“2”······，神经网络输出表示“0”的概率是0.1，“1”的概率是0.05······；在家奴数据中，标签“2”的概率为1，其他均为0。
+利用代码实现均方误差：
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">def mean_squared_error(y,t):</span><br><span class="line">    <span class="built_in">return</span> 0.5*np.sum((y-t)**2)</span><br></pre></td></tr></table></figure>
+## 交叉熵误差
+&emsp;&emsp;除了均方误差外，交叉熵误差常被用作损失函数。
+
+<center>
+$E=-\sum t_klny_k$
+</center>
+用代码实现表示为：
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">def cross_entropy_error(y,t):</span><br><span class="line">    delta = 1e-7</span><br><span class="line">    <span class="built_in">return</span> -np.sum(t*np.log(y+delta))</span><br></pre></td></tr></table></figure>
+在此处加上一个微小的delta是为了防止$log(0)$变为负无穷大。
+
+## mini-batch学习
+&emsp;&emsp;对于数据批量学习，需要把批量数据的损失函数的总和作为学习指标，以交叉熵误差为例，批量学习时可以变为：
+
+<center>
+$E=-\frac {1}{N} \sum_{n}^{}\sum_{k}^{} t_{nk}ln(y_{nk})$
+</center>
+
+<p>用代码实现表示为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">def cross_entropy_error(y,t)</span><br><span class="line">    <span class="keyword">if</span> y.ndim == 1:</span><br><span class="line">        t = t.reshape(1,t.size)</span><br><span class="line">        y = y.reshape(1,y.size)</span><br><span class="line">    batch_size = y.shape[0]</span><br><span class="line">    <span class="built_in">return</span> -np.sum(t*np.log(y+1e-7))/batch_size</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
   <entry>
     <title>麦克斯韦方程组</title>

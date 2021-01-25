@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="高斯电场定律通过闭合曲面的电通量跟这个曲面包含的电荷量成正比  \oint_SE\cdot da&#x3D;\frac{1}{\varepsilon_0}Q_{enc}高斯磁场定律闭合曲面包含的磁通量为0  \oint _S B \cdot da&#x3D;0电磁感应磁生电，切割磁感线 通过曲面S的磁通量：  \int _S B\cdot da通过曲面S的磁通量变化快慢：  \frac{d}{dt}\int _S B">
+  <meta name="description" content="1. 一维波 横波:：介质在波的运动方向上位移（声波） 纵波：介质的位移方向与波的运动方向垂直（电池波）  假设扰动 $\Psi$ 以恒定的速率 $v$ 沿正方向移动，那么扰动必然是位置和时间的函数  \Psi &#x3D; f(x,t)在0时刻有:  \Psi &#x3D; f(x,0)&#x3D;f(x)假设穿越空间前行是波的形状不改变，在t时刻之后波移动了 $vt$  建立新的坐标系 S‘ ，在新的坐标系中有:  \Ps">
 <meta property="og:type" content="article">
-<meta property="og:title" content="麦克斯韦方程组">
-<meta property="og:url" content="http://example.com/2021/01/11/%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E6%96%B9%E7%A8%8B%E7%BB%84/index.html">
+<meta property="og:title" content="光学（一）:波动">
+<meta property="og:url" content="http://example.com/2021/01/24/%E5%85%89%E5%AD%A6%EF%BC%88%E4%B8%80%EF%BC%89%E6%B3%A2%E5%8A%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="高斯电场定律通过闭合曲面的电通量跟这个曲面包含的电荷量成正比  \oint_SE\cdot da&#x3D;\frac{1}{\varepsilon_0}Q_{enc}高斯磁场定律闭合曲面包含的磁通量为0  \oint _S B \cdot da&#x3D;0电磁感应磁生电，切割磁感线 通过曲面S的磁通量：  \int _S B\cdot da通过曲面S的磁通量变化快慢：  \frac{d}{dt}\int _S B">
+<meta property="og:description" content="1. 一维波 横波:：介质在波的运动方向上位移（声波） 纵波：介质的位移方向与波的运动方向垂直（电池波）  假设扰动 $\Psi$ 以恒定的速率 $v$ 沿正方向移动，那么扰动必然是位置和时间的函数  \Psi &#x3D; f(x,t)在0时刻有:  \Psi &#x3D; f(x,0)&#x3D;f(x)假设穿越空间前行是波的形状不改变，在t时刻之后波移动了 $vt$  建立新的坐标系 S‘ ，在新的坐标系中有:  \Ps">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-01-11T08:44:44.614Z">
-<meta property="article:modified_time" content="2021-01-11T07:24:23.043Z">
+<meta property="article:published_time" content="2021-01-24T07:37:12.000Z">
+<meta property="article:modified_time" content="2021-01-24T13:08:35.818Z">
 <meta property="article:author" content="Yuan Shuai">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/01/11/%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E6%96%B9%E7%A8%8B%E7%BB%84/">
+<link rel="canonical" href="http://example.com/2021/01/24/%E5%85%89%E5%AD%A6%EF%BC%88%E4%B8%80%EF%BC%89%E6%B3%A2%E5%8A%A8/">
 
 
 <script id="page-configurations">
@@ -44,7 +44,7 @@
   };
 </script>
 
-  <title>麦克斯韦方程组 | Hexo</title>
+  <title>光学（一）:波动 | Hexo</title>
   
 
 
@@ -153,7 +153,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/11/%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E6%96%B9%E7%A8%8B%E7%BB%84/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/24/%E5%85%89%E5%AD%A6%EF%BC%88%E4%B8%80%EF%BC%89%E6%B3%A2%E5%8A%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -166,7 +166,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          麦克斯韦方程组
+          光学（一）:波动
         </h1>
 
         <div class="post-meta">
@@ -177,7 +177,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-01-11 16:44:44 / 修改时间：15:24:23" itemprop="dateCreated datePublished" datetime="2021-01-11T16:44:44+08:00">2021-01-11</time>
+              <time title="创建时间：2021-01-24 15:37:12 / 修改时间：21:08:35" itemprop="dateCreated datePublished" datetime="2021-01-24T15:37:12+08:00">2021-01-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -185,7 +185,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%B5%E7%A3%81%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">电磁学</span></a>
+                  <a href="/categories/%E5%85%89%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">光学</span></a>
                 </span>
             </span>
 
@@ -200,62 +200,62 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="高斯电场定律"><a href="#高斯电场定律" class="headerlink" title="高斯电场定律"></a>高斯电场定律</h2><p>通过闭合曲面的电通量跟这个曲面包含的电荷量成正比</p>
+        <h1 id="1-一维波"><a href="#1-一维波" class="headerlink" title="1. 一维波"></a>1. 一维波</h1><blockquote>
+<p>横波:：介质在波的运动方向上位移（声波）</p>
+<p>纵波：介质的位移方向与波的运动方向垂直（电池波）</p>
+</blockquote>
+<p>假设扰动 $\Psi$ 以恒定的速率 $v$ 沿正方向移动，那么扰动必然是位置和时间的函数</p>
 <script type="math/tex; mode=display">
-\oint_SE\cdot da=\frac{1}{\varepsilon_0}Q_{enc}</script><h2 id="高斯磁场定律"><a href="#高斯磁场定律" class="headerlink" title="高斯磁场定律"></a>高斯磁场定律</h2><p>闭合曲面包含的磁通量为0</p>
+\Psi = f(x,t)</script><p>在0时刻有:</p>
 <script type="math/tex; mode=display">
-\oint _S B \cdot da=0</script><h2 id="电磁感应"><a href="#电磁感应" class="headerlink" title="电磁感应"></a>电磁感应</h2><p>磁生电，切割磁感线</p>
-<p>通过曲面S的磁通量：</p>
+\Psi = f(x,0)=f(x)</script><p>假设穿越空间前行是波的形状不改变，在t时刻之后波移动了 $vt$ </p>
+<p>建立新的坐标系 S‘ ，在新的坐标系中有:</p>
 <script type="math/tex; mode=display">
-\int _S B\cdot da</script><p>通过曲面S的磁通量变化快慢：</p>
+\Psi = f(x')</script><p> 其中</p>
 <script type="math/tex; mode=display">
-\frac{d}{dt}\int _S B\cdot da</script><h2 id="电场的环流"><a href="#电场的环流" class="headerlink" title="电场的环流"></a>电场的环流</h2><script type="math/tex; mode=display">
-\oint _c E\cdot dl</script><h2 id="法拉第定律-方程3"><a href="#法拉第定律-方程3" class="headerlink" title="法拉第定律(方程3)"></a>法拉第定律(方程3)</h2><p>曲面的磁通量变化率等于感生电场的环流</p>
+x'=x-vt</script><p>带入S坐标系中则有：</p>
 <script type="math/tex; mode=display">
-\oint _C E \cdot dl = -\frac{d}{dt}\int_S B\cdot da</script><p>负号：楞次定律</p>
-<h2 id="安培环路定律"><a href="#安培环路定律" class="headerlink" title="安培环路定律"></a>安培环路定律</h2><p>电生磁、右手定则</p>
-<p>通电导线周围会产生旋转磁场</p>
+\Psi (x,t)=f(x-vt)</script><h1 id="2-微分波动方程"><a href="#2-微分波动方程" class="headerlink" title="2. 微分波动方程"></a>2. 微分波动方程</h1><blockquote>
+<p>波是几个独立变量的函数（时间、空间；电场、磁场）</p>
+</blockquote>
+<h2 id="2-1-一阶"><a href="#2-1-一阶" class="headerlink" title="2.1 一阶"></a>2.1 一阶</h2><p>为了将 $\Psi(x,t)$ 对空间的依赖关系和对时间的依赖关系想联系，求 $ \Psi(x,t)=f(x’)$ d的偏微商，让 $t$ 不变,令 $x’=x-vt$ ，（或者 $x’=x+vt$）则有：</p>
 <script type="math/tex; mode=display">
-\oint_C B\cdot dl=\mu_0I_{enc}</script><p>$\mu_0$为真空磁导率，$I$为电流</p>
-<h2 id="安培-麦克斯韦定律"><a href="#安培-麦克斯韦定律" class="headerlink" title="安培-麦克斯韦定律"></a>安培-麦克斯韦定律</h2><p>变化电通量产生磁场</p>
+\frac{\partial\Psi}{\partial x}=\frac{\partial f}{\partial x}</script><script type="math/tex; mode=display">
+\frac{\partial\Psi}{\partial x}=\frac{\partial f}{\partial x'}\frac{\partial x'}{\partial x}=\frac{\partial f}{\partial x'}</script><script type="math/tex; mode=display">
+\frac{\partial x'}{x}=\frac{\partial (x-vt)}{\partial x}=1</script><p>让 $x$ 不变，对时间的偏微商为:</p>
 <script type="math/tex; mode=display">
-\oint_C B\cdot dl=\mu_0(I_{enc}+\varepsilon_0\frac{d}{dt}\int_S E\cdot da)</script><p>位移电流：</p>
+\frac {\partial \Psi}{\partial t}=\frac{\partial f}{\partial x'}\frac{\partial x'}{\partial x}=\frac{\partial f}{x'}(-v)=-v\frac{\partial f}{\partial x}</script><p>(7)和（9）可以写为：</p>
 <script type="math/tex; mode=display">
-I\equiv \varepsilon_0\frac{d}{dt}(\int_SE\cdot da)</script><h2 id="麦克斯韦方程组"><a href="#麦克斯韦方程组" class="headerlink" title="麦克斯韦方程组"></a>麦克斯韦方程组</h2><script type="math/tex; mode=display">
-\oint_SE\cdot da=\frac{1}{\varepsilon_0}Q_{enc}</script><script type="math/tex; mode=display">
-\oint_SB\cdot da=0</script><script type="math/tex; mode=display">
-\oint_C E\cdot dl=-\int_S\frac{\partial B}{\partial r}\cdot da</script><script type="math/tex; mode=display">
-\oint_CB\cdot dl =\mu_0(I_{enc}+\varepsilon_0\frac{d}{dt}\int_SE\cdot da)</script><ul>
-<li><p>高斯电场定律：穿过闭合曲面的电通量正比于这个曲面包含的电荷量</p>
-</li>
-<li><p>高斯磁场定律：穿过闭合曲面的磁通量恒等于0</p>
-</li>
-<li>法拉第定律：穿过曲面的磁通量变化等于感生电场的环流</li>
-<li>安培-麦克斯韦定律：穿过曲面的电通量变化率和曲面包含电流等于感生磁场的环流</li>
-</ul>
-<h2 id="麦克斯韦方程组-微分"><a href="#麦克斯韦方程组-微分" class="headerlink" title="麦克斯韦方程组(微分)"></a>麦克斯韦方程组(微分)</h2><h2 id="1-哈密顿算子"><a href="#1-哈密顿算子" class="headerlink" title="1.哈密顿算子"></a>1.哈密顿算子</h2><h2 id="2-散度"><a href="#2-散度" class="headerlink" title="2.散度"></a>2.散度</h2><p>高斯电场定律：</p>
+\frac {\partial \Psi}{\partial t}=-v\frac{\partial \Psi}{\partial x}</script><p>表示 $\Psi$ 随 $t$ 的变化率和随 $x$ 的变化率只差一个常数倍</p>
+<h2 id="2-2-二阶"><a href="#2-2-二阶" class="headerlink" title="2.2 二阶"></a>2.2 二阶</h2><p>二阶偏微商分别为：</p>
 <script type="math/tex; mode=display">
-\oint_SE\cdot da=\frac{1}{\varepsilon_0}Q_{enc}</script><p>在无穷小的闭合曲面中：</p>
+\frac{\partial^2 \Psi}{\partial^2x}=\frac{\partial^2 f}{\partial^2 x'}</script><script type="math/tex; mode=display">
+\frac {\partial^2\Psi}{\partial t^2}=\frac{\partial}{\partial t}(-v\frac{\partial f}{\partial x'})=-v\frac{\partial}{\partial x'}(\frac{\partial f}{\partial t})</script><p>由于</p>
 <script type="math/tex; mode=display">
-\lim_{\Delta V\rightarrow0}\oint_SE\cdot da=\frac{1}{\varepsilon_0}Q_{enc}</script><p>两边同时除以$\Delta V$</p>
+\frac{\partial \Psi}{\partial t}=\frac{\partial f}{\partial t}</script><script type="math/tex; mode=display">
+\frac {\partial^2\Psi}{\partial t^2}=-v\frac{\partial}{\partial x'}(\frac{\partial \Psi}{\partial t})=v^2\frac{\partial^2f}{\partial x'^2}</script><p>最终得到：</p>
 <script type="math/tex; mode=display">
-\lim_{\Delta V\rightarrow0}\frac{1}{\Delta V}\oint_SE\cdot da=\frac{1}{\varepsilon_0}\frac{Q_{enc}}{\Delta V}=\frac{\rho}{\varepsilon _0}</script><p>其中 $\rho$为电荷密度</p>
-<p>散度定义为：</p>
+\frac {\partial^2\Psi}{\partial^2t}=\frac{1}{v^2}\frac{\partial^2\Psi}{\partial t^2}</script><p>即一维<strong>波动微分方程</strong></p>
+<h1 id="3-谐波"><a href="#3-谐波" class="headerlink" title="3. 谐波"></a>3. 谐波</h1><p>轮廓是正弦或者余弦的波叫做谐波，任意波形都可以由谐波叠加得到</p>
+<p>表示谐波的函数为：</p>
 <script type="math/tex; mode=display">
-div(E)=\lim_{\Delta V\rightarrow0}\frac{1}{\Delta V}\oint_SE\cdot da</script><p>表示通过不穷小曲面的通量和体积的比值。</p>
-<p>高斯电场定律的微分形式为：</p>
+\Psi (x,t)|_{t=0}=\Psi(x)=Asinkx=f(x)</script><p>其中 $k$ 为<strong>传播数</strong> ，$A$ 为<strong>振幅</strong> </p>
+<p>若波的传播速率为 $v$ ,则有：</p>
 <script type="math/tex; mode=display">
-div(E)=\frac{\rho}{\varepsilon_0}</script><script type="math/tex; mode=display">
-\triangledown  \cdot E=\frac{\rho}{\varepsilon_0}</script><script type="math/tex; mode=display">
-\triangledown \cdot B =0</script><script type="math/tex; mode=display">
-\triangledown \times E=-\frac{\partial B}{\partial t}</script><script type="math/tex; mode=display">
-\triangledown\times B=\mu_0(J+\varepsilon_0\frac{\partial E}{\partial t})</script><ul>
-<li>电场散度和电荷密度成正比</li>
-<li>磁场散度处处为0</li>
-<li>感生电场的旋度等于磁感应强度的变化率</li>
-<li>感生磁场的旋度等于电流密度和电池强度变化率之和</li>
-</ul>
-
+\Psi (x,t)=Asink(x-vt)=f(x-vt)</script><p>当固定 x或者t的时候，波在空间和时间上都是周期的，空间周期叫做波长，即有：</p>
+<script type="math/tex; mode=display">
+\Psi(x,t)=\Psi(x+\lambda,t)=\Psi(x-\lambda,t)</script><p>对于谐波,相当于正弦函数自变量改变 $2\pi$ ,即：</p>
+<script type="math/tex; mode=display">
+sink(x-vt)=sin(k[(x+\lambda)-vt])=sin[k(x-vt)+2\pi]</script><script type="math/tex; mode=display">
+|k\lambda|=2\pi</script><script type="math/tex; mode=display">
+k=2\pi/\lambda</script><p>在时间上叫做时间周期  $\tau$ </p>
+<script type="math/tex; mode=display">
+\Psi (x,t)=\Psi(x,t-\tau)=\Psi(x,t+\tau)</script><script type="math/tex; mode=display">
+sin k(x-vt)=sin k[x-v(t-\tau)]=sin[k(x-vt)+2\pi]</script><script type="math/tex; mode=display">
+|kv\tau|=2\pi</script><script type="math/tex; mode=display">
+\frac{2\pi}{\lambda}v\tau=2\pi</script><script type="math/tex; mode=display">
+\tau=\lambda/v</script><p>周期是每个波长占多少个时间单位,周期的倒数是频率，即单位时间里波的个数</p>
+<h1 id="4-相位和相速度"><a href="#4-相位和相速度" class="headerlink" title="4. 相位和相速度"></a>4. 相位和相速度</h1>
     </div>
 
     
@@ -270,13 +270,10 @@ div(E)=\frac{\rho}{\varepsilon_0}</script><script type="math/tex; mode=display">
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/01/11/%E7%A6%BB%E5%AD%90%E8%BF%81%E7%A7%BB/" rel="prev" title="离子迁移模型">
-      <i class="fa fa-chevron-left"></i> 离子迁移模型
+    <a href="/2021/01/11/%E5%BE%AE%E6%B3%A2%E5%85%89%E7%94%B5%E5%AF%BC/" rel="prev" title="微波光电导">
+      <i class="fa fa-chevron-left"></i> 微波光电导
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/01/11/%E5%BE%AE%E6%B3%A2%E5%85%89%E7%94%B5%E5%AF%BC/" rel="next" title="微波光电导">
-      微波光电导 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -336,7 +333,7 @@ div(E)=\frac{\rho}{\varepsilon_0}</script><script type="math/tex; mode=display">
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E6%96%AF%E7%94%B5%E5%9C%BA%E5%AE%9A%E5%BE%8B"><span class="nav-text">高斯电场定律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E6%96%AF%E7%A3%81%E5%9C%BA%E5%AE%9A%E5%BE%8B"><span class="nav-text">高斯磁场定律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E7%A3%81%E6%84%9F%E5%BA%94"><span class="nav-text">电磁感应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E5%9C%BA%E7%9A%84%E7%8E%AF%E6%B5%81"><span class="nav-text">电场的环流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%95%E6%8B%89%E7%AC%AC%E5%AE%9A%E5%BE%8B-%E6%96%B9%E7%A8%8B3"><span class="nav-text">法拉第定律(方程3)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%9F%B9%E7%8E%AF%E8%B7%AF%E5%AE%9A%E5%BE%8B"><span class="nav-text">安培环路定律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%9F%B9-%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E5%AE%9A%E5%BE%8B"><span class="nav-text">安培-麦克斯韦定律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E6%96%B9%E7%A8%8B%E7%BB%84"><span class="nav-text">麦克斯韦方程组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E6%96%B9%E7%A8%8B%E7%BB%84-%E5%BE%AE%E5%88%86"><span class="nav-text">麦克斯韦方程组(微分)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%93%88%E5%AF%86%E9%A1%BF%E7%AE%97%E5%AD%90"><span class="nav-text">1.哈密顿算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%95%A3%E5%BA%A6"><span class="nav-text">2.散度</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E4%B8%80%E7%BB%B4%E6%B3%A2"><span class="nav-text">1. 一维波</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%BE%AE%E5%88%86%E6%B3%A2%E5%8A%A8%E6%96%B9%E7%A8%8B"><span class="nav-text">2. 微分波动方程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E4%B8%80%E9%98%B6"><span class="nav-text">2.1 一阶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E4%BA%8C%E9%98%B6"><span class="nav-text">2.2 二阶</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E8%B0%90%E6%B3%A2"><span class="nav-text">3. 谐波</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E7%9B%B8%E4%BD%8D%E5%92%8C%E7%9B%B8%E9%80%9F%E5%BA%A6"><span class="nav-text">4. 相位和相速度</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

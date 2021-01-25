@@ -149,6 +149,128 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/24/%E5%85%89%E5%AD%A6%EF%BC%88%E4%B8%80%EF%BC%89%E6%B3%A2%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuan Shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/24/%E5%85%89%E5%AD%A6%EF%BC%88%E4%B8%80%EF%BC%89%E6%B3%A2%E5%8A%A8/" class="post-title-link" itemprop="url">光学（一）:波动</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-24 15:37:12 / 修改时间：21:08:35" itemprop="dateCreated datePublished" datetime="2021-01-24T15:37:12+08:00">2021-01-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%89%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">光学</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-一维波"><a href="#1-一维波" class="headerlink" title="1. 一维波"></a>1. 一维波</h1><blockquote>
+<p>横波:：介质在波的运动方向上位移（声波）</p>
+<p>纵波：介质的位移方向与波的运动方向垂直（电池波）</p>
+</blockquote>
+<p>假设扰动 $\Psi$ 以恒定的速率 $v$ 沿正方向移动，那么扰动必然是位置和时间的函数</p>
+<script type="math/tex; mode=display">
+\Psi = f(x,t)</script><p>在0时刻有:</p>
+<script type="math/tex; mode=display">
+\Psi = f(x,0)=f(x)</script><p>假设穿越空间前行是波的形状不改变，在t时刻之后波移动了 $vt$ </p>
+<p>建立新的坐标系 S‘ ，在新的坐标系中有:</p>
+<script type="math/tex; mode=display">
+\Psi = f(x')</script><p> 其中</p>
+<script type="math/tex; mode=display">
+x'=x-vt</script><p>带入S坐标系中则有：</p>
+<script type="math/tex; mode=display">
+\Psi (x,t)=f(x-vt)</script><h1 id="2-微分波动方程"><a href="#2-微分波动方程" class="headerlink" title="2. 微分波动方程"></a>2. 微分波动方程</h1><blockquote>
+<p>波是几个独立变量的函数（时间、空间；电场、磁场）</p>
+</blockquote>
+<h2 id="2-1-一阶"><a href="#2-1-一阶" class="headerlink" title="2.1 一阶"></a>2.1 一阶</h2><p>为了将 $\Psi(x,t)$ 对空间的依赖关系和对时间的依赖关系想联系，求 $ \Psi(x,t)=f(x’)$ d的偏微商，让 $t$ 不变,令 $x’=x-vt$ ，（或者 $x’=x+vt$）则有：</p>
+<script type="math/tex; mode=display">
+\frac{\partial\Psi}{\partial x}=\frac{\partial f}{\partial x}</script><script type="math/tex; mode=display">
+\frac{\partial\Psi}{\partial x}=\frac{\partial f}{\partial x'}\frac{\partial x'}{\partial x}=\frac{\partial f}{\partial x'}</script><script type="math/tex; mode=display">
+\frac{\partial x'}{x}=\frac{\partial (x-vt)}{\partial x}=1</script><p>让 $x$ 不变，对时间的偏微商为:</p>
+<script type="math/tex; mode=display">
+\frac {\partial \Psi}{\partial t}=\frac{\partial f}{\partial x'}\frac{\partial x'}{\partial x}=\frac{\partial f}{x'}(-v)=-v\frac{\partial f}{\partial x}</script><p>(7)和（9）可以写为：</p>
+<script type="math/tex; mode=display">
+\frac {\partial \Psi}{\partial t}=-v\frac{\partial \Psi}{\partial x}</script><p>表示 $\Psi$ 随 $t$ 的变化率和随 $x$ 的变化率只差一个常数倍</p>
+<h2 id="2-2-二阶"><a href="#2-2-二阶" class="headerlink" title="2.2 二阶"></a>2.2 二阶</h2><p>二阶偏微商分别为：</p>
+<script type="math/tex; mode=display">
+\frac{\partial^2 \Psi}{\partial^2x}=\frac{\partial^2 f}{\partial^2 x'}</script><script type="math/tex; mode=display">
+\frac {\partial^2\Psi}{\partial t^2}=\frac{\partial}{\partial t}(-v\frac{\partial f}{\partial x'})=-v\frac{\partial}{\partial x'}(\frac{\partial f}{\partial t})</script><p>由于</p>
+<script type="math/tex; mode=display">
+\frac{\partial \Psi}{\partial t}=\frac{\partial f}{\partial t}</script><script type="math/tex; mode=display">
+\frac {\partial^2\Psi}{\partial t^2}=-v\frac{\partial}{\partial x'}(\frac{\partial \Psi}{\partial t})=v^2\frac{\partial^2f}{\partial x'^2}</script><p>最终得到：</p>
+<script type="math/tex; mode=display">
+\frac {\partial^2\Psi}{\partial^2t}=\frac{1}{v^2}\frac{\partial^2\Psi}{\partial t^2}</script><p>即一维<strong>波动微分方程</strong></p>
+<h1 id="3-谐波"><a href="#3-谐波" class="headerlink" title="3. 谐波"></a>3. 谐波</h1><p>轮廓是正弦或者余弦的波叫做谐波，任意波形都可以由谐波叠加得到</p>
+<p>表示谐波的函数为：</p>
+<script type="math/tex; mode=display">
+\Psi (x,t)|_{t=0}=\Psi(x)=Asinkx=f(x)</script><p>其中 $k$ 为<strong>传播数</strong> ，$A$ 为<strong>振幅</strong> </p>
+<p>若波的传播速率为 $v$ ,则有：</p>
+<script type="math/tex; mode=display">
+\Psi (x,t)=Asink(x-vt)=f(x-vt)</script><p>当固定 x或者t的时候，波在空间和时间上都是周期的，空间周期叫做波长，即有：</p>
+<script type="math/tex; mode=display">
+\Psi(x,t)=\Psi(x+\lambda,t)=\Psi(x-\lambda,t)</script><p>对于谐波,相当于正弦函数自变量改变 $2\pi$ ,即：</p>
+<script type="math/tex; mode=display">
+sink(x-vt)=sin(k[(x+\lambda)-vt])=sin[k(x-vt)+2\pi]</script><script type="math/tex; mode=display">
+|k\lambda|=2\pi</script><script type="math/tex; mode=display">
+k=2\pi/\lambda</script><p>在时间上叫做时间周期  $\tau$ </p>
+<script type="math/tex; mode=display">
+\Psi (x,t)=\Psi(x,t-\tau)=\Psi(x,t+\tau)</script><script type="math/tex; mode=display">
+sin k(x-vt)=sin k[x-v(t-\tau)]=sin[k(x-vt)+2\pi]</script><script type="math/tex; mode=display">
+|kv\tau|=2\pi</script><script type="math/tex; mode=display">
+\frac{2\pi}{\lambda}v\tau=2\pi</script><script type="math/tex; mode=display">
+\tau=\lambda/v</script><p>周期是每个波长占多少个时间单位,周期的倒数是频率，即单位时间里波的个数</p>
+<h1 id="4-相位和相速度"><a href="#4-相位和相速度" class="headerlink" title="4. 相位和相速度"></a>4. 相位和相速度</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/11/%E5%BE%AE%E6%B3%A2%E5%85%89%E7%94%B5%E5%AF%BC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -633,14 +755,14 @@ y = A exp[(-\frac{t}{\tau})^\beta]</script><h2 id="含义"><a href="#含义" cla
       <div class="site-state-item site-state-posts">
           <a href="/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
